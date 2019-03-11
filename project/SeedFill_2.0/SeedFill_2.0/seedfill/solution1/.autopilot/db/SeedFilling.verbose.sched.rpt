@@ -1,0 +1,572 @@
+
+
+================================================================
+== Vivado HLS Report for 'SeedFilling'
+================================================================
+* Date:           Wed Dec  5 16:22:31 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        seedfill
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     7.717|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------------+--------+--------+----------+-----------+-----------+---------+----------+
+        |                     |     Latency     | Iteration|  Initiation Interval  |   Trip  |          |
+        |      Loop Name      |   min  |   max  |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +---------------------+--------+--------+----------+-----------+-----------+---------+----------+
+        |- Loop 1             |  251500|  251500|       503|          -|          -|      500|    no    |
+        | + Loop 1.1          |     500|     500|         1|          1|          1|      500|    yes   |
+        |- Loop 2             |       0|    1036|  3 ~ 259 |          -|          -|  0 ~ 4  |    no    |
+        | + Loop 2.1          |       0|     256|         1|          1|          1| 0 ~ 256 |    yes   |
+        |- Loop 3             |       ?|       ?|         ?|          -|          -|        ?|    no    |
+        | + Loop 3.1          |       ?|       ?|         ?|          -|          -|        ?|    no    |
+        |  ++ Loop 3.1.1      |       ?|       ?|        23|          -|          -|        ?|    no    |
+        |   +++ Loop 3.1.1.1  |      19|      19|         3|          2|          2|        9|    yes   |
+        +---------------------+--------+--------+----------+-----------+-----------+---------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 1
+  * Pipeline-1: initiation interval (II) = 1, depth = 1
+  * Pipeline-2: initiation interval (II) = 2, depth = 3
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 18
+* Pipeline : 3
+  Pipeline-0 : II = 1, D = 1, States = { 3 }
+  Pipeline-1 : II = 1, D = 1, States = { 6 }
+  Pipeline-2 : II = 2, D = 3, States = { 13 14 15 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (!exitcond2_i)
+	5  / (exitcond2_i)
+3 --> 
+	4  / (exitcond3_i)
+	3  / (!exitcond3_i)
+4 --> 
+	2  / true
+5 --> 
+	6  / (tmp_i_23)
+	8  / (!tmp_i_23)
+6 --> 
+	7  / (!tmp_2_i)
+	6  / (tmp_2_i)
+7 --> 
+	5  / true
+8 --> 
+	9  / (tmp_3_i)
+	17  / (!tmp_3_i)
+9 --> 
+	10  / (tmp_10_i)
+	8  / (!tmp_10_i)
+10 --> 
+	17  / (!or_cond_i)
+	11  / (or_cond_i)
+11 --> 
+	12  / (!tmp_i_i)
+	17  / (tmp_i_i)
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	16  / (exitcond_flatten)
+	15  / (!exitcond_flatten)
+15 --> 
+	13  / true
+16 --> 
+	11  / true
+17 --> 
+	9  / (tmp_3_i & !or_cond_i) | (tmp_3_i & !tmp_24_i)
+	18  / (!tmp_3_i) | (or_cond_i & tmp_24_i)
+18 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 4.52>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%rects_val_addr_1 = getelementptr [1024 x i16]* %rects_val, i64 0, i64 0" [./seedfill.h:160]   --->   Operation 19 'getelementptr' 'rects_val_addr_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%label_val = alloca [250000 x i8], align 1" [./seedfill.h:100]   --->   Operation 20 'alloca' 'label_val' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%points_val_x = alloca [125000 x i16], align 2" [./seedfill.h:101]   --->   Operation 21 'alloca' 'points_val_x' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%points_val_y = alloca [125000 x i16], align 2" [./seedfill.h:101]   --->   Operation 22 'alloca' 'points_val_y' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i10* %rects_cols, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 23 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i4* %rects_rows, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 24 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %src_rows, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 25 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %src_cols, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 26 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (2.26ns)   --->   "%rects_rows_read = call i4 @_ssdm_op_Read.ap_fifo.i4P(i4* %rects_rows)"   --->   Operation 27 'read' 'rects_rows_read' <Predicate = true> <Delay = 2.26> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 2.26> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 28 [1/1] (2.26ns)   --->   "%rects_cols_read = call i10 @_ssdm_op_Read.ap_fifo.i10P(i10* %rects_cols)"   --->   Operation 28 'read' 'rects_cols_read' <Predicate = true> <Delay = 2.26> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 2.26> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i4* %rects_rows_out, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 29 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 30 [1/1] (2.26ns)   --->   "call void @_ssdm_op_Write.ap_fifo.i4P(i4* %rects_rows_out, i4 %rects_rows_read)"   --->   Operation 30 'write' <Predicate = true> <Delay = 2.26> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 2.26> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i10* %rects_cols_out, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 31 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 32 [1/1] (2.26ns)   --->   "call void @_ssdm_op_Write.ap_fifo.i10P(i10* %rects_cols_out, i10 %rects_cols_read)"   --->   Operation 32 'write' <Predicate = true> <Delay = 2.26> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 2.26> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 33 [1/1] (2.26ns)   --->   "%rows = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %src_rows)" [./seedfill.h:87]   --->   Operation 33 'read' 'rows' <Predicate = true> <Delay = 2.26> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 2.26> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 34 [1/1] (2.26ns)   --->   "%cols = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %src_cols)" [./seedfill.h:88]   --->   Operation 34 'read' 'cols' <Predicate = true> <Delay = 2.26> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 2.26> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 35 [1/1] (0.97ns)   --->   "br label %._crit_edge1.i.i" [./seedfill.h:90]   --->   Operation 35 'br' <Predicate = true> <Delay = 0.97>
+
+State 2 <SV = 1> <Delay = 1.48>
+ST_2 : Operation 36 [1/1] (0.00ns)   --->   "%i_0_i_i = phi i9 [ 0, %entry ], [ %i, %._crit_edge1.i.i.loopexit ]"   --->   Operation 36 'phi' 'i_0_i_i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 37 [1/1] (0.00ns)   --->   "%phi_mul = phi i18 [ 0, %entry ], [ %next_mul, %._crit_edge1.i.i.loopexit ]"   --->   Operation 37 'phi' 'phi_mul' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 38 [1/1] (1.28ns)   --->   "%next_mul = add i18 %phi_mul, 500"   --->   Operation 38 'add' 'next_mul' <Predicate = true> <Delay = 1.28> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 39 [1/1] (1.01ns)   --->   "%exitcond2_i = icmp eq i9 %i_0_i_i, -12" [./type.h:187->./seedfill.h:105]   --->   Operation 39 'icmp' 'exitcond2_i' <Predicate = true> <Delay = 1.01> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 40 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 500, i64 500, i64 500)"   --->   Operation 40 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 41 [1/1] (1.27ns)   --->   "%i = add i9 %i_0_i_i, 1" [./type.h:187->./seedfill.h:105]   --->   Operation 41 'add' 'i' <Predicate = true> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 42 [1/1] (0.00ns)   --->   "br i1 %exitcond2_i, label %._crit_edge1.i17.i.preheader, label %.preheader.i.i.preheader" [./type.h:187->./seedfill.h:105]   --->   Operation 42 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 43 [1/1] (0.97ns)   --->   "br label %.preheader.i.i" [./type.h:188->./seedfill.h:105]   --->   Operation 43 'br' <Predicate = (!exitcond2_i)> <Delay = 0.97>
+ST_2 : Operation 44 [1/1] (0.97ns)   --->   "br label %._crit_edge1.i17.i" [./type.h:187->./seedfill.h:114]   --->   Operation 44 'br' <Predicate = (exitcond2_i)> <Delay = 0.97>
+
+State 3 <SV = 2> <Delay = 3.28>
+ST_3 : Operation 45 [1/1] (0.00ns)   --->   "%j_0_i_i = phi i9 [ %j, %0 ], [ 0, %.preheader.i.i.preheader ]"   --->   Operation 45 'phi' 'j_0_i_i' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 46 [1/1] (1.01ns)   --->   "%exitcond3_i = icmp eq i9 %j_0_i_i, -12" [./type.h:188->./seedfill.h:105]   --->   Operation 46 'icmp' 'exitcond3_i' <Predicate = true> <Delay = 1.01> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 47 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 500, i64 500, i64 500)"   --->   Operation 47 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 48 [1/1] (1.27ns)   --->   "%j = add i9 %j_0_i_i, 1" [./type.h:188->./seedfill.h:105]   --->   Operation 48 'add' 'j' <Predicate = true> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 49 [1/1] (0.00ns)   --->   "br i1 %exitcond3_i, label %._crit_edge1.i.i.loopexit, label %0" [./type.h:188->./seedfill.h:105]   --->   Operation 49 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 50 [1/1] (0.00ns)   --->   "%tmp_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str26)" [./type.h:188->./seedfill.h:105]   --->   Operation 50 'specregionbegin' 'tmp_i' <Predicate = (!exitcond3_i)> <Delay = 0.00>
+ST_3 : Operation 51 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [./type.h:190->./seedfill.h:105]   --->   Operation 51 'specpipeline' <Predicate = (!exitcond3_i)> <Delay = 0.00>
+ST_3 : Operation 52 [1/1] (0.00ns)   --->   "%tmp_9_i_cast = zext i9 %j_0_i_i to i18" [./type.h:191->./seedfill.h:105]   --->   Operation 52 'zext' 'tmp_9_i_cast' <Predicate = (!exitcond3_i)> <Delay = 0.00>
+ST_3 : Operation 53 [1/1] (1.28ns)   --->   "%tmp_4 = add i18 %phi_mul, %tmp_9_i_cast" [./type.h:191->./seedfill.h:105]   --->   Operation 53 'add' 'tmp_4' <Predicate = (!exitcond3_i)> <Delay = 1.28> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 54 [1/1] (0.00ns)   --->   "%tmp_4_cast = zext i18 %tmp_4 to i64" [./type.h:191->./seedfill.h:105]   --->   Operation 54 'zext' 'tmp_4_cast' <Predicate = (!exitcond3_i)> <Delay = 0.00>
+ST_3 : Operation 55 [1/1] (0.00ns)   --->   "%label_val_addr = getelementptr [250000 x i8]* %label_val, i64 0, i64 %tmp_4_cast" [./type.h:191->./seedfill.h:105]   --->   Operation 55 'getelementptr' 'label_val_addr' <Predicate = (!exitcond3_i)> <Delay = 0.00>
+ST_3 : Operation 56 [1/1] (1.99ns)   --->   "store i8 0, i8* %label_val_addr, align 1" [./type.h:191->./seedfill.h:105]   --->   Operation 56 'store' <Predicate = (!exitcond3_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_3 : Operation 57 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str26, i32 %tmp_i)" [./type.h:192->./seedfill.h:105]   --->   Operation 57 'specregionend' 'empty' <Predicate = (!exitcond3_i)> <Delay = 0.00>
+ST_3 : Operation 58 [1/1] (0.00ns)   --->   "br label %.preheader.i.i" [./type.h:188->./seedfill.h:105]   --->   Operation 58 'br' <Predicate = (!exitcond3_i)> <Delay = 0.00>
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 59 [1/1] (0.00ns)   --->   "br label %._crit_edge1.i.i"   --->   Operation 59 'br' <Predicate = true> <Delay = 0.00>
+
+State 5 <SV = 2> <Delay = 1.28>
+ST_5 : Operation 60 [1/1] (0.00ns)   --->   "%i_0_i1_i = phi i3 [ %i_1, %._crit_edge1.i17.i.loopexit ], [ 0, %._crit_edge1.i17.i.preheader ]"   --->   Operation 60 'phi' 'i_0_i1_i' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 61 [1/1] (0.00ns)   --->   "%i_0_i1_cast_cast_i = zext i3 %i_0_i1_i to i4" [./type.h:187->./seedfill.h:114]   --->   Operation 61 'zext' 'i_0_i1_cast_cast_i' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 62 [1/1] (0.82ns)   --->   "%tmp_i_23 = icmp slt i4 %i_0_i1_cast_cast_i, %rects_rows_read" [./type.h:187->./seedfill.h:114]   --->   Operation 62 'icmp' 'tmp_i_23' <Predicate = true> <Delay = 0.82> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 63 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 4, i64 0)"   --->   Operation 63 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 64 [1/1] (0.94ns)   --->   "%i_1 = add i3 %i_0_i1_i, 1" [./type.h:187->./seedfill.h:114]   --->   Operation 64 'add' 'i_1' <Predicate = true> <Delay = 0.94> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 65 [1/1] (0.00ns)   --->   "br i1 %tmp_i_23, label %.preheader.preheader.i18.i, label %SetValue.exit1.i.preheader" [./type.h:187->./seedfill.h:114]   --->   Operation 65 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 66 [1/1] (0.00ns)   --->   "%tmp_2 = call i11 @_ssdm_op_BitConcatenate.i11.i3.i8(i3 %i_0_i1_i, i8 0)" [./type.h:187->./seedfill.h:114]   --->   Operation 66 'bitconcatenate' 'tmp_2' <Predicate = (tmp_i_23)> <Delay = 0.00>
+ST_5 : Operation 67 [1/1] (0.00ns)   --->   "%tmp_3_cast = zext i11 %tmp_2 to i12" [./type.h:188->./seedfill.h:114]   --->   Operation 67 'zext' 'tmp_3_cast' <Predicate = (tmp_i_23)> <Delay = 0.00>
+ST_5 : Operation 68 [1/1] (0.97ns)   --->   "br label %.preheader.i20.i" [./type.h:188->./seedfill.h:114]   --->   Operation 68 'br' <Predicate = (tmp_i_23)> <Delay = 0.97>
+ST_5 : Operation 69 [1/1] (0.00ns)   --->   "%num_1 = alloca i32"   --->   Operation 69 'alloca' 'num_1' <Predicate = (!tmp_i_23)> <Delay = 0.00>
+ST_5 : Operation 70 [1/1] (0.00ns)   --->   "%points_val_x_addr = getelementptr [125000 x i16]* %points_val_x, i64 0, i64 0" [./type.h:117->./seedfill.h:124]   --->   Operation 70 'getelementptr' 'points_val_x_addr' <Predicate = (!tmp_i_23)> <Delay = 0.00>
+ST_5 : Operation 71 [1/1] (0.00ns)   --->   "%points_val_y_addr = getelementptr [125000 x i16]* %points_val_y, i64 0, i64 0" [./type.h:117->./seedfill.h:124]   --->   Operation 71 'getelementptr' 'points_val_y_addr' <Predicate = (!tmp_i_23)> <Delay = 0.00>
+ST_5 : Operation 72 [1/1] (0.97ns)   --->   "store i32 0, i32* %num_1"   --->   Operation 72 'store' <Predicate = (!tmp_i_23)> <Delay = 0.97>
+ST_5 : Operation 73 [1/1] (0.97ns)   --->   "br label %SetValue.exit1.i" [./seedfill.h:116]   --->   Operation 73 'br' <Predicate = (!tmp_i_23)> <Delay = 0.97>
+
+State 6 <SV = 3> <Delay = 3.26>
+ST_6 : Operation 74 [1/1] (0.00ns)   --->   "%j_0_i1_i = phi i9 [ %j_1, %1 ], [ 0, %.preheader.preheader.i18.i ]"   --->   Operation 74 'phi' 'j_0_i1_i' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 75 [1/1] (0.00ns)   --->   "%j_0_i1_cast_cast_i = zext i9 %j_0_i1_i to i10" [./type.h:188->./seedfill.h:114]   --->   Operation 75 'zext' 'j_0_i1_cast_cast_i' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 76 [1/1] (1.05ns)   --->   "%tmp_2_i = icmp slt i10 %j_0_i1_cast_cast_i, %rects_cols_read" [./type.h:188->./seedfill.h:114]   --->   Operation 76 'icmp' 'tmp_2_i' <Predicate = true> <Delay = 1.05> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 77 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 256, i64 0)"   --->   Operation 77 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 78 [1/1] (1.27ns)   --->   "%j_1 = add i9 %j_0_i1_i, 1" [./type.h:188->./seedfill.h:114]   --->   Operation 78 'add' 'j_1' <Predicate = true> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 79 [1/1] (0.00ns)   --->   "br i1 %tmp_2_i, label %1, label %._crit_edge1.i17.i.loopexit" [./type.h:188->./seedfill.h:114]   --->   Operation 79 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 80 [1/1] (0.00ns)   --->   "%tmp_7_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str25)" [./type.h:188->./seedfill.h:114]   --->   Operation 80 'specregionbegin' 'tmp_7_i' <Predicate = (tmp_2_i)> <Delay = 0.00>
+ST_6 : Operation 81 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [./type.h:190->./seedfill.h:114]   --->   Operation 81 'specpipeline' <Predicate = (tmp_2_i)> <Delay = 0.00>
+ST_6 : Operation 82 [1/1] (0.00ns)   --->   "%tmp_8_i_cast = zext i9 %j_0_i1_i to i12" [./type.h:191->./seedfill.h:114]   --->   Operation 82 'zext' 'tmp_8_i_cast' <Predicate = (tmp_2_i)> <Delay = 0.00>
+ST_6 : Operation 83 [1/1] (1.26ns)   --->   "%tmp_5 = add i12 %tmp_3_cast, %tmp_8_i_cast" [./type.h:191->./seedfill.h:114]   --->   Operation 83 'add' 'tmp_5' <Predicate = (tmp_2_i)> <Delay = 1.26> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 84 [1/1] (0.00ns)   --->   "%tmp_5_cast = zext i12 %tmp_5 to i64" [./type.h:191->./seedfill.h:114]   --->   Operation 84 'zext' 'tmp_5_cast' <Predicate = (tmp_2_i)> <Delay = 0.00>
+ST_6 : Operation 85 [1/1] (0.00ns)   --->   "%rects_val_addr = getelementptr [1024 x i16]* %rects_val, i64 0, i64 %tmp_5_cast" [./type.h:191->./seedfill.h:114]   --->   Operation 85 'getelementptr' 'rects_val_addr' <Predicate = (tmp_2_i)> <Delay = 0.00>
+ST_6 : Operation 86 [1/1] (1.99ns)   --->   "store i16 0, i16* %rects_val_addr, align 2" [./type.h:191->./seedfill.h:114]   --->   Operation 86 'store' <Predicate = (tmp_2_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_6 : Operation 87 [1/1] (0.00ns)   --->   "%empty_24 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str25, i32 %tmp_7_i)" [./type.h:192->./seedfill.h:114]   --->   Operation 87 'specregionend' 'empty_24' <Predicate = (tmp_2_i)> <Delay = 0.00>
+ST_6 : Operation 88 [1/1] (0.00ns)   --->   "br label %.preheader.i20.i" [./type.h:188->./seedfill.h:114]   --->   Operation 88 'br' <Predicate = (tmp_2_i)> <Delay = 0.00>
+
+State 7 <SV = 4> <Delay = 0.00>
+ST_7 : Operation 89 [1/1] (0.00ns)   --->   "br label %._crit_edge1.i17.i"   --->   Operation 89 'br' <Predicate = true> <Delay = 0.00>
+
+State 8 <SV = 3> <Delay = 1.77>
+ST_8 : Operation 90 [1/1] (0.00ns)   --->   "%i1_i = phi i31 [ 0, %SetValue.exit1.i.preheader ], [ %i_2, %SetValue.exit1.i.loopexit ]"   --->   Operation 90 'phi' 'i1_i' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 91 [1/1] (0.00ns)   --->   "%phi_mul1 = phi i40 [ 0, %SetValue.exit1.i.preheader ], [ %next_mul1, %SetValue.exit1.i.loopexit ]"   --->   Operation 91 'phi' 'phi_mul1' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 92 [1/1] (0.00ns)   --->   "%tmp_1 = trunc i40 %phi_mul1 to i19"   --->   Operation 92 'trunc' 'tmp_1' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 93 [1/1] (1.62ns)   --->   "%next_mul1 = add i40 500, %phi_mul1"   --->   Operation 93 'add' 'next_mul1' <Predicate = true> <Delay = 1.62> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 94 [1/1] (0.00ns)   --->   "%i1_cast_i = zext i31 %i1_i to i32" [./seedfill.h:116]   --->   Operation 94 'zext' 'i1_cast_i' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 95 [1/1] (1.31ns)   --->   "%tmp_3_i = icmp slt i32 %i1_cast_i, %rows" [./seedfill.h:116]   --->   Operation 95 'icmp' 'tmp_3_i' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 96 [1/1] (1.55ns)   --->   "%i_2 = add i31 1, %i1_i" [./seedfill.h:116]   --->   Operation 96 'add' 'i_2' <Predicate = true> <Delay = 1.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 97 [1/1] (0.00ns)   --->   "br i1 %tmp_3_i, label %.preheader10.preheader.i, label %9" [./seedfill.h:116]   --->   Operation 97 'br' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 98 [1/1] (0.00ns)   --->   "%y1 = trunc i31 %i1_i to i16" [./seedfill.h:124]   --->   Operation 98 'trunc' 'y1' <Predicate = (tmp_3_i)> <Delay = 0.00>
+ST_8 : Operation 99 [1/1] (0.97ns)   --->   "br label %.preheader10.i" [./seedfill.h:117]   --->   Operation 99 'br' <Predicate = (tmp_3_i)> <Delay = 0.97>
+ST_8 : Operation 100 [1/1] (0.00ns)   --->   "%num_1_load = load i32* %num_1" [./seedfill.h:166]   --->   Operation 100 'load' 'num_1_load' <Predicate = (!tmp_3_i)> <Delay = 0.00>
+ST_8 : Operation 101 [1/1] (0.00ns)   --->   "%tmp_6 = trunc i32 %num_1_load to i16" [./seedfill.h:166]   --->   Operation 101 'trunc' 'tmp_6' <Predicate = (!tmp_3_i)> <Delay = 0.00>
+ST_8 : Operation 102 [1/1] (0.97ns)   --->   "br label %.exit" [./seedfill.h:167]   --->   Operation 102 'br' <Predicate = (!tmp_3_i)> <Delay = 0.97>
+
+State 9 <SV = 4> <Delay = 3.30>
+ST_9 : Operation 103 [1/1] (0.00ns)   --->   "%j2_i = phi i31 [ 0, %.preheader10.preheader.i ], [ %j_2, %._crit_edge7.i ]"   --->   Operation 103 'phi' 'j2_i' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 104 [1/1] (0.00ns)   --->   "%j2_cast_i = zext i31 %j2_i to i32" [./seedfill.h:117]   --->   Operation 104 'zext' 'j2_cast_i' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 105 [1/1] (1.31ns)   --->   "%tmp_10_i = icmp slt i32 %j2_cast_i, %cols" [./seedfill.h:117]   --->   Operation 105 'icmp' 'tmp_10_i' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 106 [1/1] (1.55ns)   --->   "%j_2 = add i31 %j2_i, 1" [./seedfill.h:117]   --->   Operation 106 'add' 'j_2' <Predicate = true> <Delay = 1.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 107 [1/1] (0.00ns)   --->   "br i1 %tmp_10_i, label %2, label %SetValue.exit1.i.loopexit" [./seedfill.h:117]   --->   Operation 107 'br' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 108 [1/1] (0.00ns)   --->   "%tmp_13 = trunc i31 %j2_i to i19" [./seedfill.h:119]   --->   Operation 108 'trunc' 'tmp_13' <Predicate = (tmp_10_i)> <Delay = 0.00>
+ST_9 : Operation 109 [1/1] (1.30ns)   --->   "%tmp_7 = add i19 %tmp_1, %tmp_13" [./seedfill.h:119]   --->   Operation 109 'add' 'tmp_7' <Predicate = (tmp_10_i)> <Delay = 1.30> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 110 [1/1] (0.00ns)   --->   "%tmp_7_cast = zext i19 %tmp_7 to i64" [./seedfill.h:119]   --->   Operation 110 'zext' 'tmp_7_cast' <Predicate = (tmp_10_i)> <Delay = 0.00>
+ST_9 : Operation 111 [1/1] (0.00ns)   --->   "%src_val_addr = getelementptr [250000 x i8]* %src_val, i64 0, i64 %tmp_7_cast" [./seedfill.h:119]   --->   Operation 111 'getelementptr' 'src_val_addr' <Predicate = (tmp_10_i)> <Delay = 0.00>
+ST_9 : Operation 112 [1/1] (0.00ns)   --->   "%label_val_addr_1 = getelementptr [250000 x i8]* %label_val, i64 0, i64 %tmp_7_cast" [./seedfill.h:120]   --->   Operation 112 'getelementptr' 'label_val_addr_1' <Predicate = (tmp_10_i)> <Delay = 0.00>
+ST_9 : Operation 113 [2/2] (1.99ns)   --->   "%pixvalue = load i8* %src_val_addr, align 1" [./seedfill.h:119]   --->   Operation 113 'load' 'pixvalue' <Predicate = (tmp_10_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_9 : Operation 114 [2/2] (1.99ns)   --->   "%label_val_load = load i8* %label_val_addr_1, align 1" [./seedfill.h:120]   --->   Operation 114 'load' 'label_val_load' <Predicate = (tmp_10_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_9 : Operation 115 [1/1] (0.00ns)   --->   "br label %SetValue.exit1.i"   --->   Operation 115 'br' <Predicate = (!tmp_10_i)> <Delay = 0.00>
+
+State 10 <SV = 5> <Delay = 3.91>
+ST_10 : Operation 116 [1/1] (0.00ns)   --->   "%tmp_11_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str23)" [./seedfill.h:117]   --->   Operation 116 'specregionbegin' 'tmp_11_i' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 117 [1/2] (1.99ns)   --->   "%pixvalue = load i8* %src_val_addr, align 1" [./seedfill.h:119]   --->   Operation 117 'load' 'pixvalue' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_10 : Operation 118 [1/2] (1.99ns)   --->   "%label_val_load = load i8* %label_val_addr_1, align 1" [./seedfill.h:120]   --->   Operation 118 'load' 'label_val_load' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_10 : Operation 119 [1/1] (0.98ns)   --->   "%tmp_13_i = icmp ne i8 %pixvalue, 0" [./seedfill.h:121]   --->   Operation 119 'icmp' 'tmp_13_i' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 120 [1/1] (0.98ns)   --->   "%tmp_14_i = icmp eq i8 %label_val_load, 0" [./seedfill.h:121]   --->   Operation 120 'icmp' 'tmp_14_i' <Predicate = true> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 121 [1/1] (0.46ns)   --->   "%or_cond_i = and i1 %tmp_13_i, %tmp_14_i" [./seedfill.h:121]   --->   Operation 121 'and' 'or_cond_i' <Predicate = true> <Delay = 0.46> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 122 [1/1] (0.00ns)   --->   "br i1 %or_cond_i, label %3, label %._crit_edge7.i" [./seedfill.h:121]   --->   Operation 122 'br' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 123 [1/1] (0.00ns)   --->   "%num_1_load_1 = load i32* %num_1" [./seedfill.h:122]   --->   Operation 123 'load' 'num_1_load_1' <Predicate = (or_cond_i)> <Delay = 0.00>
+ST_10 : Operation 124 [1/1] (0.00ns)   --->   "%tmp_14 = trunc i32 %num_1_load_1 to i8" [./seedfill.h:122]   --->   Operation 124 'trunc' 'tmp_14' <Predicate = (or_cond_i)> <Delay = 0.00>
+ST_10 : Operation 125 [1/1] (1.57ns)   --->   "%num = add nsw i32 1, %num_1_load_1" [./seedfill.h:122]   --->   Operation 125 'add' 'num' <Predicate = (or_cond_i)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 126 [1/1] (1.28ns)   --->   "%tmp_17_i = add i8 1, %tmp_14" [./seedfill.h:123]   --->   Operation 126 'add' 'tmp_17_i' <Predicate = (or_cond_i)> <Delay = 1.28> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 127 [1/1] (1.99ns)   --->   "store i8 %tmp_17_i, i8* %label_val_addr_1, align 1" [./seedfill.h:123]   --->   Operation 127 'store' <Predicate = (or_cond_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_10 : Operation 128 [1/1] (0.00ns)   --->   "%x1 = trunc i31 %j2_i to i16" [./seedfill.h:124]   --->   Operation 128 'trunc' 'x1' <Predicate = (or_cond_i)> <Delay = 0.00>
+ST_10 : Operation 129 [1/1] (1.99ns)   --->   "store i16 %x1, i16* %points_val_x_addr, align 2" [./type.h:117->./seedfill.h:124]   --->   Operation 129 'store' <Predicate = (or_cond_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_10 : Operation 130 [1/1] (1.99ns)   --->   "store i16 %y1, i16* %points_val_y_addr, align 2" [./type.h:117->./seedfill.h:124]   --->   Operation 130 'store' <Predicate = (or_cond_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_10 : Operation 131 [1/1] (0.97ns)   --->   "br label %.loopexit.i" [./seedfill.h:129]   --->   Operation 131 'br' <Predicate = (or_cond_i)> <Delay = 0.97>
+
+State 11 <SV = 6> <Delay = 3.57>
+ST_11 : Operation 132 [1/1] (0.00ns)   --->   "%vector_length_read_a = phi i32 [ 1, %3 ], [ %vector_length_read_a_1, %.loopexit.i.loopexit ]" [./type.h:122->./seedfill.h:131]   --->   Operation 132 'phi' 'vector_length_read_a' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 133 [1/1] (0.00ns)   --->   "%y_i = phi i16 [ %y1, %3 ], [ %y1_2_i, %.loopexit.i.loopexit ]"   --->   Operation 133 'phi' 'y_i' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 134 [1/1] (0.00ns)   --->   "%y0_i = phi i16 [ %y1, %3 ], [ %y0_2_i, %.loopexit.i.loopexit ]"   --->   Operation 134 'phi' 'y0_i' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 135 [1/1] (0.00ns)   --->   "%x_i = phi i16 [ %x1, %3 ], [ %x1_2_i, %.loopexit.i.loopexit ]"   --->   Operation 135 'phi' 'x_i' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 136 [1/1] (0.00ns)   --->   "%x0_i = phi i16 [ %x1, %3 ], [ %x0_2_i, %.loopexit.i.loopexit ]"   --->   Operation 136 'phi' 'x0_i' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 137 [1/1] (1.31ns)   --->   "%tmp_i_i = icmp eq i32 %vector_length_read_a, 0" [./type.h:107->./seedfill.h:129]   --->   Operation 137 'icmp' 'tmp_i_i' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 138 [1/1] (0.00ns)   --->   "br i1 %tmp_i_i, label %7, label %4" [./seedfill.h:129]   --->   Operation 138 'br' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 139 [1/1] (1.57ns)   --->   "%points_length = add nsw i32 %vector_length_read_a, -1" [./type.h:122->./seedfill.h:131]   --->   Operation 139 'add' 'points_length' <Predicate = (!tmp_i_i)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 140 [1/1] (0.00ns)   --->   "%tmp_2_i_i = sext i32 %points_length to i64" [./type.h:122->./seedfill.h:131]   --->   Operation 140 'sext' 'tmp_2_i_i' <Predicate = (!tmp_i_i)> <Delay = 0.00>
+ST_11 : Operation 141 [1/1] (0.00ns)   --->   "%points_val_x_addr_1 = getelementptr [125000 x i16]* %points_val_x, i64 0, i64 %tmp_2_i_i" [./type.h:122->./seedfill.h:131]   --->   Operation 141 'getelementptr' 'points_val_x_addr_1' <Predicate = (!tmp_i_i)> <Delay = 0.00>
+ST_11 : Operation 142 [2/2] (1.99ns)   --->   "%c0 = load i16* %points_val_x_addr_1, align 2" [./type.h:122->./seedfill.h:131]   --->   Operation 142 'load' 'c0' <Predicate = (!tmp_i_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_11 : Operation 143 [1/1] (0.00ns)   --->   "%points_val_y_addr_1 = getelementptr [125000 x i16]* %points_val_y, i64 0, i64 %tmp_2_i_i" [./type.h:122->./seedfill.h:131]   --->   Operation 143 'getelementptr' 'points_val_y_addr_1' <Predicate = (!tmp_i_i)> <Delay = 0.00>
+ST_11 : Operation 144 [2/2] (1.99ns)   --->   "%r0 = load i16* %points_val_y_addr_1, align 2" [./type.h:122->./seedfill.h:131]   --->   Operation 144 'load' 'r0' <Predicate = (!tmp_i_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_11 : Operation 145 [1/1] (0.00ns)   --->   "%tmp_19_i = sext i32 %num to i64" [./seedfill.h:155]   --->   Operation 145 'sext' 'tmp_19_i' <Predicate = (tmp_i_i)> <Delay = 0.00>
+ST_11 : Operation 146 [1/1] (0.00ns)   --->   "%tmp_16 = trunc i32 %num to i12" [./seedfill.h:155]   --->   Operation 146 'trunc' 'tmp_16' <Predicate = (tmp_i_i)> <Delay = 0.00>
+ST_11 : Operation 147 [1/1] (0.00ns)   --->   "%rects_val_addr_2 = getelementptr [1024 x i16]* %rects_val, i64 0, i64 %tmp_19_i" [./seedfill.h:155]   --->   Operation 147 'getelementptr' 'rects_val_addr_2' <Predicate = (tmp_i_i)> <Delay = 0.00>
+ST_11 : Operation 148 [1/1] (1.26ns)   --->   "%tmp_8 = add i12 256, %tmp_16" [./seedfill.h:156]   --->   Operation 148 'add' 'tmp_8' <Predicate = (tmp_i_i)> <Delay = 1.26> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 149 [1/1] (0.00ns)   --->   "%tmp_8_cast = sext i12 %tmp_8 to i64" [./seedfill.h:156]   --->   Operation 149 'sext' 'tmp_8_cast' <Predicate = (tmp_i_i)> <Delay = 0.00>
+ST_11 : Operation 150 [1/1] (0.00ns)   --->   "%rects_val_addr_3 = getelementptr [1024 x i16]* %rects_val, i64 0, i64 %tmp_8_cast" [./seedfill.h:156]   --->   Operation 150 'getelementptr' 'rects_val_addr_3' <Predicate = (tmp_i_i)> <Delay = 0.00>
+ST_11 : Operation 151 [1/1] (1.99ns)   --->   "store i16 %x0_i, i16* %rects_val_addr_2, align 2" [./seedfill.h:155]   --->   Operation 151 'store' <Predicate = (tmp_i_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_11 : Operation 152 [1/1] (1.99ns)   --->   "store i16 %y0_i, i16* %rects_val_addr_3, align 2" [./seedfill.h:156]   --->   Operation 152 'store' <Predicate = (tmp_i_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+
+State 12 <SV = 7> <Delay = 1.99>
+ST_12 : Operation 153 [1/2] (1.99ns)   --->   "%c0 = load i16* %points_val_x_addr_1, align 2" [./type.h:122->./seedfill.h:131]   --->   Operation 153 'load' 'c0' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_12 : Operation 154 [1/2] (1.99ns)   --->   "%r0 = load i16* %points_val_y_addr_1, align 2" [./type.h:122->./seedfill.h:131]   --->   Operation 154 'load' 'r0' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_12 : Operation 155 [1/1] (0.97ns)   --->   "br label %.preheader.i" [./seedfill.h:134]   --->   Operation 155 'br' <Predicate = true> <Delay = 0.97>
+
+State 13 <SV = 8> <Delay = 4.14>
+ST_13 : Operation 156 [1/1] (0.00ns)   --->   "%indvar_flatten = phi i4 [ 0, %4 ], [ %indvar_flatten_next, %._crit_edge8.i ]"   --->   Operation 156 'phi' 'indvar_flatten' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 157 [1/1] (0.00ns)   --->   "%dr_i = phi i3 [ -1, %4 ], [ %dr_i_mid2, %._crit_edge8.i ]" [./seedfill.h:135]   --->   Operation 157 'phi' 'dr_i' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 158 [1/1] (0.00ns)   --->   "%dc_i = phi i3 [ -1, %4 ], [ %dc, %._crit_edge8.i ]"   --->   Operation 158 'phi' 'dc_i' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 159 [1/1] (0.00ns)   --->   "%dr_cast_i = sext i3 %dr_i to i16" [./seedfill.h:134]   --->   Operation 159 'sext' 'dr_cast_i' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 160 [1/1] (1.24ns)   --->   "%r = add i16 %r0, %dr_cast_i" [./seedfill.h:138]   --->   Operation 160 'add' 'r' <Predicate = true> <Delay = 1.24> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 161 [1/1] (0.00ns) (grouped into LUT with out node tmp)   --->   "%tmp_18 = call i1 @_ssdm_op_BitSelect.i1.i16.i32(i16 %r, i32 15)" [./seedfill.h:140]   --->   Operation 161 'bitselect' 'tmp_18' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 162 [1/1] (0.00ns) (grouped into LUT with out node tmp)   --->   "%rev = xor i1 %tmp_18, true" [./seedfill.h:140]   --->   Operation 162 'xor' 'rev' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 163 [1/1] (0.00ns)   --->   "%tmp_28_i = sext i16 %r to i32" [./seedfill.h:140]   --->   Operation 163 'sext' 'tmp_28_i' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 164 [1/1] (1.31ns)   --->   "%tmp_29_i = icmp slt i32 %tmp_28_i, %rows" [./seedfill.h:140]   --->   Operation 164 'icmp' 'tmp_29_i' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 165 [1/1] (0.46ns) (out node of the LUT)   --->   "%tmp = and i1 %tmp_29_i, %rev" [./seedfill.h:140]   --->   Operation 165 'and' 'tmp' <Predicate = true> <Delay = 0.46> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 166 [1/1] (0.82ns)   --->   "%exitcond_flatten = icmp eq i4 %indvar_flatten, -7"   --->   Operation 166 'icmp' 'exitcond_flatten' <Predicate = true> <Delay = 0.82> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 167 [1/1] (0.94ns)   --->   "%dr = add i3 %dr_i, 1" [./seedfill.h:134]   --->   Operation 167 'add' 'dr' <Predicate = (!exitcond_flatten)> <Delay = 0.94> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 168 [1/1] (0.63ns)   --->   "%exitcond_i = icmp eq i3 %dc_i, 2" [./seedfill.h:135]   --->   Operation 168 'icmp' 'exitcond_i' <Predicate = (!exitcond_flatten)> <Delay = 0.63> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 169 [1/1] (0.48ns)   --->   "%dc_i_mid2 = select i1 %exitcond_i, i3 -1, i3 %dc_i" [./seedfill.h:135]   --->   Operation 169 'select' 'dc_i_mid2' <Predicate = (!exitcond_flatten)> <Delay = 0.48> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_13 : Operation 170 [1/1] (0.00ns)   --->   "%dr_cast_i_mid1 = sext i3 %dr to i16" [./seedfill.h:134]   --->   Operation 170 'sext' 'dr_cast_i_mid1' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_13 : Operation 171 [1/1] (0.76ns)   --->   "%tmp_26_i_mid1 = mul i3 %dr, %dr" [./seedfill.h:138]   --->   Operation 171 'mul' 'tmp_26_i_mid1' <Predicate = (!exitcond_flatten)> <Delay = 0.76> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 0.76> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 172 [1/1] (0.76ns)   --->   "%tmp_26_i = mul i3 %dr_i, %dr_i" [./seedfill.h:138]   --->   Operation 172 'mul' 'tmp_26_i' <Predicate = (!exitcond_flatten)> <Delay = 0.76> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 0.76> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 173 [1/1] (1.24ns)   --->   "%r_mid1 = add i16 %dr_cast_i_mid1, %r0" [./seedfill.h:138]   --->   Operation 173 'add' 'r_mid1' <Predicate = (!exitcond_flatten)> <Delay = 1.24> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 174 [1/1] (0.47ns)   --->   "%r_mid2 = select i1 %exitcond_i, i16 %r_mid1, i16 %r" [./seedfill.h:138]   --->   Operation 174 'select' 'r_mid2' <Predicate = (!exitcond_flatten)> <Delay = 0.47> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_13 : Operation 175 [1/1] (0.00ns) (grouped into LUT with out node or_cond8_i)   --->   "%tmp_19 = call i1 @_ssdm_op_BitSelect.i1.i16.i32(i16 %r_mid1, i32 15)" [./seedfill.h:140]   --->   Operation 175 'bitselect' 'tmp_19' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_13 : Operation 176 [1/1] (0.00ns) (grouped into LUT with out node or_cond8_i)   --->   "%rev1 = xor i1 %tmp_19, true" [./seedfill.h:140]   --->   Operation 176 'xor' 'rev1' <Predicate = (!exitcond_flatten)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 177 [1/1] (0.00ns)   --->   "%tmp_28_i_mid1 = sext i16 %r_mid1 to i32" [./seedfill.h:140]   --->   Operation 177 'sext' 'tmp_28_i_mid1' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_13 : Operation 178 [1/1] (1.31ns)   --->   "%tmp_29_i_mid1 = icmp slt i32 %tmp_28_i_mid1, %rows" [./seedfill.h:140]   --->   Operation 178 'icmp' 'tmp_29_i_mid1' <Predicate = (!exitcond_flatten)> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 179 [1/1] (0.00ns) (grouped into LUT with out node or_cond8_i)   --->   "%tmp_mid1 = and i1 %tmp_29_i_mid1, %rev1" [./seedfill.h:140]   --->   Operation 179 'and' 'tmp_mid1' <Predicate = (!exitcond_flatten)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 180 [1/1] (0.00ns) (grouped into LUT with out node or_cond8_i)   --->   "%tmp_mid2 = select i1 %exitcond_i, i1 %tmp_mid1, i1 %tmp" [./seedfill.h:140]   --->   Operation 180 'select' 'tmp_mid2' <Predicate = (!exitcond_flatten)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_13 : Operation 181 [1/1] (0.48ns)   --->   "%dr_i_mid2 = select i1 %exitcond_i, i3 %dr, i3 %dr_i" [./seedfill.h:135]   --->   Operation 181 'select' 'dr_i_mid2' <Predicate = (!exitcond_flatten)> <Delay = 0.48> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_13 : Operation 182 [1/1] (0.00ns)   --->   "%dc_cast_i = sext i3 %dc_i_mid2 to i16" [./seedfill.h:135]   --->   Operation 182 'sext' 'dc_cast_i' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_13 : Operation 183 [1/1] (1.24ns)   --->   "%c = add i16 %dc_cast_i, %c0" [./seedfill.h:139]   --->   Operation 183 'add' 'c' <Predicate = (!exitcond_flatten)> <Delay = 1.24> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 184 [1/1] (0.00ns) (grouped into LUT with out node or_cond8_i)   --->   "%tmp_20 = call i1 @_ssdm_op_BitSelect.i1.i16.i32(i16 %c, i32 15)" [./seedfill.h:140]   --->   Operation 184 'bitselect' 'tmp_20' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_13 : Operation 185 [1/1] (0.00ns) (grouped into LUT with out node or_cond8_i)   --->   "%rev2 = xor i1 %tmp_20, true" [./seedfill.h:140]   --->   Operation 185 'xor' 'rev2' <Predicate = (!exitcond_flatten)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 186 [1/1] (0.00ns)   --->   "%tmp_34_i = sext i16 %c to i32" [./seedfill.h:140]   --->   Operation 186 'sext' 'tmp_34_i' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_13 : Operation 187 [1/1] (1.31ns)   --->   "%tmp_35_i = icmp slt i32 %tmp_34_i, %cols" [./seedfill.h:140]   --->   Operation 187 'icmp' 'tmp_35_i' <Predicate = (!exitcond_flatten)> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 188 [1/1] (0.00ns) (grouped into LUT with out node or_cond8_i)   --->   "%tmp1 = and i1 %tmp_35_i, %rev2" [./seedfill.h:140]   --->   Operation 188 'and' 'tmp1' <Predicate = (!exitcond_flatten)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 189 [1/1] (0.47ns) (out node of the LUT)   --->   "%or_cond8_i = and i1 %tmp1, %tmp_mid2" [./seedfill.h:140]   --->   Operation 189 'and' 'or_cond8_i' <Predicate = (!exitcond_flatten)> <Delay = 0.47> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+
+State 14 <SV = 9> <Delay = 7.71>
+ST_14 : Operation 190 [1/1] (0.00ns)   --->   "%vector_length_read_a_1 = phi i32 [ %points_length, %4 ], [ %points_length_5_i, %._crit_edge8.i ]"   --->   Operation 190 'phi' 'vector_length_read_a_1' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 191 [1/1] (0.00ns)   --->   "%y1_2_i = phi i16 [ %y_i, %4 ], [ %y1_4_i, %._crit_edge8.i ]" [./seedfill.h:124]   --->   Operation 191 'phi' 'y1_2_i' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 192 [1/1] (0.00ns)   --->   "%y0_2_i = phi i16 [ %y0_i, %4 ], [ %y0_4_i, %._crit_edge8.i ]" [./seedfill.h:124]   --->   Operation 192 'phi' 'y0_2_i' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 193 [1/1] (0.00ns)   --->   "%x1_2_i = phi i16 [ %x_i, %4 ], [ %x1_4_i, %._crit_edge8.i ]" [./seedfill.h:124]   --->   Operation 193 'phi' 'x1_2_i' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 194 [1/1] (0.00ns)   --->   "%x0_2_i = phi i16 [ %x0_i, %4 ], [ %x0_4_i, %._crit_edge8.i ]" [./seedfill.h:124]   --->   Operation 194 'phi' 'x0_2_i' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 195 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 9, i64 9, i64 9)"   --->   Operation 195 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 196 [1/1] (1.09ns)   --->   "%indvar_flatten_next = add i4 %indvar_flatten, 1"   --->   Operation 196 'add' 'indvar_flatten_next' <Predicate = true> <Delay = 1.09> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 197 [1/1] (0.00ns)   --->   "br i1 %exitcond_flatten, label %.loopexit.i.loopexit, label %.preheader.preheader.i"   --->   Operation 197 'br' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 198 [1/1] (0.00ns) (grouped into LUT with out node dist)   --->   "%tmp_26_i_mid2 = select i1 %exitcond_i, i3 %tmp_26_i_mid1, i3 %tmp_26_i" [./seedfill.h:138]   --->   Operation 198 'select' 'tmp_26_i_mid2' <Predicate = (!exitcond_flatten)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_14 : Operation 199 [1/1] (0.00ns)   --->   "%tmp_30_i_mid2_cast = sext i16 %r_mid2 to i19" [./seedfill.h:141]   --->   Operation 199 'sext' 'tmp_30_i_mid2_cast' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_14 : Operation 200 [1/1] (4.41ns)   --->   "%tmp_3 = mul i19 %tmp_30_i_mid2_cast, 500" [./seedfill.h:141]   --->   Operation 200 'mul' 'tmp_3' <Predicate = (!exitcond_flatten)> <Delay = 4.41> <Core = "DSP48">   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 4.41> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_14 : Operation 201 [1/1] (0.00ns)   --->   "%tmp_31_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str24)" [./seedfill.h:135]   --->   Operation 201 'specregionbegin' 'tmp_31_i' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_14 : Operation 202 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 2, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [./seedfill.h:136]   --->   Operation 202 'specpipeline' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_14 : Operation 203 [1/1] (0.76ns)   --->   "%tmp_32_i = mul i3 %dc_i_mid2, %dc_i_mid2" [./seedfill.h:137]   --->   Operation 203 'mul' 'tmp_32_i' <Predicate = (!exitcond_flatten)> <Delay = 0.76> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 0.76> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 204 [1/1] (0.94ns) (out node of the LUT)   --->   "%dist = add i3 %tmp_26_i_mid2, %tmp_32_i" [./seedfill.h:137]   --->   Operation 204 'add' 'dist' <Predicate = (!exitcond_flatten)> <Delay = 0.94> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 205 [1/1] (0.00ns)   --->   "%tmp_21 = call i2 @_ssdm_op_PartSelect.i2.i3.i32.i32(i3 %dist, i32 1, i32 2)" [./seedfill.h:140]   --->   Operation 205 'partselect' 'tmp_21' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_14 : Operation 206 [1/1] (0.45ns)   --->   "%icmp = icmp ne i2 %tmp_21, 1" [./seedfill.h:140]   --->   Operation 206 'icmp' 'icmp' <Predicate = (!exitcond_flatten)> <Delay = 0.45> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 207 [1/1] (0.46ns) (out node of the LUT)   --->   "%demorgan = and i1 %or_cond8_i, %icmp" [./seedfill.h:140]   --->   Operation 207 'and' 'demorgan' <Predicate = (!exitcond_flatten)> <Delay = 0.46> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 208 [1/1] (0.97ns)   --->   "br i1 %demorgan, label %5, label %._crit_edge8.i" [./seedfill.h:140]   --->   Operation 208 'br' <Predicate = (!exitcond_flatten)> <Delay = 0.97>
+ST_14 : Operation 209 [1/1] (0.00ns)   --->   "%tmp_37_i_cast = sext i16 %c to i19" [./seedfill.h:141]   --->   Operation 209 'sext' 'tmp_37_i_cast' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 0.00>
+ST_14 : Operation 210 [1/1] (1.30ns)   --->   "%tmp_10 = add i19 %tmp_3, %tmp_37_i_cast" [./seedfill.h:141]   --->   Operation 210 'add' 'tmp_10' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 1.30> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 211 [1/1] (0.00ns)   --->   "%tmp_12_cast = sext i19 %tmp_10 to i64" [./seedfill.h:141]   --->   Operation 211 'sext' 'tmp_12_cast' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 0.00>
+ST_14 : Operation 212 [1/1] (0.00ns)   --->   "%src_val_addr_1 = getelementptr [250000 x i8]* %src_val, i64 0, i64 %tmp_12_cast" [./seedfill.h:141]   --->   Operation 212 'getelementptr' 'src_val_addr_1' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 0.00>
+ST_14 : Operation 213 [1/1] (0.00ns)   --->   "%label_val_addr_2 = getelementptr [250000 x i8]* %label_val, i64 0, i64 %tmp_12_cast" [./seedfill.h:142]   --->   Operation 213 'getelementptr' 'label_val_addr_2' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 0.00>
+ST_14 : Operation 214 [2/2] (1.99ns)   --->   "%pixvalue_1 = load i8* %src_val_addr_1, align 1" [./seedfill.h:141]   --->   Operation 214 'load' 'pixvalue_1' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_14 : Operation 215 [2/2] (1.99ns)   --->   "%label_val_load_1 = load i8* %label_val_addr_2, align 1" [./seedfill.h:142]   --->   Operation 215 'load' 'label_val_load_1' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_14 : Operation 216 [1/1] (0.94ns)   --->   "%dc = add i3 %dc_i_mid2, 1" [./seedfill.h:135]   --->   Operation 216 'add' 'dc' <Predicate = (!exitcond_flatten)> <Delay = 0.94> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 15 <SV = 10> <Delay = 4.42>
+ST_15 : Operation 217 [1/2] (1.99ns)   --->   "%pixvalue_1 = load i8* %src_val_addr_1, align 1" [./seedfill.h:141]   --->   Operation 217 'load' 'pixvalue_1' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_15 : Operation 218 [1/2] (1.99ns)   --->   "%label_val_load_1 = load i8* %label_val_addr_2, align 1" [./seedfill.h:142]   --->   Operation 218 'load' 'label_val_load_1' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_15 : Operation 219 [1/1] (0.98ns)   --->   "%tmp_38_i = icmp ne i8 %pixvalue_1, 0" [./seedfill.h:143]   --->   Operation 219 'icmp' 'tmp_38_i' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 220 [1/1] (0.98ns)   --->   "%tmp_39_i = icmp eq i8 %label_val_load_1, 0" [./seedfill.h:143]   --->   Operation 220 'icmp' 'tmp_39_i' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 0.98> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 221 [1/1] (0.46ns)   --->   "%or_cond9_i = and i1 %tmp_38_i, %tmp_39_i" [./seedfill.h:143]   --->   Operation 221 'and' 'or_cond9_i' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 0.46> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 222 [1/1] (0.97ns)   --->   "br i1 %or_cond9_i, label %6, label %._crit_edge8.i" [./seedfill.h:143]   --->   Operation 222 'br' <Predicate = (!exitcond_flatten & demorgan)> <Delay = 0.97>
+ST_15 : Operation 223 [1/1] (1.99ns)   --->   "store i8 %tmp_17_i, i8* %label_val_addr_2, align 1" [./seedfill.h:144]   --->   Operation 223 'store' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_15 : Operation 224 [1/1] (1.57ns)   --->   "%points_length_1 = add nsw i32 %vector_length_read_a_1, 1" [./type.h:117->./seedfill.h:145]   --->   Operation 224 'add' 'points_length_1' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 225 [1/1] (0.00ns)   --->   "%tmp_1_i42_i = sext i32 %vector_length_read_a_1 to i64" [./type.h:117->./seedfill.h:145]   --->   Operation 225 'sext' 'tmp_1_i42_i' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 0.00>
+ST_15 : Operation 226 [1/1] (0.00ns)   --->   "%points_val_x_addr_2 = getelementptr [125000 x i16]* %points_val_x, i64 0, i64 %tmp_1_i42_i" [./type.h:117->./seedfill.h:145]   --->   Operation 226 'getelementptr' 'points_val_x_addr_2' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 0.00>
+ST_15 : Operation 227 [1/1] (1.99ns)   --->   "store i16 %c, i16* %points_val_x_addr_2, align 2" [./type.h:117->./seedfill.h:145]   --->   Operation 227 'store' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_15 : Operation 228 [1/1] (0.00ns)   --->   "%points_val_y_addr_2 = getelementptr [125000 x i16]* %points_val_y, i64 0, i64 %tmp_1_i42_i" [./type.h:117->./seedfill.h:145]   --->   Operation 228 'getelementptr' 'points_val_y_addr_2' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 0.00>
+ST_15 : Operation 229 [1/1] (1.99ns)   --->   "store i16 %r_mid2, i16* %points_val_y_addr_2, align 2" [./type.h:117->./seedfill.h:145]   --->   Operation 229 'store' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_15 : Operation 230 [1/1] (1.25ns)   --->   "%tmp_40_i = icmp slt i16 %c, %x0_2_i" [./seedfill.h:146]   --->   Operation 230 'icmp' 'tmp_40_i' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 1.25> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 231 [1/1] (0.47ns)   --->   "%x0 = select i1 %tmp_40_i, i16 %c, i16 %x0_2_i" [./seedfill.h:146]   --->   Operation 231 'select' 'x0' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 0.47> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 232 [1/1] (1.25ns)   --->   "%tmp_41_i = icmp sgt i16 %c, %x1_2_i" [./seedfill.h:147]   --->   Operation 232 'icmp' 'tmp_41_i' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 1.25> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 233 [1/1] (0.47ns)   --->   "%x1_1 = select i1 %tmp_41_i, i16 %c, i16 %x1_2_i" [./seedfill.h:147]   --->   Operation 233 'select' 'x1_1' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 0.47> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 234 [1/1] (1.25ns)   --->   "%tmp_42_i = icmp slt i16 %r_mid2, %y0_2_i" [./seedfill.h:148]   --->   Operation 234 'icmp' 'tmp_42_i' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 1.25> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 235 [1/1] (0.47ns)   --->   "%y0 = select i1 %tmp_42_i, i16 %r_mid2, i16 %y0_2_i" [./seedfill.h:148]   --->   Operation 235 'select' 'y0' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 0.47> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 236 [1/1] (1.25ns)   --->   "%tmp_43_i = icmp sgt i16 %r_mid2, %y1_2_i" [./seedfill.h:149]   --->   Operation 236 'icmp' 'tmp_43_i' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 1.25> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 237 [1/1] (0.47ns)   --->   "%y1_1 = select i1 %tmp_43_i, i16 %r_mid2, i16 %y1_2_i" [./seedfill.h:149]   --->   Operation 237 'select' 'y1_1' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 0.47> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 238 [1/1] (0.97ns)   --->   "br label %._crit_edge8.i" [./seedfill.h:150]   --->   Operation 238 'br' <Predicate = (!exitcond_flatten & demorgan & or_cond9_i)> <Delay = 0.97>
+ST_15 : Operation 239 [1/1] (0.00ns)   --->   "%points_length_5_i = phi i32 [ %vector_length_read_a_1, %.preheader.preheader.i ], [ %points_length_1, %6 ], [ %vector_length_read_a_1, %5 ]"   --->   Operation 239 'phi' 'points_length_5_i' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_15 : Operation 240 [1/1] (0.00ns)   --->   "%y1_4_i = phi i16 [ %y1_2_i, %.preheader.preheader.i ], [ %y1_1, %6 ], [ %y1_2_i, %5 ]"   --->   Operation 240 'phi' 'y1_4_i' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_15 : Operation 241 [1/1] (0.00ns)   --->   "%y0_4_i = phi i16 [ %y0_2_i, %.preheader.preheader.i ], [ %y0, %6 ], [ %y0_2_i, %5 ]"   --->   Operation 241 'phi' 'y0_4_i' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_15 : Operation 242 [1/1] (0.00ns)   --->   "%x1_4_i = phi i16 [ %x1_2_i, %.preheader.preheader.i ], [ %x1_1, %6 ], [ %x1_2_i, %5 ]"   --->   Operation 242 'phi' 'x1_4_i' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_15 : Operation 243 [1/1] (0.00ns)   --->   "%x0_4_i = phi i16 [ %x0_2_i, %.preheader.preheader.i ], [ %x0, %6 ], [ %x0_2_i, %5 ]"   --->   Operation 243 'phi' 'x0_4_i' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_15 : Operation 244 [1/1] (0.00ns)   --->   "%empty_25 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str24, i32 %tmp_31_i)" [./seedfill.h:152]   --->   Operation 244 'specregionend' 'empty_25' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+ST_15 : Operation 245 [1/1] (0.00ns)   --->   "br label %.preheader.i" [./seedfill.h:135]   --->   Operation 245 'br' <Predicate = (!exitcond_flatten)> <Delay = 0.00>
+
+State 16 <SV = 10> <Delay = 0.00>
+ST_16 : Operation 246 [1/1] (0.00ns)   --->   "br label %.loopexit.i"   --->   Operation 246 'br' <Predicate = true> <Delay = 0.00>
+
+State 17 <SV = 7> <Delay = 3.91>
+ST_17 : Operation 247 [1/1] (1.26ns)   --->   "%tmp_9 = add i12 512, %tmp_16" [./seedfill.h:157]   --->   Operation 247 'add' 'tmp_9' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 1.26> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 248 [1/1] (0.00ns)   --->   "%tmp_9_cast = sext i12 %tmp_9 to i64" [./seedfill.h:157]   --->   Operation 248 'sext' 'tmp_9_cast' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 0.00>
+ST_17 : Operation 249 [1/1] (0.00ns)   --->   "%rects_val_addr_4 = getelementptr [1024 x i16]* %rects_val, i64 0, i64 %tmp_9_cast" [./seedfill.h:157]   --->   Operation 249 'getelementptr' 'rects_val_addr_4' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 0.00>
+ST_17 : Operation 250 [1/1] (1.26ns)   --->   "%tmp_s = add i12 768, %tmp_16" [./seedfill.h:158]   --->   Operation 250 'add' 'tmp_s' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 1.26> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 251 [1/1] (0.00ns)   --->   "%tmp_10_cast = sext i12 %tmp_s to i64" [./seedfill.h:158]   --->   Operation 251 'sext' 'tmp_10_cast' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 0.00>
+ST_17 : Operation 252 [1/1] (0.00ns)   --->   "%rects_val_addr_5 = getelementptr [1024 x i16]* %rects_val, i64 0, i64 %tmp_10_cast" [./seedfill.h:158]   --->   Operation 252 'getelementptr' 'rects_val_addr_5' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 0.00>
+ST_17 : Operation 253 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp_20_i = sub i16 1, %x0_i" [./seedfill.h:157]   --->   Operation 253 'sub' 'tmp_20_i' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 0.95> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_17 : Operation 254 [1/1] (1.91ns) (root node of TernaryAdder)   --->   "%tmp_21_i = add i16 %x_i, %tmp_20_i" [./seedfill.h:157]   --->   Operation 254 'add' 'tmp_21_i' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 1.91> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 0.95> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_17 : Operation 255 [1/1] (1.99ns)   --->   "store i16 %tmp_21_i, i16* %rects_val_addr_4, align 2" [./seedfill.h:157]   --->   Operation 255 'store' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_17 : Operation 256 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp_22_i = sub i16 1, %y0_i" [./seedfill.h:158]   --->   Operation 256 'sub' 'tmp_22_i' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 0.95> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_17 : Operation 257 [1/1] (1.91ns) (root node of TernaryAdder)   --->   "%tmp_23_i = add i16 %y_i, %tmp_22_i" [./seedfill.h:158]   --->   Operation 257 'add' 'tmp_23_i' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 1.91> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 0.95> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_17 : Operation 258 [1/1] (1.99ns)   --->   "store i16 %tmp_23_i, i16* %rects_val_addr_5, align 2" [./seedfill.h:158]   --->   Operation 258 'store' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_17 : Operation 259 [1/1] (1.31ns)   --->   "%tmp_24_i = icmp sgt i32 %num, 254" [./seedfill.h:159]   --->   Operation 259 'icmp' 'tmp_24_i' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 260 [1/1] (0.00ns)   --->   "br i1 %tmp_24_i, label %8, label %.._crit_edge7.i_crit_edge" [./seedfill.h:159]   --->   Operation 260 'br' <Predicate = (tmp_3_i & or_cond_i)> <Delay = 0.00>
+ST_17 : Operation 261 [1/1] (0.97ns)   --->   "store i32 %num, i32* %num_1" [./seedfill.h:122]   --->   Operation 261 'store' <Predicate = (tmp_3_i & or_cond_i & !tmp_24_i)> <Delay = 0.97>
+ST_17 : Operation 262 [1/1] (0.00ns)   --->   "br label %._crit_edge7.i" [./seedfill.h:159]   --->   Operation 262 'br' <Predicate = (tmp_3_i & or_cond_i & !tmp_24_i)> <Delay = 0.00>
+ST_17 : Operation 263 [1/1] (0.00ns)   --->   "%empty_26 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str23, i32 %tmp_11_i)" [./seedfill.h:164]   --->   Operation 263 'specregionend' 'empty_26' <Predicate = (tmp_3_i & !or_cond_i) | (tmp_3_i & !tmp_24_i)> <Delay = 0.00>
+ST_17 : Operation 264 [1/1] (0.00ns)   --->   "br label %.preheader10.i" [./seedfill.h:117]   --->   Operation 264 'br' <Predicate = (tmp_3_i & !or_cond_i) | (tmp_3_i & !tmp_24_i)> <Delay = 0.00>
+ST_17 : Operation 265 [1/1] (0.00ns)   --->   "%num_1_load_2 = load i32* %num_1"   --->   Operation 265 'load' 'num_1_load_2' <Predicate = (tmp_3_i & or_cond_i & tmp_24_i)> <Delay = 0.00>
+ST_17 : Operation 266 [1/1] (0.00ns)   --->   "%tmp_17 = trunc i32 %num_1_load_2 to i16"   --->   Operation 266 'trunc' 'tmp_17' <Predicate = (tmp_3_i & or_cond_i & tmp_24_i)> <Delay = 0.00>
+ST_17 : Operation 267 [1/1] (1.24ns)   --->   "%tmp_25_i = add i16 1, %tmp_17" [./seedfill.h:160]   --->   Operation 267 'add' 'tmp_25_i' <Predicate = (tmp_3_i & or_cond_i & tmp_24_i)> <Delay = 1.24> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 268 [1/1] (0.97ns)   --->   "br label %.exit" [./seedfill.h:161]   --->   Operation 268 'br' <Predicate = (tmp_3_i & or_cond_i & tmp_24_i)> <Delay = 0.97>
+
+State 18 <SV = 8> <Delay = 1.99>
+ST_18 : Operation 269 [1/1] (0.00ns)   --->   "%storemerge = phi i16 [ %tmp_6, %9 ], [ %tmp_25_i, %8 ]" [./seedfill.h:166]   --->   Operation 269 'phi' 'storemerge' <Predicate = true> <Delay = 0.00>
+ST_18 : Operation 270 [1/1] (1.99ns)   --->   "store i16 %storemerge, i16* %rects_val_addr_1, align 2" [./seedfill.h:160]   --->   Operation 270 'store' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 1024> <RAM>
+ST_18 : Operation 271 [1/1] (0.00ns)   --->   "ret void"   --->   Operation 271 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 4.52ns
+The critical path consists of the following:
+	fifo read on port 'rects_rows' [17]  (2.26 ns)
+	fifo write on port 'rects_rows_out' [20]  (2.26 ns)
+
+ <State 2>: 1.48ns
+The critical path consists of the following:
+	'icmp' operation ('exitcond2_i', ./type.h:187->./seedfill.h:105) [30]  (1.02 ns)
+	blocking operation 0.464 ns on control path)
+
+ <State 3>: 3.29ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', ./type.h:188->./seedfill.h:105) [37]  (0 ns)
+	'add' operation ('tmp_4', ./type.h:191->./seedfill.h:105) [46]  (1.29 ns)
+	'getelementptr' operation ('label_val_addr', ./type.h:191->./seedfill.h:105) [48]  (0 ns)
+	'store' operation (./type.h:191->./seedfill.h:105) of constant 0 on array 'label.val', ./seedfill.h:100 [49]  (2 ns)
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+ <State 5>: 1.29ns
+The critical path consists of the following:
+	'icmp' operation ('tmp_i_23', ./type.h:187->./seedfill.h:114) [59]  (0.824 ns)
+	blocking operation 0.464 ns on control path)
+
+ <State 6>: 3.27ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', ./type.h:188->./seedfill.h:114) [68]  (0 ns)
+	'add' operation ('tmp_5', ./type.h:191->./seedfill.h:114) [78]  (1.27 ns)
+	'getelementptr' operation ('rects_val_addr', ./type.h:191->./seedfill.h:114) [80]  (0 ns)
+	'store' operation (./type.h:191->./seedfill.h:114) of constant 0 on array 'rects_val' [81]  (2 ns)
+
+ <State 7>: 0ns
+The critical path consists of the following:
+
+ <State 8>: 1.77ns
+The critical path consists of the following:
+	'icmp' operation ('tmp_3_i', ./seedfill.h:116) [98]  (1.31 ns)
+	blocking operation 0.464 ns on control path)
+
+ <State 9>: 3.31ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', ./seedfill.h:117) [105]  (0 ns)
+	'add' operation ('tmp_7', ./seedfill.h:119) [113]  (1.31 ns)
+	'getelementptr' operation ('src_val_addr', ./seedfill.h:119) [115]  (0 ns)
+	'load' operation ('pixvalue', ./seedfill.h:119) on array 'src_val' [117]  (2 ns)
+
+ <State 10>: 3.91ns
+The critical path consists of the following:
+	'load' operation ('pixvalue', ./seedfill.h:119) on array 'src_val' [117]  (2 ns)
+	'icmp' operation ('tmp_13_i', ./seedfill.h:121) [119]  (0.987 ns)
+	'and' operation ('or_cond_i', ./seedfill.h:121) [121]  (0.464 ns)
+	blocking operation 0.464 ns on control path)
+
+ <State 11>: 3.58ns
+The critical path consists of the following:
+	'phi' operation ('vector<125000, hls::Point_<short> >.length', ./type.h:122->./seedfill.h:131) with incoming values : ('vector<125000, hls::Point_<short> >.length', ./type.h:122->./seedfill.h:131) ('vector<125000, hls::Point_<short> >.length', ./type.h:117->./seedfill.h:145) [134]  (0 ns)
+	'add' operation ('vector<125000, hls::Point_<short> >.length', ./type.h:122->./seedfill.h:131) [142]  (1.58 ns)
+	'getelementptr' operation ('points_val_x_addr_1', ./type.h:122->./seedfill.h:131) [144]  (0 ns)
+	'load' operation ('value.x', ./type.h:122->./seedfill.h:131) on array 'points.val.x', ./seedfill.h:101 [145]  (2 ns)
+
+ <State 12>: 2ns
+The critical path consists of the following:
+	'load' operation ('value.x', ./type.h:122->./seedfill.h:131) on array 'points.val.x', ./seedfill.h:101 [145]  (2 ns)
+
+ <State 13>: 4.15ns
+The critical path consists of the following:
+	'phi' operation ('dc') with incoming values : ('dc', ./seedfill.h:135) [157]  (0 ns)
+	'icmp' operation ('exitcond_i', ./seedfill.h:135) [171]  (0.639 ns)
+	'select' operation ('dc_i_mid2', ./seedfill.h:135) [172]  (0.48 ns)
+	'add' operation ('c', ./seedfill.h:139) [193]  (1.25 ns)
+	'icmp' operation ('tmp_35_i', ./seedfill.h:140) [197]  (1.31 ns)
+	'and' operation ('tmp1', ./seedfill.h:140) [198]  (0 ns)
+	'and' operation ('or_cond8_i', ./seedfill.h:140) [199]  (0.472 ns)
+
+ <State 14>: 7.72ns
+The critical path consists of the following:
+	'mul' operation ('tmp_3', ./seedfill.h:141) [184]  (4.41 ns)
+	'add' operation ('tmp_10', ./seedfill.h:141) [206]  (1.31 ns)
+	'getelementptr' operation ('src_val_addr_1', ./seedfill.h:141) [208]  (0 ns)
+	'load' operation ('pixvalue', ./seedfill.h:141) on array 'src_val' [210]  (2 ns)
+
+ <State 15>: 4.43ns
+The critical path consists of the following:
+	'load' operation ('pixvalue', ./seedfill.h:141) on array 'src_val' [210]  (2 ns)
+	'icmp' operation ('tmp_38_i', ./seedfill.h:143) [212]  (0.987 ns)
+	'and' operation ('or_cond9_i', ./seedfill.h:143) [214]  (0.464 ns)
+	multiplexor before 'phi' operation ('points.length') with incoming values : ('vector<125000, hls::Point_<short> >.length', ./type.h:122->./seedfill.h:131) ('vector<125000, hls::Point_<short> >.length', ./type.h:117->./seedfill.h:145) [234]  (0.978 ns)
+	'phi' operation ('points.length') with incoming values : ('vector<125000, hls::Point_<short> >.length', ./type.h:122->./seedfill.h:131) ('vector<125000, hls::Point_<short> >.length', ./type.h:117->./seedfill.h:145) [234]  (0 ns)
+
+ <State 16>: 0ns
+The critical path consists of the following:
+
+ <State 17>: 3.91ns
+The critical path consists of the following:
+	'sub' operation ('tmp_20_i', ./seedfill.h:157) [259]  (0 ns)
+	'add' operation ('tmp_21_i', ./seedfill.h:157) [260]  (1.92 ns)
+	'store' operation (./seedfill.h:157) of variable 'tmp_21_i', ./seedfill.h:157 on array 'rects_val' [261]  (2 ns)
+
+ <State 18>: 2ns
+The critical path consists of the following:
+	'phi' operation ('storemerge', ./seedfill.h:166) with incoming values : ('tmp_25_i', ./seedfill.h:160) ('tmp_6', ./seedfill.h:166) [285]  (0 ns)
+	'store' operation (./seedfill.h:160) of variable 'storemerge', ./seedfill.h:166 on array 'rects_val' [286]  (2 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

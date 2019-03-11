@@ -1,0 +1,213 @@
+
+
+================================================================
+== Vivado HLS Report for 'Reshape'
+================================================================
+* Date:           Tue Dec  4 09:54:40 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        CNN
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     4.463|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |  361|  361|  361|  361|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-----------------+-----+-----+----------+-----------+-----------+------+----------+
+        |                 |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name    | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-----------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1         |  360|  360|        30|          -|          -|    12|    no    |
+        | + Loop 1.1      |   28|   28|         7|          -|          -|     4|    no    |
+        |  ++ Loop 1.1.1  |    4|    4|         2|          1|          1|     4|    yes   |
+        +-----------------+-----+-----+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 2
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 6
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 2, States = { 4 5 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (!exitcond3)
+3 --> 
+	4  / (!exitcond2)
+	2  / (exitcond2)
+4 --> 
+	6  / (exitcond)
+	5  / (!exitcond)
+5 --> 
+	4  / true
+6 --> 
+	3  / true
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.97>
+ST_1 : Operation 7 [1/1] (0.97ns)   --->   "br label %.loopexit" [./cnn.h:167]   --->   Operation 7 'br' <Predicate = true> <Delay = 0.97>
+
+State 2 <SV = 1> <Delay = 1.09>
+ST_2 : Operation 8 [1/1] (0.00ns)   --->   "%n = phi i4 [ 0, %0 ], [ %n_1, %.loopexit.loopexit ]"   --->   Operation 8 'phi' 'n' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 9 [1/1] (0.82ns)   --->   "%exitcond3 = icmp eq i4 %n, -4" [./cnn.h:167]   --->   Operation 9 'icmp' 'exitcond3' <Predicate = true> <Delay = 0.82> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.63> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 10 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 12, i64 12, i64 12)"   --->   Operation 10 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 11 [1/1] (1.09ns)   --->   "%n_1 = add i4 %n, 1" [./cnn.h:167]   --->   Operation 11 'add' 'n_1' <Predicate = true> <Delay = 1.09> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.18> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 12 [1/1] (0.00ns)   --->   "br i1 %exitcond3, label %2, label %.preheader4.preheader" [./cnn.h:167]   --->   Operation 12 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 13 [1/1] (0.00ns)   --->   "%tmp = call i6 @_ssdm_op_BitConcatenate.i6.i4.i2(i4 %n, i2 0)" [./cnn.h:167]   --->   Operation 13 'bitconcatenate' 'tmp' <Predicate = (!exitcond3)> <Delay = 0.00>
+ST_2 : Operation 14 [1/1] (0.00ns)   --->   "%tmp_70_cast = zext i6 %tmp to i7" [./cnn.h:168]   --->   Operation 14 'zext' 'tmp_70_cast' <Predicate = (!exitcond3)> <Delay = 0.00>
+ST_2 : Operation 15 [1/1] (0.97ns)   --->   "br label %.preheader4" [./cnn.h:168]   --->   Operation 15 'br' <Predicate = (!exitcond3)> <Delay = 0.97>
+ST_2 : Operation 16 [1/1] (0.00ns)   --->   "ret void" [./cnn.h:177]   --->   Operation 16 'ret' <Predicate = (exitcond3)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 1.18>
+ST_3 : Operation 17 [1/1] (0.00ns)   --->   "%j = phi i3 [ 0, %.preheader4.preheader ], [ %j_1, %.preheader4.loopexit ]"   --->   Operation 17 'phi' 'j' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 18 [1/1] (0.63ns)   --->   "%exitcond2 = icmp eq i3 %j, -4" [./cnn.h:168]   --->   Operation 18 'icmp' 'exitcond2' <Predicate = true> <Delay = 0.63> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.63> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)"   --->   Operation 19 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 20 [1/1] (0.94ns)   --->   "%j_1 = add i3 %j, 1" [./cnn.h:168]   --->   Operation 20 'add' 'j_1' <Predicate = true> <Delay = 0.94> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.18> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 21 [1/1] (0.00ns)   --->   "br i1 %exitcond2, label %.loopexit.loopexit, label %.preheader.preheader" [./cnn.h:168]   --->   Operation 21 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 22 [1/1] (0.00ns)   --->   "%tmp_95_cast = zext i3 %j to i6" [./cnn.h:172]   --->   Operation 22 'zext' 'tmp_95_cast' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 23 [1/1] (1.18ns)   --->   "%tmp_s = add i6 %tmp, %tmp_95_cast" [./cnn.h:172]   --->   Operation 23 'add' 'tmp_s' <Predicate = (!exitcond2)> <Delay = 1.18> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.18> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 24 [1/1] (0.00ns)   --->   "%tmp_57 = call i8 @_ssdm_op_BitConcatenate.i8.i6.i2(i6 %tmp_s, i2 0)" [./cnn.h:172]   --->   Operation 24 'bitconcatenate' 'tmp_57' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 25 [1/1] (0.00ns)   --->   "%tmp_62_cast = zext i3 %j to i9" [./cnn.h:169]   --->   Operation 25 'zext' 'tmp_62_cast' <Predicate = (!exitcond2)> <Delay = 0.00>
+ST_3 : Operation 26 [1/1] (0.97ns)   --->   "br label %.preheader" [./cnn.h:169]   --->   Operation 26 'br' <Predicate = (!exitcond2)> <Delay = 0.97>
+ST_3 : Operation 27 [1/1] (0.00ns)   --->   "br label %.loopexit"   --->   Operation 27 'br' <Predicate = (exitcond2)> <Delay = 0.00>
+
+State 4 <SV = 3> <Delay = 4.46>
+ST_4 : Operation 28 [1/1] (0.00ns)   --->   "%i = phi i3 [ %i_1, %1 ], [ 0, %.preheader.preheader ]"   --->   Operation 28 'phi' 'i' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 29 [1/1] (0.00ns)   --->   "%i_cast8 = zext i3 %i to i8" [./cnn.h:169]   --->   Operation 29 'zext' 'i_cast8' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 30 [1/1] (0.63ns)   --->   "%exitcond = icmp eq i3 %i, -4" [./cnn.h:169]   --->   Operation 30 'icmp' 'exitcond' <Predicate = true> <Delay = 0.63> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.63> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 31 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)"   --->   Operation 31 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 32 [1/1] (0.94ns)   --->   "%i_1 = add i3 %i, 1" [./cnn.h:169]   --->   Operation 32 'add' 'i_1' <Predicate = true> <Delay = 0.94> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.18> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 33 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %.preheader4.loopexit, label %1" [./cnn.h:169]   --->   Operation 33 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 34 [1/1] (1.28ns)   --->   "%index = add i8 %tmp_57, %i_cast8" [./cnn.h:172]   --->   Operation 34 'add' 'index' <Predicate = (!exitcond)> <Delay = 1.28> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.18> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 35 [1/1] (0.00ns)   --->   "%tmp_65_cast = zext i3 %i to i7" [./cnn.h:173]   --->   Operation 35 'zext' 'tmp_65_cast' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 36 [1/1] (1.18ns)   --->   "%tmp_60 = add i7 %tmp_65_cast, %tmp_70_cast" [./cnn.h:173]   --->   Operation 36 'add' 'tmp_60' <Predicate = (!exitcond)> <Delay = 1.18> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.18> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 37 [1/1] (0.00ns)   --->   "%tmp_73_cast = call i9 @_ssdm_op_BitConcatenate.i9.i7.i2(i7 %tmp_60, i2 0)" [./cnn.h:173]   --->   Operation 37 'bitconcatenate' 'tmp_73_cast' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 38 [1/1] (1.27ns)   --->   "%tmp_61 = add i9 %tmp_62_cast, %tmp_73_cast" [./cnn.h:173]   --->   Operation 38 'add' 'tmp_61' <Predicate = (!exitcond)> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.18> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 39 [1/1] (0.00ns)   --->   "%tmp_74_cast = zext i9 %tmp_61 to i64" [./cnn.h:173]   --->   Operation 39 'zext' 'tmp_74_cast' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 40 [1/1] (0.00ns)   --->   "%src_val_V_addr = getelementptr [192 x i32]* %src_val_V, i64 0, i64 %tmp_74_cast" [./cnn.h:173]   --->   Operation 40 'getelementptr' 'src_val_V_addr' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_4 : Operation 41 [2/2] (1.99ns)   --->   "%src_val_V_load = load i32* %src_val_V_addr, align 4" [./cnn.h:173]   --->   Operation 41 'load' 'src_val_V_load' <Predicate = (!exitcond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 192> <RAM>
+
+State 5 <SV = 4> <Delay = 3.99>
+ST_5 : Operation 42 [1/1] (0.00ns)   --->   "%tmp_58 = call i32 (...)* @_ssdm_op_SpecRegionBegin([13 x i8]* @p_str48)" [./cnn.h:169]   --->   Operation 42 'specregionbegin' 'tmp_58' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_5 : Operation 43 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [./cnn.h:171]   --->   Operation 43 'specpipeline' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_5 : Operation 44 [1/1] (0.00ns)   --->   "%tmp_59 = zext i8 %index to i64" [./cnn.h:173]   --->   Operation 44 'zext' 'tmp_59' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_5 : Operation 45 [1/2] (1.99ns)   --->   "%src_val_V_load = load i32* %src_val_V_addr, align 4" [./cnn.h:173]   --->   Operation 45 'load' 'src_val_V_load' <Predicate = (!exitcond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 192> <RAM>
+ST_5 : Operation 46 [1/1] (0.00ns)   --->   "%dst_V_addr = getelementptr [192 x i32]* %dst_V, i64 0, i64 %tmp_59" [./cnn.h:173]   --->   Operation 46 'getelementptr' 'dst_V_addr' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_5 : Operation 47 [1/1] (1.99ns)   --->   "store i32 %src_val_V_load, i32* %dst_V_addr, align 4" [./cnn.h:173]   --->   Operation 47 'store' <Predicate = (!exitcond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 192> <RAM>
+ST_5 : Operation 48 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([13 x i8]* @p_str48, i32 %tmp_58)" [./cnn.h:174]   --->   Operation 48 'specregionend' 'empty' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_5 : Operation 49 [1/1] (0.00ns)   --->   "br label %.preheader" [./cnn.h:169]   --->   Operation 49 'br' <Predicate = (!exitcond)> <Delay = 0.00>
+
+State 6 <SV = 4> <Delay = 0.00>
+ST_6 : Operation 50 [1/1] (0.00ns)   --->   "br label %.preheader4"   --->   Operation 50 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 0.978ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('n') with incoming values : ('n', ./cnn.h:167) [5]  (0.978 ns)
+
+ <State 2>: 1.09ns
+The critical path consists of the following:
+	'phi' operation ('n') with incoming values : ('n', ./cnn.h:167) [5]  (0 ns)
+	'add' operation ('n', ./cnn.h:167) [8]  (1.09 ns)
+
+ <State 3>: 1.19ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', ./cnn.h:168) [15]  (0 ns)
+	'add' operation ('tmp_s', ./cnn.h:172) [22]  (1.19 ns)
+
+ <State 4>: 4.46ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./cnn.h:169) [27]  (0 ns)
+	'add' operation ('tmp_60', ./cnn.h:173) [39]  (1.19 ns)
+	'add' operation ('tmp_61', ./cnn.h:173) [41]  (1.28 ns)
+	'getelementptr' operation ('src_val_V_addr', ./cnn.h:173) [43]  (0 ns)
+	'load' operation ('src_val_V_load', ./cnn.h:173) on array 'src_val_V' [44]  (2 ns)
+
+ <State 5>: 4ns
+The critical path consists of the following:
+	'load' operation ('src_val_V_load', ./cnn.h:173) on array 'src_val_V' [44]  (2 ns)
+	'store' operation (./cnn.h:173) of variable 'src_val_V_load', ./cnn.h:173 on array 'dst_V' [46]  (2 ns)
+
+ <State 6>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

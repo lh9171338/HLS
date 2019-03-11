@@ -1,0 +1,778 @@
+
+
+================================================================
+== Vivado HLS Report for 'groupRectangles'
+================================================================
+* Date:           Tue Dec  4 20:20:11 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Haar
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.741|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-----+------+----------+-----------+-----------+----------+----------+
+        |          |   Latency  | Iteration|  Initiation Interval  |   Trip   |          |
+        | Loop Name| min |  max |  Latency |  achieved |   target  |   Count  | Pipelined|
+        +----------+-----+------+----------+-----------+-----------+----------+----------+
+        |- Loop 1  |   99|    99|         1|          -|          -|        99|    no    |
+        |- Loop 2  |    0|  2000|         3|          2|          2| 0 ~ 1000 |    yes   |
+        |- Loop 3  |    0|  4059|  3 ~ 41  |          -|          -|  0 ~ 99  |    no    |
+        +----------+-----+------+----------+-----------+-----------+----------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 2, depth = 3
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 48
+* Pipeline : 1
+  Pipeline-0 : II = 2, D = 3, States = { 4 5 6 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / true
+3 --> 
+	3  / (!exitcond)
+	4  / (exitcond)
+4 --> 
+	7  / (!tmp_s)
+	5  / (tmp_s)
+5 --> 
+	6  / true
+6 --> 
+	4  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / (tmp_53)
+9 --> 
+	10  / (!tmp_56)
+	48  / (tmp_56)
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	22  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / true
+24 --> 
+	25  / true
+25 --> 
+	26  / true
+26 --> 
+	27  / true
+27 --> 
+	28  / true
+28 --> 
+	29  / true
+29 --> 
+	30  / true
+30 --> 
+	31  / true
+31 --> 
+	32  / true
+32 --> 
+	33  / true
+33 --> 
+	34  / true
+34 --> 
+	35  / true
+35 --> 
+	36  / true
+36 --> 
+	37  / true
+37 --> 
+	38  / true
+38 --> 
+	39  / true
+39 --> 
+	40  / true
+40 --> 
+	41  / true
+41 --> 
+	42  / true
+42 --> 
+	43  / true
+43 --> 
+	44  / true
+44 --> 
+	45  / true
+45 --> 
+	46  / true
+46 --> 
+	47  / true
+47 --> 
+	48  / true
+48 --> 
+	8  / true
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.00>
+ST_1 : Operation 49 [1/1] (0.00ns)   --->   "%rects_length_read_2 = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %rects_length_read)"   --->   Operation 49 'read' 'rects_length_read_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%labels = alloca [1000 x i32], align 16"   --->   Operation 50 'alloca' 'labels' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_1 : Operation 51 [1/1] (0.00ns)   --->   "%rrects_x = alloca [99 x i32], align 4" [./haar.h:242]   --->   Operation 51 'alloca' 'rrects_x' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%rrects_y = alloca [99 x i32], align 4" [./haar.h:242]   --->   Operation 52 'alloca' 'rrects_y' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_1 : Operation 53 [1/1] (0.00ns)   --->   "%rrects_width = alloca [99 x i32], align 4" [./haar.h:242]   --->   Operation 53 'alloca' 'rrects_width' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_1 : Operation 54 [1/1] (0.00ns)   --->   "%rrects_height = alloca [99 x i32], align 4" [./haar.h:242]   --->   Operation 54 'alloca' 'rrects_height' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_1 : Operation 55 [1/1] (0.00ns)   --->   "%rweights = alloca [99 x i32], align 16" [./haar.h:243]   --->   Operation 55 'alloca' 'rweights' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_1 : Operation 56 [2/2] (0.00ns)   --->   "%nclasses = call fastcc i32 @"partition<1000>"([1000 x i16]* %rects_val_x, [1000 x i16]* %rects_val_y, [1000 x i16]* %rects_val_width, [1000 x i16]* %rects_val_height, i32 %rects_length_read_2, [1000 x i32]* %labels)" [./haar.h:238]   --->   Operation 56 'call' 'nclasses' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.97>
+ST_2 : Operation 57 [1/1] (0.00ns)   --->   "%neighbors_read = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %neighbors)"   --->   Operation 57 'read' 'neighbors_read' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 58 [1/1] (0.00ns)   --->   "%locations_val_addr = getelementptr [400 x i16]* %locations_val, i64 0, i64 0" [./haar.h:280]   --->   Operation 58 'getelementptr' 'locations_val_addr' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 59 [1/2] (0.00ns)   --->   "%nclasses = call fastcc i32 @"partition<1000>"([1000 x i16]* %rects_val_x, [1000 x i16]* %rects_val_y, [1000 x i16]* %rects_val_width, [1000 x i16]* %rects_val_height, i32 %rects_length_read_2, [1000 x i32]* %labels)" [./haar.h:238]   --->   Operation 59 'call' 'nclasses' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_2 : Operation 60 [1/1] (0.97ns)   --->   "br label %.preheader233" [./haar.h:239]   --->   Operation 60 'br' <Predicate = true> <Delay = 0.97>
+
+State 3 <SV = 2> <Delay = 1.99>
+ST_3 : Operation 61 [1/1] (0.00ns)   --->   "%i = phi i7 [ %i_4, %1 ], [ 0, %0 ]"   --->   Operation 61 'phi' 'i' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 62 [1/1] (0.94ns)   --->   "%exitcond = icmp eq i7 %i, -29" [./haar.h:245]   --->   Operation 62 'icmp' 'exitcond' <Predicate = true> <Delay = 0.94> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.25> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 63 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 99, i64 99, i64 99)"   --->   Operation 63 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 64 [1/1] (1.23ns)   --->   "%i_4 = add i7 %i, 1" [./haar.h:245]   --->   Operation 64 'add' 'i_4' <Predicate = true> <Delay = 1.23> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 65 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %._crit_edge234.preheader, label %1" [./haar.h:245]   --->   Operation 65 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 66 [1/1] (0.00ns)   --->   "%tmp_39 = zext i7 %i to i64" [./haar.h:246]   --->   Operation 66 'zext' 'tmp_39' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_3 : Operation 67 [1/1] (0.00ns)   --->   "%rrects_x_addr = getelementptr [99 x i32]* %rrects_x, i64 0, i64 %tmp_39" [./haar.h:246]   --->   Operation 67 'getelementptr' 'rrects_x_addr' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_3 : Operation 68 [1/1] (1.99ns)   --->   "store i32 0, i32* %rrects_x_addr, align 16" [./haar.h:246]   --->   Operation 68 'store' <Predicate = (!exitcond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_3 : Operation 69 [1/1] (0.00ns)   --->   "%rrects_y_addr = getelementptr [99 x i32]* %rrects_y, i64 0, i64 %tmp_39" [./haar.h:247]   --->   Operation 69 'getelementptr' 'rrects_y_addr' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_3 : Operation 70 [1/1] (1.99ns)   --->   "store i32 0, i32* %rrects_y_addr, align 4" [./haar.h:247]   --->   Operation 70 'store' <Predicate = (!exitcond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_3 : Operation 71 [1/1] (0.00ns)   --->   "%rrects_width_addr = getelementptr [99 x i32]* %rrects_width, i64 0, i64 %tmp_39" [./haar.h:248]   --->   Operation 71 'getelementptr' 'rrects_width_addr' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_3 : Operation 72 [1/1] (1.99ns)   --->   "store i32 0, i32* %rrects_width_addr, align 8" [./haar.h:248]   --->   Operation 72 'store' <Predicate = (!exitcond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_3 : Operation 73 [1/1] (0.00ns)   --->   "%rrects_height_addr = getelementptr [99 x i32]* %rrects_height, i64 0, i64 %tmp_39" [./haar.h:249]   --->   Operation 73 'getelementptr' 'rrects_height_addr' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_3 : Operation 74 [1/1] (1.99ns)   --->   "store i32 0, i32* %rrects_height_addr, align 4" [./haar.h:249]   --->   Operation 74 'store' <Predicate = (!exitcond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_3 : Operation 75 [1/1] (0.00ns)   --->   "%rweights_addr = getelementptr inbounds [99 x i32]* %rweights, i64 0, i64 %tmp_39" [./haar.h:250]   --->   Operation 75 'getelementptr' 'rweights_addr' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_3 : Operation 76 [1/1] (1.99ns)   --->   "store i32 0, i32* %rweights_addr, align 4" [./haar.h:250]   --->   Operation 76 'store' <Predicate = (!exitcond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_3 : Operation 77 [1/1] (0.00ns)   --->   "br label %.preheader233" [./haar.h:245]   --->   Operation 77 'br' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_3 : Operation 78 [1/1] (0.97ns)   --->   "br label %._crit_edge234" [./haar.h:255]   --->   Operation 78 'br' <Predicate = (exitcond)> <Delay = 0.97>
+
+State 4 <SV = 3> <Delay = 1.99>
+ST_4 : Operation 79 [1/1] (0.00ns)   --->   "%i1 = phi i31 [ %i_5, %2 ], [ 0, %._crit_edge234.preheader ]"   --->   Operation 79 'phi' 'i1' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 80 [1/1] (0.00ns)   --->   "%i1_cast = zext i31 %i1 to i32" [./haar.h:255]   --->   Operation 80 'zext' 'i1_cast' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 81 [1/1] (1.31ns)   --->   "%tmp_s = icmp slt i32 %i1_cast, %rects_length_read_2" [./haar.h:255]   --->   Operation 81 'icmp' 'tmp_s' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.25> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 82 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 1000, i64 0)"   --->   Operation 82 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 83 [1/1] (1.55ns)   --->   "%i_5 = add i31 %i1, 1" [./haar.h:255]   --->   Operation 83 'add' 'i_5' <Predicate = true> <Delay = 1.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 84 [1/1] (0.00ns)   --->   "br i1 %tmp_s, label %2, label %.preheader.preheader" [./haar.h:255]   --->   Operation 84 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 85 [1/1] (0.00ns)   --->   "%tmp_40 = zext i31 %i1 to i64" [./haar.h:258]   --->   Operation 85 'zext' 'tmp_40' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_4 : Operation 86 [1/1] (0.00ns)   --->   "%labels_addr = getelementptr inbounds [1000 x i32]* %labels, i64 0, i64 %tmp_40" [./haar.h:258]   --->   Operation 86 'getelementptr' 'labels_addr' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_4 : Operation 87 [2/2] (1.99ns)   --->   "%cls = load i32* %labels_addr, align 4" [./haar.h:258]   --->   Operation 87 'load' 'cls' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+
+State 5 <SV = 4> <Delay = 3.99>
+ST_5 : Operation 88 [1/2] (1.99ns)   --->   "%cls = load i32* %labels_addr, align 4" [./haar.h:258]   --->   Operation 88 'load' 'cls' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_5 : Operation 89 [1/1] (0.00ns)   --->   "%rects_val_x_addr = getelementptr [1000 x i16]* %rects_val_x, i64 0, i64 %tmp_40" [./haar.h:259]   --->   Operation 89 'getelementptr' 'rects_val_x_addr' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 90 [2/2] (1.99ns)   --->   "%rects_val_x_load = load i16* %rects_val_x_addr, align 2" [./haar.h:259]   --->   Operation 90 'load' 'rects_val_x_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_5 : Operation 91 [1/1] (0.00ns)   --->   "%tmp_42 = sext i32 %cls to i64" [./haar.h:259]   --->   Operation 91 'sext' 'tmp_42' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 92 [1/1] (0.00ns)   --->   "%rrects_x_addr_1 = getelementptr [99 x i32]* %rrects_x, i64 0, i64 %tmp_42" [./haar.h:259]   --->   Operation 92 'getelementptr' 'rrects_x_addr_1' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 93 [2/2] (1.99ns)   --->   "%rrects_x_load = load i32* %rrects_x_addr_1, align 16" [./haar.h:259]   --->   Operation 93 'load' 'rrects_x_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_5 : Operation 94 [1/1] (0.00ns)   --->   "%rects_val_y_addr = getelementptr [1000 x i16]* %rects_val_y, i64 0, i64 %tmp_40" [./haar.h:260]   --->   Operation 94 'getelementptr' 'rects_val_y_addr' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 95 [2/2] (1.99ns)   --->   "%rects_val_y_load = load i16* %rects_val_y_addr, align 2" [./haar.h:260]   --->   Operation 95 'load' 'rects_val_y_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_5 : Operation 96 [1/1] (0.00ns)   --->   "%rrects_y_addr_1 = getelementptr [99 x i32]* %rrects_y, i64 0, i64 %tmp_42" [./haar.h:260]   --->   Operation 96 'getelementptr' 'rrects_y_addr_1' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 97 [2/2] (1.99ns)   --->   "%rrects_y_load = load i32* %rrects_y_addr_1, align 4" [./haar.h:260]   --->   Operation 97 'load' 'rrects_y_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_5 : Operation 98 [1/1] (0.00ns)   --->   "%rects_val_width_addr = getelementptr [1000 x i16]* %rects_val_width, i64 0, i64 %tmp_40" [./haar.h:261]   --->   Operation 98 'getelementptr' 'rects_val_width_addr' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 99 [2/2] (1.99ns)   --->   "%rects_val_width_load = load i16* %rects_val_width_addr, align 2" [./haar.h:261]   --->   Operation 99 'load' 'rects_val_width_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_5 : Operation 100 [1/1] (0.00ns)   --->   "%rrects_width_addr_1 = getelementptr [99 x i32]* %rrects_width, i64 0, i64 %tmp_42" [./haar.h:261]   --->   Operation 100 'getelementptr' 'rrects_width_addr_1' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 101 [2/2] (1.99ns)   --->   "%rrects_width_load = load i32* %rrects_width_addr_1, align 8" [./haar.h:261]   --->   Operation 101 'load' 'rrects_width_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_5 : Operation 102 [1/1] (0.00ns)   --->   "%rects_val_height_add = getelementptr [1000 x i16]* %rects_val_height, i64 0, i64 %tmp_40" [./haar.h:262]   --->   Operation 102 'getelementptr' 'rects_val_height_add' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 103 [2/2] (1.99ns)   --->   "%rects_val_height_loa = load i16* %rects_val_height_add, align 2" [./haar.h:262]   --->   Operation 103 'load' 'rects_val_height_loa' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_5 : Operation 104 [1/1] (0.00ns)   --->   "%rrects_height_addr_1 = getelementptr [99 x i32]* %rrects_height, i64 0, i64 %tmp_42" [./haar.h:262]   --->   Operation 104 'getelementptr' 'rrects_height_addr_1' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 105 [2/2] (1.99ns)   --->   "%rrects_height_load = load i32* %rrects_height_addr_1, align 4" [./haar.h:262]   --->   Operation 105 'load' 'rrects_height_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_5 : Operation 106 [1/1] (0.00ns)   --->   "%rweights_addr_1 = getelementptr inbounds [99 x i32]* %rweights, i64 0, i64 %tmp_42" [./haar.h:263]   --->   Operation 106 'getelementptr' 'rweights_addr_1' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 107 [2/2] (1.99ns)   --->   "%rweights_load = load i32* %rweights_addr_1, align 4" [./haar.h:263]   --->   Operation 107 'load' 'rweights_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+
+State 6 <SV = 5> <Delay = 5.57>
+ST_6 : Operation 108 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([13 x i8]* @p_str25)" [./haar.h:255]   --->   Operation 108 'specregionbegin' 'tmp' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_6 : Operation 109 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 2, i32 1, i32 1, i32 0, [1 x i8]* @p_str4) nounwind" [./haar.h:257]   --->   Operation 109 'specpipeline' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_6 : Operation 110 [1/2] (1.99ns)   --->   "%rects_val_x_load = load i16* %rects_val_x_addr, align 2" [./haar.h:259]   --->   Operation 110 'load' 'rects_val_x_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 111 [1/1] (0.00ns)   --->   "%tmp_41 = sext i16 %rects_val_x_load to i32" [./haar.h:259]   --->   Operation 111 'sext' 'tmp_41' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_6 : Operation 112 [1/2] (1.99ns)   --->   "%rrects_x_load = load i32* %rrects_x_addr_1, align 16" [./haar.h:259]   --->   Operation 112 'load' 'rrects_x_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 113 [1/1] (1.57ns)   --->   "%tmp_43 = add nsw i32 %rrects_x_load, %tmp_41" [./haar.h:259]   --->   Operation 113 'add' 'tmp_43' <Predicate = (tmp_s)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 114 [1/1] (1.99ns)   --->   "store i32 %tmp_43, i32* %rrects_x_addr_1, align 16" [./haar.h:259]   --->   Operation 114 'store' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 115 [1/2] (1.99ns)   --->   "%rects_val_y_load = load i16* %rects_val_y_addr, align 2" [./haar.h:260]   --->   Operation 115 'load' 'rects_val_y_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 116 [1/1] (0.00ns)   --->   "%tmp_44 = sext i16 %rects_val_y_load to i32" [./haar.h:260]   --->   Operation 116 'sext' 'tmp_44' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_6 : Operation 117 [1/2] (1.99ns)   --->   "%rrects_y_load = load i32* %rrects_y_addr_1, align 4" [./haar.h:260]   --->   Operation 117 'load' 'rrects_y_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 118 [1/1] (1.57ns)   --->   "%tmp_45 = add nsw i32 %rrects_y_load, %tmp_44" [./haar.h:260]   --->   Operation 118 'add' 'tmp_45' <Predicate = (tmp_s)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 119 [1/1] (1.99ns)   --->   "store i32 %tmp_45, i32* %rrects_y_addr_1, align 4" [./haar.h:260]   --->   Operation 119 'store' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 120 [1/2] (1.99ns)   --->   "%rects_val_width_load = load i16* %rects_val_width_addr, align 2" [./haar.h:261]   --->   Operation 120 'load' 'rects_val_width_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 121 [1/1] (0.00ns)   --->   "%tmp_46 = sext i16 %rects_val_width_load to i32" [./haar.h:261]   --->   Operation 121 'sext' 'tmp_46' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_6 : Operation 122 [1/2] (1.99ns)   --->   "%rrects_width_load = load i32* %rrects_width_addr_1, align 8" [./haar.h:261]   --->   Operation 122 'load' 'rrects_width_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 123 [1/1] (1.57ns)   --->   "%tmp_47 = add nsw i32 %rrects_width_load, %tmp_46" [./haar.h:261]   --->   Operation 123 'add' 'tmp_47' <Predicate = (tmp_s)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 124 [1/1] (1.99ns)   --->   "store i32 %tmp_47, i32* %rrects_width_addr_1, align 8" [./haar.h:261]   --->   Operation 124 'store' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 125 [1/2] (1.99ns)   --->   "%rects_val_height_loa = load i16* %rects_val_height_add, align 2" [./haar.h:262]   --->   Operation 125 'load' 'rects_val_height_loa' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 126 [1/1] (0.00ns)   --->   "%tmp_48 = sext i16 %rects_val_height_loa to i32" [./haar.h:262]   --->   Operation 126 'sext' 'tmp_48' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_6 : Operation 127 [1/2] (1.99ns)   --->   "%rrects_height_load = load i32* %rrects_height_addr_1, align 4" [./haar.h:262]   --->   Operation 127 'load' 'rrects_height_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 128 [1/1] (1.57ns)   --->   "%tmp_49 = add nsw i32 %rrects_height_load, %tmp_48" [./haar.h:262]   --->   Operation 128 'add' 'tmp_49' <Predicate = (tmp_s)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 129 [1/1] (1.99ns)   --->   "store i32 %tmp_49, i32* %rrects_height_addr_1, align 4" [./haar.h:262]   --->   Operation 129 'store' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 130 [1/2] (1.99ns)   --->   "%rweights_load = load i32* %rweights_addr_1, align 4" [./haar.h:263]   --->   Operation 130 'load' 'rweights_load' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 131 [1/1] (1.57ns)   --->   "%tmp_51 = add nsw i32 %rweights_load, 1" [./haar.h:263]   --->   Operation 131 'add' 'tmp_51' <Predicate = (tmp_s)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 132 [1/1] (1.99ns)   --->   "store i32 %tmp_51, i32* %rweights_addr_1, align 4" [./haar.h:263]   --->   Operation 132 'store' <Predicate = (tmp_s)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_6 : Operation 133 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([13 x i8]* @p_str25, i32 %tmp)" [./haar.h:264]   --->   Operation 133 'specregionend' 'empty' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_6 : Operation 134 [1/1] (0.00ns)   --->   "br label %._crit_edge234" [./haar.h:255]   --->   Operation 134 'br' <Predicate = (tmp_s)> <Delay = 0.00>
+
+State 7 <SV = 4> <Delay = 0.97>
+ST_7 : Operation 135 [1/1] (0.00ns)   --->   "%num = alloca i32"   --->   Operation 135 'alloca' 'num' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 136 [1/1] (0.00ns)   --->   "%tmp_52 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %neighbors_read, i16 0)" [./haar.h:270]   --->   Operation 136 'bitconcatenate' 'tmp_52' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 137 [1/1] (0.97ns)   --->   "store i32 0, i32* %num"   --->   Operation 137 'store' <Predicate = true> <Delay = 0.97>
+ST_7 : Operation 138 [1/1] (0.97ns)   --->   "br label %.preheader" [./haar.h:268]   --->   Operation 138 'br' <Predicate = true> <Delay = 0.97>
+
+State 8 <SV = 5> <Delay = 1.99>
+ST_8 : Operation 139 [1/1] (0.00ns)   --->   "%i2 = phi i31 [ 0, %.preheader.preheader ], [ %i_6, %.preheader.backedge ]"   --->   Operation 139 'phi' 'i2' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 140 [1/1] (0.00ns)   --->   "%i2_cast = zext i31 %i2 to i32" [./haar.h:268]   --->   Operation 140 'zext' 'i2_cast' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 141 [1/1] (1.31ns)   --->   "%tmp_53 = icmp slt i32 %i2_cast, %nclasses" [./haar.h:268]   --->   Operation 141 'icmp' 'tmp_53' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.25> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 142 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 99, i64 0)"   --->   Operation 142 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 143 [1/1] (1.55ns)   --->   "%i_6 = add i31 %i2, 1" [./haar.h:268]   --->   Operation 143 'add' 'i_6' <Predicate = true> <Delay = 1.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 144 [1/1] (0.00ns)   --->   "br i1 %tmp_53, label %3, label %4" [./haar.h:268]   --->   Operation 144 'br' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 145 [1/1] (0.00ns)   --->   "%tmp_54 = zext i31 %i2 to i64" [./haar.h:269]   --->   Operation 145 'zext' 'tmp_54' <Predicate = (tmp_53)> <Delay = 0.00>
+ST_8 : Operation 146 [1/1] (0.00ns)   --->   "%rweights_addr_2 = getelementptr inbounds [99 x i32]* %rweights, i64 0, i64 %tmp_54" [./haar.h:269]   --->   Operation 146 'getelementptr' 'rweights_addr_2' <Predicate = (tmp_53)> <Delay = 0.00>
+ST_8 : Operation 147 [2/2] (1.99ns)   --->   "%p_Val2_s = load i32* %rweights_addr_2, align 4" [./haar.h:269]   --->   Operation 147 'load' 'p_Val2_s' <Predicate = (tmp_53)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_8 : Operation 148 [1/1] (0.00ns)   --->   "%num_load_1 = load i32* %num" [./haar.h:280]   --->   Operation 148 'load' 'num_load_1' <Predicate = (!tmp_53)> <Delay = 0.00>
+ST_8 : Operation 149 [1/1] (0.00ns)   --->   "%tmp_57 = trunc i32 %num_load_1 to i16" [./haar.h:280]   --->   Operation 149 'trunc' 'tmp_57' <Predicate = (!tmp_53)> <Delay = 0.00>
+ST_8 : Operation 150 [1/1] (1.99ns)   --->   "store i16 %tmp_57, i16* %locations_val_addr, align 2" [./haar.h:280]   --->   Operation 150 'store' <Predicate = (!tmp_53)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_8 : Operation 151 [1/1] (0.00ns)   --->   "ret void" [./haar.h:281]   --->   Operation 151 'ret' <Predicate = (!tmp_53)> <Delay = 0.00>
+
+State 9 <SV = 6> <Delay = 4.03>
+ST_9 : Operation 152 [1/2] (1.99ns)   --->   "%p_Val2_s = load i32* %rweights_addr_2, align 4" [./haar.h:269]   --->   Operation 152 'load' 'p_Val2_s' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_9 : Operation 153 [1/1] (0.00ns)   --->   "%count_V = shl i32 %p_Val2_s, 16" [./haar.h:269]   --->   Operation 153 'shl' 'count_V' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 154 [1/1] (0.00ns)   --->   "%tmp_55 = sext i32 %count_V to i48" [./haar.h:270]   --->   Operation 154 'sext' 'tmp_55' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 155 [1/1] (1.38ns)   --->   "%tmp_56 = icmp slt i48 %tmp_55, %tmp_52" [./haar.h:270]   --->   Operation 155 'icmp' 'tmp_56' <Predicate = true> <Delay = 1.38> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.25> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 156 [1/1] (0.00ns)   --->   "br i1 %tmp_56, label %.preheader.backedge, label %_ifconv" [./haar.h:270]   --->   Operation 156 'br' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 157 [1/1] (0.00ns)   --->   "%tmp_102_tr = sext i32 %count_V to i34" [./haar.h:273]   --->   Operation 157 'sext' 'tmp_102_tr' <Predicate = (!tmp_56)> <Delay = 0.00>
+ST_9 : Operation 158 [38/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 158 'sdiv' 'tmp_50' <Predicate = (!tmp_56)> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 10 <SV = 7> <Delay = 2.03>
+ST_10 : Operation 159 [37/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 159 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 11 <SV = 8> <Delay = 2.03>
+ST_11 : Operation 160 [36/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 160 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 12 <SV = 9> <Delay = 2.03>
+ST_12 : Operation 161 [35/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 161 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 13 <SV = 10> <Delay = 2.03>
+ST_13 : Operation 162 [34/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 162 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 14 <SV = 11> <Delay = 2.03>
+ST_14 : Operation 163 [33/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 163 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 15 <SV = 12> <Delay = 2.03>
+ST_15 : Operation 164 [32/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 164 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 16 <SV = 13> <Delay = 2.03>
+ST_16 : Operation 165 [31/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 165 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 17 <SV = 14> <Delay = 2.03>
+ST_17 : Operation 166 [30/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 166 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 18 <SV = 15> <Delay = 2.03>
+ST_18 : Operation 167 [29/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 167 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 19 <SV = 16> <Delay = 2.03>
+ST_19 : Operation 168 [28/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 168 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 20 <SV = 17> <Delay = 2.03>
+ST_20 : Operation 169 [27/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 169 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 21 <SV = 18> <Delay = 2.03>
+ST_21 : Operation 170 [26/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 170 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 22 <SV = 19> <Delay = 2.03>
+ST_22 : Operation 171 [25/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 171 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 23 <SV = 20> <Delay = 2.03>
+ST_23 : Operation 172 [24/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 172 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 24 <SV = 21> <Delay = 2.03>
+ST_24 : Operation 173 [23/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 173 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 25 <SV = 22> <Delay = 2.03>
+ST_25 : Operation 174 [22/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 174 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 26 <SV = 23> <Delay = 2.03>
+ST_26 : Operation 175 [21/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 175 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 27 <SV = 24> <Delay = 2.03>
+ST_27 : Operation 176 [20/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 176 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 28 <SV = 25> <Delay = 2.03>
+ST_28 : Operation 177 [19/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 177 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 29 <SV = 26> <Delay = 2.03>
+ST_29 : Operation 178 [18/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 178 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 30 <SV = 27> <Delay = 2.03>
+ST_30 : Operation 179 [17/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 179 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 31 <SV = 28> <Delay = 2.03>
+ST_31 : Operation 180 [16/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 180 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 32 <SV = 29> <Delay = 2.03>
+ST_32 : Operation 181 [15/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 181 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 33 <SV = 30> <Delay = 2.03>
+ST_33 : Operation 182 [14/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 182 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 34 <SV = 31> <Delay = 2.03>
+ST_34 : Operation 183 [13/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 183 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 35 <SV = 32> <Delay = 2.03>
+ST_35 : Operation 184 [12/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 184 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 36 <SV = 33> <Delay = 2.03>
+ST_36 : Operation 185 [11/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 185 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 37 <SV = 34> <Delay = 2.03>
+ST_37 : Operation 186 [10/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 186 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 38 <SV = 35> <Delay = 2.03>
+ST_38 : Operation 187 [9/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 187 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 39 <SV = 36> <Delay = 2.03>
+ST_39 : Operation 188 [8/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 188 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 40 <SV = 37> <Delay = 2.03>
+ST_40 : Operation 189 [7/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 189 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 41 <SV = 38> <Delay = 2.03>
+ST_41 : Operation 190 [6/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 190 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 42 <SV = 39> <Delay = 2.03>
+ST_42 : Operation 191 [5/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 191 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 43 <SV = 40> <Delay = 2.03>
+ST_43 : Operation 192 [4/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 192 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 44 <SV = 41> <Delay = 2.03>
+ST_44 : Operation 193 [3/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 193 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 45 <SV = 42> <Delay = 2.03>
+ST_45 : Operation 194 [1/1] (0.00ns)   --->   "%rrects_x_addr_2 = getelementptr [99 x i32]* %rrects_x, i64 0, i64 %tmp_54" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 194 'getelementptr' 'rrects_x_addr_2' <Predicate = true> <Delay = 0.00>
+ST_45 : Operation 195 [2/2] (1.99ns)   --->   "%rrects_x_load_1 = load i32* %rrects_x_addr_2, align 16" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 195 'load' 'rrects_x_load_1' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_45 : Operation 196 [1/1] (0.00ns)   --->   "%rrects_y_addr_2 = getelementptr [99 x i32]* %rrects_y, i64 0, i64 %tmp_54" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 196 'getelementptr' 'rrects_y_addr_2' <Predicate = true> <Delay = 0.00>
+ST_45 : Operation 197 [2/2] (1.99ns)   --->   "%rrects_y_load_1 = load i32* %rrects_y_addr_2, align 4" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 197 'load' 'rrects_y_load_1' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_45 : Operation 198 [2/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 198 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 46 <SV = 43> <Delay = 2.03>
+ST_46 : Operation 199 [1/2] (1.99ns)   --->   "%rrects_x_load_1 = load i32* %rrects_x_addr_2, align 16" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 199 'load' 'rrects_x_load_1' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_46 : Operation 200 [1/2] (1.99ns)   --->   "%rrects_y_load_1 = load i32* %rrects_y_addr_2, align 4" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 200 'load' 'rrects_y_load_1' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_46 : Operation 201 [1/1] (0.00ns)   --->   "%rrects_width_addr_2 = getelementptr [99 x i32]* %rrects_width, i64 0, i64 %tmp_54" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 201 'getelementptr' 'rrects_width_addr_2' <Predicate = true> <Delay = 0.00>
+ST_46 : Operation 202 [2/2] (1.99ns)   --->   "%rrects_width_load_1 = load i32* %rrects_width_addr_2, align 8" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 202 'load' 'rrects_width_load_1' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_46 : Operation 203 [1/1] (0.00ns)   --->   "%rrects_height_addr_2 = getelementptr [99 x i32]* %rrects_height, i64 0, i64 %tmp_54" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 203 'getelementptr' 'rrects_height_addr_2' <Predicate = true> <Delay = 0.00>
+ST_46 : Operation 204 [2/2] (1.99ns)   --->   "%rrects_height_load_1 = load i32* %rrects_height_addr_2, align 4" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 204 'load' 'rrects_height_load_1' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_46 : Operation 205 [1/38] (2.03ns)   --->   "%tmp_50 = sdiv i34 4294967296, %tmp_102_tr" [./haar.h:273]   --->   Operation 205 'sdiv' 'tmp_50' <Predicate = true> <Delay = 2.03> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 37> <II = 32> <Delay = 2.03> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 47 <SV = 44> <Delay = 8.74>
+ST_47 : Operation 206 [1/1] (0.00ns)   --->   "%num_load = load i32* %num" [./haar.h:271]   --->   Operation 206 'load' 'num_load' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 207 [1/1] (1.57ns)   --->   "%num_1 = add nsw i32 1, %num_load" [./haar.h:271]   --->   Operation 207 'add' 'num_1' <Predicate = true> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 208 [1/2] (1.99ns)   --->   "%rrects_width_load_1 = load i32* %rrects_width_addr_2, align 8" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 208 'load' 'rrects_width_load_1' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_47 : Operation 209 [1/2] (1.99ns)   --->   "%rrects_height_load_1 = load i32* %rrects_height_addr_2, align 4" [E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272]   --->   Operation 209 'load' 'rrects_height_load_1' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_47 : Operation 210 [1/1] (0.00ns)   --->   "%tmp_58 = trunc i34 %tmp_50 to i32" [./haar.h:273]   --->   Operation 210 'trunc' 'tmp_58' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 211 [1/1] (0.00ns)   --->   "%OP1_V = sext i32 %rrects_x_load_1 to i64" [./haar.h:274]   --->   Operation 211 'sext' 'OP1_V' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 212 [1/1] (0.00ns)   --->   "%OP2_V = sext i32 %tmp_58 to i64" [./haar.h:274]   --->   Operation 212 'sext' 'OP2_V' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 213 [1/1] (5.02ns)   --->   "%r_V = mul nsw i64 %OP2_V, %OP1_V" [./haar.h:274]   --->   Operation 213 'mul' 'r_V' <Predicate = true> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 214 [1/1] (0.00ns) (grouped into LUT with out node tmp_5)   --->   "%tmp_59 = call i1 @_ssdm_op_BitSelect.i1.i64.i32(i64 %r_V, i32 63)" [./haar.h:274]   --->   Operation 214 'bitselect' 'tmp_59' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 215 [1/1] (0.00ns)   --->   "%tmp_60 = trunc i64 %r_V to i16" [./haar.h:274]   --->   Operation 215 'trunc' 'tmp_60' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 216 [1/1] (1.25ns)   --->   "%tmp_61 = icmp eq i16 %tmp_60, 0" [./haar.h:274]   --->   Operation 216 'icmp' 'tmp_61' <Predicate = true> <Delay = 1.25> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.25> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 217 [1/1] (0.00ns)   --->   "%tmp_1 = call i16 @_ssdm_op_PartSelect.i16.i64.i32.i32(i64 %r_V, i32 16, i32 31)" [./haar.h:274]   --->   Operation 217 'partselect' 'tmp_1' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 218 [1/1] (1.24ns)   --->   "%tmp_2 = add i16 1, %tmp_1" [./haar.h:274]   --->   Operation 218 'add' 'tmp_2' <Predicate = true> <Delay = 1.24> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 219 [1/1] (0.00ns) (grouped into LUT with out node tmp_5)   --->   "%tmp_3 = select i1 %tmp_61, i16 %tmp_1, i16 %tmp_2" [./haar.h:274]   --->   Operation 219 'select' 'tmp_3' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_47 : Operation 220 [1/1] (0.47ns) (out node of the LUT)   --->   "%tmp_5 = select i1 %tmp_59, i16 %tmp_3, i16 %tmp_1" [./haar.h:274]   --->   Operation 220 'select' 'tmp_5' <Predicate = true> <Delay = 0.47> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_47 : Operation 221 [1/1] (0.00ns)   --->   "%tmp_62 = sext i32 %num_1 to i64" [./haar.h:274]   --->   Operation 221 'sext' 'tmp_62' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 222 [1/1] (0.00ns)   --->   "%tmp_63 = trunc i32 %num_1 to i10" [./haar.h:274]   --->   Operation 222 'trunc' 'tmp_63' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 223 [1/1] (0.00ns)   --->   "%locations_val_addr_1 = getelementptr [400 x i16]* %locations_val, i64 0, i64 %tmp_62" [./haar.h:274]   --->   Operation 223 'getelementptr' 'locations_val_addr_1' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 224 [1/1] (1.27ns)   --->   "%tmp_14 = add i10 100, %tmp_63" [./haar.h:275]   --->   Operation 224 'add' 'tmp_14' <Predicate = true> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 225 [1/1] (0.00ns)   --->   "%tmp_14_cast = sext i10 %tmp_14 to i64" [./haar.h:275]   --->   Operation 225 'sext' 'tmp_14_cast' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 226 [1/1] (0.00ns)   --->   "%locations_val_addr_2 = getelementptr [400 x i16]* %locations_val, i64 0, i64 %tmp_14_cast" [./haar.h:275]   --->   Operation 226 'getelementptr' 'locations_val_addr_2' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 227 [1/1] (1.99ns)   --->   "store i16 %tmp_5, i16* %locations_val_addr_1, align 2" [./haar.h:274]   --->   Operation 227 'store' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_47 : Operation 228 [1/1] (0.00ns)   --->   "%OP1_V_1 = sext i32 %rrects_y_load_1 to i64" [./haar.h:275]   --->   Operation 228 'sext' 'OP1_V_1' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 229 [1/1] (5.02ns)   --->   "%r_V_1 = mul nsw i64 %OP2_V, %OP1_V_1" [./haar.h:275]   --->   Operation 229 'mul' 'r_V_1' <Predicate = true> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 230 [1/1] (0.00ns) (grouped into LUT with out node tmp_10)   --->   "%tmp_64 = call i1 @_ssdm_op_BitSelect.i1.i64.i32(i64 %r_V_1, i32 63)" [./haar.h:275]   --->   Operation 230 'bitselect' 'tmp_64' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 231 [1/1] (0.00ns)   --->   "%tmp_65 = trunc i64 %r_V_1 to i16" [./haar.h:275]   --->   Operation 231 'trunc' 'tmp_65' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 232 [1/1] (1.25ns)   --->   "%tmp_66 = icmp eq i16 %tmp_65, 0" [./haar.h:275]   --->   Operation 232 'icmp' 'tmp_66' <Predicate = true> <Delay = 1.25> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.25> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 233 [1/1] (0.00ns)   --->   "%tmp_6 = call i16 @_ssdm_op_PartSelect.i16.i64.i32.i32(i64 %r_V_1, i32 16, i32 31)" [./haar.h:275]   --->   Operation 233 'partselect' 'tmp_6' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 234 [1/1] (1.24ns)   --->   "%tmp_7 = add i16 1, %tmp_6" [./haar.h:275]   --->   Operation 234 'add' 'tmp_7' <Predicate = true> <Delay = 1.24> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 235 [1/1] (0.00ns) (grouped into LUT with out node tmp_10)   --->   "%tmp_8 = select i1 %tmp_66, i16 %tmp_6, i16 %tmp_7" [./haar.h:275]   --->   Operation 235 'select' 'tmp_8' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_47 : Operation 236 [1/1] (0.47ns) (out node of the LUT)   --->   "%tmp_10 = select i1 %tmp_64, i16 %tmp_8, i16 %tmp_6" [./haar.h:275]   --->   Operation 236 'select' 'tmp_10' <Predicate = true> <Delay = 0.47> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_47 : Operation 237 [1/1] (1.99ns)   --->   "store i16 %tmp_10, i16* %locations_val_addr_2, align 2" [./haar.h:275]   --->   Operation 237 'store' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_47 : Operation 238 [1/1] (0.00ns)   --->   "%OP1_V_2 = sext i32 %rrects_width_load_1 to i64" [./haar.h:276]   --->   Operation 238 'sext' 'OP1_V_2' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 239 [1/1] (5.02ns)   --->   "%r_V_2 = mul nsw i64 %OP2_V, %OP1_V_2" [./haar.h:276]   --->   Operation 239 'mul' 'r_V_2' <Predicate = true> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 240 [1/1] (0.00ns) (grouped into LUT with out node tmp_15)   --->   "%tmp_67 = call i1 @_ssdm_op_BitSelect.i1.i64.i32(i64 %r_V_2, i32 63)" [./haar.h:276]   --->   Operation 240 'bitselect' 'tmp_67' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 241 [1/1] (0.00ns)   --->   "%tmp_70 = trunc i64 %r_V_2 to i16" [./haar.h:276]   --->   Operation 241 'trunc' 'tmp_70' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 242 [1/1] (1.25ns)   --->   "%tmp_68 = icmp eq i16 %tmp_70, 0" [./haar.h:276]   --->   Operation 242 'icmp' 'tmp_68' <Predicate = true> <Delay = 1.25> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.25> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 243 [1/1] (0.00ns)   --->   "%tmp_11 = call i16 @_ssdm_op_PartSelect.i16.i64.i32.i32(i64 %r_V_2, i32 16, i32 31)" [./haar.h:276]   --->   Operation 243 'partselect' 'tmp_11' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 244 [1/1] (1.24ns)   --->   "%tmp_12 = add i16 1, %tmp_11" [./haar.h:276]   --->   Operation 244 'add' 'tmp_12' <Predicate = true> <Delay = 1.24> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 245 [1/1] (0.00ns) (grouped into LUT with out node tmp_15)   --->   "%tmp_13 = select i1 %tmp_68, i16 %tmp_11, i16 %tmp_12" [./haar.h:276]   --->   Operation 245 'select' 'tmp_13' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_47 : Operation 246 [1/1] (0.47ns) (out node of the LUT)   --->   "%tmp_15 = select i1 %tmp_67, i16 %tmp_13, i16 %tmp_11" [./haar.h:276]   --->   Operation 246 'select' 'tmp_15' <Predicate = true> <Delay = 0.47> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_47 : Operation 247 [1/1] (0.00ns)   --->   "%OP1_V_3 = sext i32 %rrects_height_load_1 to i64" [./haar.h:277]   --->   Operation 247 'sext' 'OP1_V_3' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 248 [1/1] (5.02ns)   --->   "%r_V_3 = mul nsw i64 %OP2_V, %OP1_V_3" [./haar.h:277]   --->   Operation 248 'mul' 'r_V_3' <Predicate = true> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 249 [1/1] (0.00ns) (grouped into LUT with out node tmp_20)   --->   "%tmp_71 = call i1 @_ssdm_op_BitSelect.i1.i64.i32(i64 %r_V_3, i32 63)" [./haar.h:277]   --->   Operation 249 'bitselect' 'tmp_71' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 250 [1/1] (0.00ns)   --->   "%tmp_72 = trunc i64 %r_V_3 to i16" [./haar.h:277]   --->   Operation 250 'trunc' 'tmp_72' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 251 [1/1] (1.25ns)   --->   "%tmp_69 = icmp eq i16 %tmp_72, 0" [./haar.h:277]   --->   Operation 251 'icmp' 'tmp_69' <Predicate = true> <Delay = 1.25> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.25> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 252 [1/1] (0.00ns)   --->   "%tmp_16 = call i16 @_ssdm_op_PartSelect.i16.i64.i32.i32(i64 %r_V_3, i32 16, i32 31)" [./haar.h:277]   --->   Operation 252 'partselect' 'tmp_16' <Predicate = true> <Delay = 0.00>
+ST_47 : Operation 253 [1/1] (1.24ns)   --->   "%tmp_17 = add i16 1, %tmp_16" [./haar.h:277]   --->   Operation 253 'add' 'tmp_17' <Predicate = true> <Delay = 1.24> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 254 [1/1] (0.00ns) (grouped into LUT with out node tmp_20)   --->   "%tmp_18 = select i1 %tmp_69, i16 %tmp_16, i16 %tmp_17" [./haar.h:277]   --->   Operation 254 'select' 'tmp_18' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_47 : Operation 255 [1/1] (0.47ns) (out node of the LUT)   --->   "%tmp_20 = select i1 %tmp_71, i16 %tmp_18, i16 %tmp_16" [./haar.h:277]   --->   Operation 255 'select' 'tmp_20' <Predicate = true> <Delay = 0.47> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.47> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_47 : Operation 256 [1/1] (0.97ns)   --->   "store i32 %num_1, i32* %num" [./haar.h:271]   --->   Operation 256 'store' <Predicate = true> <Delay = 0.97>
+
+State 48 <SV = 45> <Delay = 3.27>
+ST_48 : Operation 257 [1/1] (1.27ns)   --->   "%tmp_19 = add i10 200, %tmp_63" [./haar.h:276]   --->   Operation 257 'add' 'tmp_19' <Predicate = (!tmp_56)> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_48 : Operation 258 [1/1] (0.00ns)   --->   "%tmp_19_cast = sext i10 %tmp_19 to i64" [./haar.h:276]   --->   Operation 258 'sext' 'tmp_19_cast' <Predicate = (!tmp_56)> <Delay = 0.00>
+ST_48 : Operation 259 [1/1] (0.00ns)   --->   "%locations_val_addr_3 = getelementptr [400 x i16]* %locations_val, i64 0, i64 %tmp_19_cast" [./haar.h:276]   --->   Operation 259 'getelementptr' 'locations_val_addr_3' <Predicate = (!tmp_56)> <Delay = 0.00>
+ST_48 : Operation 260 [1/1] (1.27ns)   --->   "%tmp_21 = add i10 300, %tmp_63" [./haar.h:277]   --->   Operation 260 'add' 'tmp_21' <Predicate = (!tmp_56)> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_48 : Operation 261 [1/1] (0.00ns)   --->   "%tmp_21_cast = sext i10 %tmp_21 to i64" [./haar.h:277]   --->   Operation 261 'sext' 'tmp_21_cast' <Predicate = (!tmp_56)> <Delay = 0.00>
+ST_48 : Operation 262 [1/1] (0.00ns)   --->   "%locations_val_addr_4 = getelementptr [400 x i16]* %locations_val, i64 0, i64 %tmp_21_cast" [./haar.h:277]   --->   Operation 262 'getelementptr' 'locations_val_addr_4' <Predicate = (!tmp_56)> <Delay = 0.00>
+ST_48 : Operation 263 [1/1] (1.99ns)   --->   "store i16 %tmp_15, i16* %locations_val_addr_3, align 2" [./haar.h:276]   --->   Operation 263 'store' <Predicate = (!tmp_56)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_48 : Operation 264 [1/1] (1.99ns)   --->   "store i16 %tmp_20, i16* %locations_val_addr_4, align 2" [./haar.h:277]   --->   Operation 264 'store' <Predicate = (!tmp_56)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 400> <RAM>
+ST_48 : Operation 265 [1/1] (0.00ns)   --->   "br label %.preheader.backedge" [./haar.h:278]   --->   Operation 265 'br' <Predicate = (!tmp_56)> <Delay = 0.00>
+ST_48 : Operation 266 [1/1] (0.00ns)   --->   "br label %.preheader"   --->   Operation 266 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 0ns
+The critical path consists of the following:
+
+ <State 2>: 0.978ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', ./haar.h:245) [20]  (0.978 ns)
+
+ <State 3>: 2ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./haar.h:245) [20]  (0 ns)
+	'getelementptr' operation ('rrects_width_addr', ./haar.h:248) [31]  (0 ns)
+	'store' operation (./haar.h:248) of constant 0 on array 'rrects.width', ./haar.h:242 [32]  (2 ns)
+
+ <State 4>: 2ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./haar.h:255) [41]  (0 ns)
+	'getelementptr' operation ('labels_addr', ./haar.h:258) [51]  (0 ns)
+	'load' operation ('cls', ./haar.h:258) on array 'labels' [52]  (2 ns)
+
+ <State 5>: 4ns
+The critical path consists of the following:
+	'load' operation ('cls', ./haar.h:258) on array 'labels' [52]  (2 ns)
+	'getelementptr' operation ('rrects_y_addr_1', ./haar.h:260) [64]  (0 ns)
+	'load' operation ('rrects_y_load', ./haar.h:260) on array 'rrects.y', ./haar.h:242 [65]  (2 ns)
+
+ <State 6>: 5.57ns
+The critical path consists of the following:
+	'load' operation ('rects_val_x_load', ./haar.h:259) on array 'rects_val_x' [54]  (2 ns)
+	'add' operation ('tmp_43', ./haar.h:259) [59]  (1.58 ns)
+	'store' operation (./haar.h:259) of variable 'tmp_43', ./haar.h:259 on array 'rrects.x', ./haar.h:242 [60]  (2 ns)
+
+ <State 7>: 0.978ns
+The critical path consists of the following:
+	'alloca' operation ('num') [89]  (0 ns)
+	'store' operation of constant 0 on local variable 'num' [91]  (0.978 ns)
+
+ <State 8>: 2ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./haar.h:268) [94]  (0 ns)
+	'getelementptr' operation ('rweights_addr_2', ./haar.h:269) [102]  (0 ns)
+	'load' operation ('v', ./haar.h:269) on array 'rweights', ./haar.h:243 [103]  (2 ns)
+
+ <State 9>: 4.04ns
+The critical path consists of the following:
+	'load' operation ('v', ./haar.h:269) on array 'rweights', ./haar.h:243 [103]  (2 ns)
+	'shl' operation ('count.V', ./haar.h:269) [104]  (0 ns)
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 10>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 11>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 12>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 13>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 14>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 15>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 16>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 17>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 18>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 19>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 20>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 21>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 22>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 23>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 24>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 25>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 26>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 27>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 28>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 29>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 30>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 31>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 32>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 33>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 34>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 35>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 36>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 37>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 38>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 39>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 40>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 41>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 42>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 43>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 44>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 45>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 46>: 2.04ns
+The critical path consists of the following:
+	'sdiv' operation ('tmp_50', ./haar.h:273) [120]  (2.04 ns)
+
+ <State 47>: 8.74ns
+The critical path consists of the following:
+	'load' operation ('i_op', E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->E:/Xilinx/Vivado/2018.2/common/technology/autopilot/hls/hls_video_core.h:155->./haar.h:272) on array 'rrects.width', ./haar.h:242 [116]  (2 ns)
+	'mul' operation ('r.V', ./haar.h:276) [156]  (5.02 ns)
+	'icmp' operation ('tmp_68', ./haar.h:276) [159]  (1.25 ns)
+	'select' operation ('tmp_13', ./haar.h:276) [162]  (0 ns)
+	'select' operation ('tmp_15', ./haar.h:276) [163]  (0.473 ns)
+
+ <State 48>: 3.27ns
+The critical path consists of the following:
+	'add' operation ('tmp_19', ./haar.h:276) [138]  (1.27 ns)
+	'getelementptr' operation ('locations_val_addr_3', ./haar.h:276) [140]  (0 ns)
+	'store' operation (./haar.h:276) of variable 'tmp_15', ./haar.h:276 on array 'locations_val' [164]  (2 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+	State 33
+	State 34
+	State 35
+	State 36
+	State 37
+	State 38
+	State 39
+	State 40
+	State 41
+	State 42
+	State 43
+	State 44
+	State 45
+	State 46
+	State 47
+	State 48
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

@@ -1,0 +1,180 @@
+
+
+================================================================
+== Vivado HLS Report for 'Array2D2Mat'
+================================================================
+* Date:           Wed Dec  5 16:22:34 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        seedfill
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     4.520|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+------+-----+------+---------+
+    |   Latency  |  Interval  | Pipeline|
+    | min |  max | min |  max |   Type  |
+    +-----+------+-----+------+---------+
+    |    1|  1037|    1|  1037|   none  |
+    +-----+------+-----+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+-----+------+----------+-----------+-----------+---------+----------+
+        |             |   Latency  | Iteration|  Initiation Interval  |   Trip  |          |
+        |  Loop Name  | min |  max |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +-------------+-----+------+----------+-----------+-----------+---------+----------+
+        |- Loop 1     |    0|  1036|  3 ~ 259 |          -|          -|  0 ~ 4  |    no    |
+        | + Loop 1.1  |    0|   256|         2|          1|          1| 0 ~ 256 |    yes   |
+        +-------------+-----+------+----------+-----------+-----------+---------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      -|       -|       -|
+|Expression       |        -|      -|       0|      79|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|      -|       -|       -|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|     123|
+|Register         |        -|      -|      41|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |        0|      0|      41|     202|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        0|      0|   ~0   |   ~0   |
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |i_fu_148_p2                       |     +    |      0|  0|  12|           3|           1|
+    |j_fu_175_p2                       |     +    |      0|  0|  16|           9|           1|
+    |tmp_11_fu_185_p2                  |     +    |      0|  0|  19|          12|          12|
+    |ap_block_pp0_stage0_01001         |    and   |      0|  0|   2|           1|           1|
+    |ap_block_state4_pp0_stage0_iter1  |    and   |      0|  0|   2|           1|           1|
+    |tmp_48_i_fu_170_p2                |   icmp   |      0|  0|  13|          10|          10|
+    |tmp_i_fu_143_p2                   |   icmp   |      0|  0|   9|           4|           4|
+    |ap_block_state1                   |    or    |      0|  0|   2|           1|           1|
+    |ap_enable_pp0                     |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1           |    xor   |      0|  0|   2|           2|           1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |Total                             |          |      0|  0|  79|          44|          34|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                |  27|          5|    1|          5|
+    |ap_done                  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |  15|          3|    1|          3|
+    |arr_cols_blk_n           |   9|          2|    1|          2|
+    |arr_rows_blk_n           |   9|          2|    1|          2|
+    |i_i_reg_117              |   9|          2|    3|          6|
+    |j_i_reg_128              |   9|          2|    9|         18|
+    |mat_cols_V_blk_n         |   9|          2|    1|          2|
+    |mat_data_stream_V_blk_n  |   9|          2|    1|          2|
+    |mat_rows_V_blk_n         |   9|          2|    1|          2|
+    |real_start               |   9|          2|    1|          2|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    | 123|         26|   21|         46|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+----+----+-----+-----------+
+    |           Name          | FF | LUT| Bits| Const Bits|
+    +-------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                |   4|   0|    4|          0|
+    |ap_done_reg              |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |   1|   0|    1|          0|
+    |arr_cols_read_reg_200    |  10|   0|   10|          0|
+    |arr_rows_read_reg_195    |   4|   0|    4|          0|
+    |i_i_reg_117              |   3|   0|    3|          0|
+    |i_reg_209                |   3|   0|    3|          0|
+    |j_i_reg_128              |   9|   0|    9|          0|
+    |start_once_reg           |   1|   0|    1|          0|
+    |tmp_16_cast_reg_214      |   3|   0|   12|          9|
+    |tmp_48_i_reg_219         |   1|   0|    1|          0|
+    +-------------------------+----+----+-----+-----------+
+    |Total                    |  41|   0|   50|          9|
+    +-------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------+-----+-----+------------+-------------------+--------------+
+|         RTL Ports        | Dir | Bits|  Protocol  |   Source Object   |    C Type    |
++--------------------------+-----+-----+------------+-------------------+--------------+
+|ap_clk                    |  in |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|ap_rst                    |  in |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|ap_start                  |  in |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|start_full_n              |  in |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|ap_done                   | out |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|ap_continue               |  in |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|ap_idle                   | out |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|ap_ready                  | out |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|start_out                 | out |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|start_write               | out |    1| ap_ctrl_hs |    Array2D2Mat    | return value |
+|arr_val_address0          | out |   10|  ap_memory |      arr_val      |     array    |
+|arr_val_ce0               | out |    1|  ap_memory |      arr_val      |     array    |
+|arr_val_q0                |  in |   16|  ap_memory |      arr_val      |     array    |
+|arr_rows_dout             |  in |    4|   ap_fifo  |      arr_rows     |    pointer   |
+|arr_rows_empty_n          |  in |    1|   ap_fifo  |      arr_rows     |    pointer   |
+|arr_rows_read             | out |    1|   ap_fifo  |      arr_rows     |    pointer   |
+|arr_cols_dout             |  in |   10|   ap_fifo  |      arr_cols     |    pointer   |
+|arr_cols_empty_n          |  in |    1|   ap_fifo  |      arr_cols     |    pointer   |
+|arr_cols_read             | out |    1|   ap_fifo  |      arr_cols     |    pointer   |
+|mat_data_stream_V_din     | out |   16|   ap_fifo  | mat_data_stream_V |    pointer   |
+|mat_data_stream_V_full_n  |  in |    1|   ap_fifo  | mat_data_stream_V |    pointer   |
+|mat_data_stream_V_write   | out |    1|   ap_fifo  | mat_data_stream_V |    pointer   |
+|mat_rows_V_din            | out |    4|   ap_fifo  |     mat_rows_V    |    pointer   |
+|mat_rows_V_full_n         |  in |    1|   ap_fifo  |     mat_rows_V    |    pointer   |
+|mat_rows_V_write          | out |    1|   ap_fifo  |     mat_rows_V    |    pointer   |
+|mat_cols_V_din            | out |   10|   ap_fifo  |     mat_cols_V    |    pointer   |
+|mat_cols_V_full_n         |  in |    1|   ap_fifo  |     mat_cols_V    |    pointer   |
+|mat_cols_V_write          | out |    1|   ap_fifo  |     mat_cols_V    |    pointer   |
++--------------------------+-----+-----+------------+-------------------+--------------+
+

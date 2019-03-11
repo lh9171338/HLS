@@ -1,0 +1,518 @@
+
+
+================================================================
+== Vivado HLS Report for 'Conv8'
+================================================================
+* Date:           Tue Dec  4 09:54:32 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        CNN
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.677|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +------+------+------+------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    |  min |  max |  min |  max |   Type  |
+    +------+------+------+------+---------+
+    |  1009|  1009|  1009|  1009|   none  |
+    +------+------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+        |             |   Latency   | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |  min |  max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+        |- Loop 1     |  1008|  1008|        36|          -|          -|    28|    no    |
+        | + Loop 1.1  |    33|    33|         7|          1|          1|    28|    yes   |
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 7
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 10
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 7, States = { 3 4 5 6 7 8 9 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (!exitcond)
+3 --> 
+	4  / true
+4 --> 
+	10  / (exitcond1)
+	5  / (!exitcond1)
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	3  / true
+10 --> 
+	2  / true
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.97>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%BlockBuffer_val_0_V = alloca i32"   --->   Operation 11 'alloca' 'BlockBuffer_val_0_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%BlockBuffer_val_0_V_3 = alloca i32"   --->   Operation 12 'alloca' 'BlockBuffer_val_0_V_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%BlockBuffer_val_0_V_4 = alloca i32"   --->   Operation 13 'alloca' 'BlockBuffer_val_0_V_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%BlockBuffer_val_0_V_5 = alloca i32"   --->   Operation 14 'alloca' 'BlockBuffer_val_0_V_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%BlockBuffer_val_1_V = alloca i32"   --->   Operation 15 'alloca' 'BlockBuffer_val_1_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%BlockBuffer_val_1_V_3 = alloca i32"   --->   Operation 16 'alloca' 'BlockBuffer_val_1_V_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%BlockBuffer_val_1_V_4 = alloca i32"   --->   Operation 17 'alloca' 'BlockBuffer_val_1_V_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%BlockBuffer_val_1_V_5 = alloca i32"   --->   Operation 18 'alloca' 'BlockBuffer_val_1_V_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%BlockBuffer_val_2_V = alloca i32"   --->   Operation 19 'alloca' 'BlockBuffer_val_2_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%BlockBuffer_val_2_V_1 = alloca i32"   --->   Operation 20 'alloca' 'BlockBuffer_val_2_V_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%BlockBuffer_val_2_V_2 = alloca i32"   --->   Operation 21 'alloca' 'BlockBuffer_val_2_V_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%BlockBuffer_val_2_V_3 = alloca i32"   --->   Operation 22 'alloca' 'BlockBuffer_val_2_V_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%BlockBuffer_val_3_V = alloca i32"   --->   Operation 23 'alloca' 'BlockBuffer_val_3_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%BlockBuffer_val_3_V_1 = alloca i32"   --->   Operation 24 'alloca' 'BlockBuffer_val_3_V_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%BlockBuffer_val_3_V_2 = alloca i32"   --->   Operation 25 'alloca' 'BlockBuffer_val_3_V_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%BlockBuffer_val_3_V_3 = alloca i32"   --->   Operation 26 'alloca' 'BlockBuffer_val_3_V_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%BlockBuffer_val_4_V = alloca i32"   --->   Operation 27 'alloca' 'BlockBuffer_val_4_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%BlockBuffer_val_4_V_1 = alloca i32"   --->   Operation 28 'alloca' 'BlockBuffer_val_4_V_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%BlockBuffer_val_4_V_2 = alloca i32"   --->   Operation 29 'alloca' 'BlockBuffer_val_4_V_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%BlockBuffer_val_4_V_3 = alloca i32"   --->   Operation 30 'alloca' 'BlockBuffer_val_4_V_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%kernel_val_4_V_4_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_4_V_4_read)"   --->   Operation 31 'read' 'kernel_val_4_V_4_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%kernel_val_4_V_3_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_4_V_3_read)"   --->   Operation 32 'read' 'kernel_val_4_V_3_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%kernel_val_4_V_2_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_4_V_2_read)"   --->   Operation 33 'read' 'kernel_val_4_V_2_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%kernel_val_4_V_1_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_4_V_1_read)"   --->   Operation 34 'read' 'kernel_val_4_V_1_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%kernel_val_4_V_0_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_4_V_0_read)"   --->   Operation 35 'read' 'kernel_val_4_V_0_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%kernel_val_3_V_4_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_3_V_4_read)"   --->   Operation 36 'read' 'kernel_val_3_V_4_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%kernel_val_3_V_3_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_3_V_3_read)"   --->   Operation 37 'read' 'kernel_val_3_V_3_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%kernel_val_3_V_2_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_3_V_2_read)"   --->   Operation 38 'read' 'kernel_val_3_V_2_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%kernel_val_3_V_1_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_3_V_1_read)"   --->   Operation 39 'read' 'kernel_val_3_V_1_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%kernel_val_3_V_0_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_3_V_0_read)"   --->   Operation 40 'read' 'kernel_val_3_V_0_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 41 [1/1] (0.00ns)   --->   "%kernel_val_2_V_4_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_2_V_4_read)"   --->   Operation 41 'read' 'kernel_val_2_V_4_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 42 [1/1] (0.00ns)   --->   "%kernel_val_2_V_3_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_2_V_3_read)"   --->   Operation 42 'read' 'kernel_val_2_V_3_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 43 [1/1] (0.00ns)   --->   "%kernel_val_2_V_2_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_2_V_2_read)"   --->   Operation 43 'read' 'kernel_val_2_V_2_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 44 [1/1] (0.00ns)   --->   "%kernel_val_2_V_1_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_2_V_1_read)"   --->   Operation 44 'read' 'kernel_val_2_V_1_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 45 [1/1] (0.00ns)   --->   "%kernel_val_2_V_0_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_2_V_0_read)"   --->   Operation 45 'read' 'kernel_val_2_V_0_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 46 [1/1] (0.00ns)   --->   "%kernel_val_1_V_4_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_1_V_4_read)"   --->   Operation 46 'read' 'kernel_val_1_V_4_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 47 [1/1] (0.00ns)   --->   "%kernel_val_1_V_3_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_1_V_3_read)"   --->   Operation 47 'read' 'kernel_val_1_V_3_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 48 [1/1] (0.00ns)   --->   "%kernel_val_1_V_2_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_1_V_2_read)"   --->   Operation 48 'read' 'kernel_val_1_V_2_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 49 [1/1] (0.00ns)   --->   "%kernel_val_1_V_1_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_1_V_1_read)"   --->   Operation 49 'read' 'kernel_val_1_V_1_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%kernel_val_1_V_0_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_1_V_0_read)"   --->   Operation 50 'read' 'kernel_val_1_V_0_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 51 [1/1] (0.00ns)   --->   "%kernel_val_0_V_4_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_0_V_4_read)"   --->   Operation 51 'read' 'kernel_val_0_V_4_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%kernel_val_0_V_3_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_0_V_3_read)"   --->   Operation 52 'read' 'kernel_val_0_V_3_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 53 [1/1] (0.00ns)   --->   "%kernel_val_0_V_2_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_0_V_2_read)"   --->   Operation 53 'read' 'kernel_val_0_V_2_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 54 [1/1] (0.00ns)   --->   "%kernel_val_0_V_1_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_0_V_1_read)"   --->   Operation 54 'read' 'kernel_val_0_V_1_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 55 [1/1] (0.00ns)   --->   "%kernel_val_0_V_0_r = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %kernel_val_0_V_0_read)"   --->   Operation 55 'read' 'kernel_val_0_V_0_r' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 56 [1/1] (0.00ns)   --->   "%LineBuffer_val_1_V = alloca [28 x i32], align 4" [./cnn.h:51]   --->   Operation 56 'alloca' 'LineBuffer_val_1_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_1 : Operation 57 [1/1] (0.00ns)   --->   "%LineBuffer_val_2_V = alloca [28 x i32], align 4" [./cnn.h:51]   --->   Operation 57 'alloca' 'LineBuffer_val_2_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_1 : Operation 58 [1/1] (0.00ns)   --->   "%LineBuffer_val_3_V = alloca [28 x i32], align 4" [./cnn.h:51]   --->   Operation 58 'alloca' 'LineBuffer_val_3_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_1 : Operation 59 [1/1] (0.00ns)   --->   "%LineBuffer_val_4_V = alloca [28 x i24], align 4" [./cnn.h:51]   --->   Operation 59 'alloca' 'LineBuffer_val_4_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_1 : Operation 60 [1/1] (0.00ns)   --->   "%OP2_V_0_cast = sext i32 %kernel_val_4_V_4_r to i48" [./cnn.h:92]   --->   Operation 60 'sext' 'OP2_V_0_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 61 [1/1] (0.00ns)   --->   "%OP2_V_0_1 = sext i32 %kernel_val_4_V_3_r to i48" [./cnn.h:92]   --->   Operation 61 'sext' 'OP2_V_0_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 62 [1/1] (0.00ns)   --->   "%OP2_V_0_2 = sext i32 %kernel_val_4_V_2_r to i48" [./cnn.h:92]   --->   Operation 62 'sext' 'OP2_V_0_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 63 [1/1] (0.00ns)   --->   "%OP2_V_0_3 = sext i32 %kernel_val_4_V_1_r to i48" [./cnn.h:92]   --->   Operation 63 'sext' 'OP2_V_0_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 64 [1/1] (0.00ns)   --->   "%OP2_V_0_4 = sext i32 %kernel_val_4_V_0_r to i48" [./cnn.h:92]   --->   Operation 64 'sext' 'OP2_V_0_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 65 [1/1] (0.00ns)   --->   "%OP2_V_1 = sext i32 %kernel_val_3_V_4_r to i48" [./cnn.h:92]   --->   Operation 65 'sext' 'OP2_V_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 66 [1/1] (0.00ns)   --->   "%OP2_V_1_1 = sext i32 %kernel_val_3_V_3_r to i48" [./cnn.h:92]   --->   Operation 66 'sext' 'OP2_V_1_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 67 [1/1] (0.00ns)   --->   "%OP2_V_1_2 = sext i32 %kernel_val_3_V_2_r to i48" [./cnn.h:92]   --->   Operation 67 'sext' 'OP2_V_1_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 68 [1/1] (0.00ns)   --->   "%OP2_V_1_3 = sext i32 %kernel_val_3_V_1_r to i48" [./cnn.h:92]   --->   Operation 68 'sext' 'OP2_V_1_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 69 [1/1] (0.00ns)   --->   "%OP2_V_1_4 = sext i32 %kernel_val_3_V_0_r to i48" [./cnn.h:92]   --->   Operation 69 'sext' 'OP2_V_1_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 70 [1/1] (0.00ns)   --->   "%OP2_V_2 = sext i32 %kernel_val_2_V_4_r to i48" [./cnn.h:92]   --->   Operation 70 'sext' 'OP2_V_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 71 [1/1] (0.00ns)   --->   "%OP2_V_2_1 = sext i32 %kernel_val_2_V_3_r to i48" [./cnn.h:92]   --->   Operation 71 'sext' 'OP2_V_2_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 72 [1/1] (0.00ns)   --->   "%OP2_V_2_2 = sext i32 %kernel_val_2_V_2_r to i48" [./cnn.h:92]   --->   Operation 72 'sext' 'OP2_V_2_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 73 [1/1] (0.00ns)   --->   "%OP2_V_2_3 = sext i32 %kernel_val_2_V_1_r to i48" [./cnn.h:92]   --->   Operation 73 'sext' 'OP2_V_2_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 74 [1/1] (0.00ns)   --->   "%OP2_V_2_4 = sext i32 %kernel_val_2_V_0_r to i48" [./cnn.h:92]   --->   Operation 74 'sext' 'OP2_V_2_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 75 [1/1] (0.00ns)   --->   "%OP2_V_3 = sext i32 %kernel_val_1_V_4_r to i48" [./cnn.h:92]   --->   Operation 75 'sext' 'OP2_V_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 76 [1/1] (0.00ns)   --->   "%OP2_V_3_1 = sext i32 %kernel_val_1_V_3_r to i48" [./cnn.h:92]   --->   Operation 76 'sext' 'OP2_V_3_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 77 [1/1] (0.00ns)   --->   "%OP2_V_3_2 = sext i32 %kernel_val_1_V_2_r to i48" [./cnn.h:92]   --->   Operation 77 'sext' 'OP2_V_3_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 78 [1/1] (0.00ns)   --->   "%OP2_V_3_3 = sext i32 %kernel_val_1_V_1_r to i48" [./cnn.h:92]   --->   Operation 78 'sext' 'OP2_V_3_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 79 [1/1] (0.00ns)   --->   "%OP2_V_3_4 = sext i32 %kernel_val_1_V_0_r to i48" [./cnn.h:92]   --->   Operation 79 'sext' 'OP2_V_3_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 80 [1/1] (0.00ns)   --->   "%OP2_V_4 = sext i32 %kernel_val_0_V_4_r to i48" [./cnn.h:92]   --->   Operation 80 'sext' 'OP2_V_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 81 [1/1] (0.00ns)   --->   "%OP2_V_4_1 = sext i32 %kernel_val_0_V_3_r to i48" [./cnn.h:92]   --->   Operation 81 'sext' 'OP2_V_4_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 82 [1/1] (0.00ns)   --->   "%OP2_V_4_2 = sext i32 %kernel_val_0_V_2_r to i48" [./cnn.h:92]   --->   Operation 82 'sext' 'OP2_V_4_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 83 [1/1] (0.00ns)   --->   "%OP2_V_4_3 = sext i32 %kernel_val_0_V_1_r to i48" [./cnn.h:92]   --->   Operation 83 'sext' 'OP2_V_4_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 84 [1/1] (0.00ns)   --->   "%OP2_V_4_4 = sext i32 %kernel_val_0_V_0_r to i48" [./cnn.h:92]   --->   Operation 84 'sext' 'OP2_V_4_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 85 [1/1] (0.97ns)   --->   "br label %.loopexit" [./cnn.h:59]   --->   Operation 85 'br' <Predicate = true> <Delay = 0.97>
+
+State 2 <SV = 1> <Delay = 2.40>
+ST_2 : Operation 86 [1/1] (0.00ns)   --->   "%i = phi i5 [ 0, %0 ], [ %i_13, %.loopexit.loopexit ]"   --->   Operation 86 'phi' 'i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 87 [1/1] (0.00ns)   --->   "%i_cast = zext i5 %i to i6" [./cnn.h:59]   --->   Operation 87 'zext' 'i_cast' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 88 [1/1] (0.86ns)   --->   "%exitcond = icmp eq i5 %i, -4" [./cnn.h:59]   --->   Operation 88 'icmp' 'exitcond' <Predicate = true> <Delay = 0.86> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.63> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 89 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 28, i64 28, i64 28)"   --->   Operation 89 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 90 [1/1] (1.13ns)   --->   "%i_13 = add i5 %i, 1" [./cnn.h:59]   --->   Operation 90 'add' 'i_13' <Predicate = true> <Delay = 1.13> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 91 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %1, label %.preheader57.preheader" [./cnn.h:59]   --->   Operation 91 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 92 [1/1] (0.00ns)   --->   "%tmp = call i10 @_ssdm_op_BitConcatenate.i10.i5.i5(i5 %i, i5 0)" [./cnn.h:59]   --->   Operation 92 'bitconcatenate' 'tmp' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 93 [1/1] (0.00ns)   --->   "%p_shl2_cast = zext i10 %tmp to i11" [./cnn.h:59]   --->   Operation 93 'zext' 'p_shl2_cast' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 94 [1/1] (0.00ns)   --->   "%tmp_s = call i7 @_ssdm_op_BitConcatenate.i7.i5.i2(i5 %i, i2 0)" [./cnn.h:59]   --->   Operation 94 'bitconcatenate' 'tmp_s' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 95 [1/1] (0.00ns)   --->   "%p_shl3_cast = zext i7 %tmp_s to i11" [./cnn.h:70]   --->   Operation 95 'zext' 'p_shl3_cast' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 96 [1/1] (1.27ns)   --->   "%tmp_161 = sub i11 %p_shl2_cast, %p_shl3_cast" [./cnn.h:70]   --->   Operation 96 'sub' 'tmp_161' <Predicate = (!exitcond)> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 97 [1/1] (0.00ns)   --->   "%tmp_207 = call i3 @_ssdm_op_PartSelect.i3.i5.i32.i32(i5 %i, i32 2, i32 4)" [./cnn.h:88]   --->   Operation 97 'partselect' 'tmp_207' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 98 [1/1] (0.63ns)   --->   "%icmp = icmp ne i3 %tmp_207, 0" [./cnn.h:88]   --->   Operation 98 'icmp' 'icmp' <Predicate = (!exitcond)> <Delay = 0.63> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.63> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 99 [1/1] (1.13ns)   --->   "%tmp_142 = add i6 %i_cast, -4" [./cnn.h:95]   --->   Operation 99 'add' 'tmp_142' <Predicate = (!exitcond)> <Delay = 1.13> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 100 [1/1] (0.00ns)   --->   "%tmp_162 = call i11 @_ssdm_op_BitConcatenate.i11.i6.i5(i6 %tmp_142, i5 0)" [./cnn.h:95]   --->   Operation 100 'bitconcatenate' 'tmp_162' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 101 [1/1] (0.00ns)   --->   "%tmp_163 = call i9 @_ssdm_op_BitConcatenate.i9.i6.i3(i6 %tmp_142, i3 0)" [./cnn.h:95]   --->   Operation 101 'bitconcatenate' 'tmp_163' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 102 [1/1] (0.00ns)   --->   "%p_shl1_cast = sext i9 %tmp_163 to i11" [./cnn.h:95]   --->   Operation 102 'sext' 'p_shl1_cast' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 103 [1/1] (1.26ns)   --->   "%tmp_164 = sub i11 %tmp_162, %p_shl1_cast" [./cnn.h:95]   --->   Operation 103 'sub' 'tmp_164' <Predicate = (!exitcond)> <Delay = 1.26> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 104 [1/1] (0.97ns)   --->   "br label %.preheader57" [./cnn.h:60]   --->   Operation 104 'br' <Predicate = (!exitcond)> <Delay = 0.97>
+ST_2 : Operation 105 [1/1] (0.00ns)   --->   "ret void" [./cnn.h:99]   --->   Operation 105 'ret' <Predicate = (exitcond)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 3.26>
+ST_3 : Operation 106 [1/1] (0.00ns)   --->   "%j = phi i5 [ 0, %.preheader57.preheader ], [ %j_11, %._crit_edge ]"   --->   Operation 106 'phi' 'j' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 107 [1/1] (0.86ns)   --->   "%exitcond1 = icmp eq i5 %j, -4" [./cnn.h:60]   --->   Operation 107 'icmp' 'exitcond1' <Predicate = true> <Delay = 0.86> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.63> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 108 [1/1] (1.13ns)   --->   "%j_11 = add i5 %j, 1" [./cnn.h:60]   --->   Operation 108 'add' 'j_11' <Predicate = true> <Delay = 1.13> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 109 [1/1] (0.00ns)   --->   "%tmp_144 = zext i5 %j to i64" [./cnn.h:67]   --->   Operation 109 'zext' 'tmp_144' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 110 [1/1] (0.00ns)   --->   "%tmp_144_cast = zext i5 %j to i11" [./cnn.h:70]   --->   Operation 110 'zext' 'tmp_144_cast' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 111 [1/1] (1.26ns)   --->   "%tmp_165 = add i11 %tmp_161, %tmp_144_cast" [./cnn.h:70]   --->   Operation 111 'add' 'tmp_165' <Predicate = (!exitcond1)> <Delay = 1.26> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 112 [1/1] (0.00ns)   --->   "%tmp_181_cast = sext i11 %tmp_165 to i64" [./cnn.h:70]   --->   Operation 112 'sext' 'tmp_181_cast' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 113 [1/1] (0.00ns)   --->   "%src_0_val_V_addr = getelementptr [784 x i24]* %src_0_val_V, i64 0, i64 %tmp_181_cast" [./cnn.h:70]   --->   Operation 113 'getelementptr' 'src_0_val_V_addr' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 114 [1/1] (0.00ns)   --->   "%LineBuffer_val_1_V_s = getelementptr [28 x i32]* %LineBuffer_val_1_V, i64 0, i64 %tmp_144" [./cnn.h:67]   --->   Operation 114 'getelementptr' 'LineBuffer_val_1_V_s' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 115 [2/2] (1.09ns)   --->   "%BlockBuffer_val_0_V_9 = load i32* %LineBuffer_val_1_V_s, align 4" [./cnn.h:67]   --->   Operation 115 'load' 'BlockBuffer_val_0_V_9' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_3 : Operation 116 [1/1] (0.00ns)   --->   "%LineBuffer_val_2_V_s = getelementptr [28 x i32]* %LineBuffer_val_2_V, i64 0, i64 %tmp_144" [./cnn.h:67]   --->   Operation 116 'getelementptr' 'LineBuffer_val_2_V_s' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 117 [2/2] (1.09ns)   --->   "%BlockBuffer_val_1_V_9 = load i32* %LineBuffer_val_2_V_s, align 4" [./cnn.h:67]   --->   Operation 117 'load' 'BlockBuffer_val_1_V_9' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_3 : Operation 118 [1/1] (0.00ns)   --->   "%LineBuffer_val_3_V_s = getelementptr [28 x i32]* %LineBuffer_val_3_V, i64 0, i64 %tmp_144" [./cnn.h:67]   --->   Operation 118 'getelementptr' 'LineBuffer_val_3_V_s' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 119 [2/2] (1.09ns)   --->   "%BlockBuffer_val_2_V_7 = load i32* %LineBuffer_val_3_V_s, align 4" [./cnn.h:67]   --->   Operation 119 'load' 'BlockBuffer_val_2_V_7' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_3 : Operation 120 [1/1] (0.00ns)   --->   "%LineBuffer_val_4_V_s = getelementptr [28 x i24]* %LineBuffer_val_4_V, i64 0, i64 %tmp_144" [./cnn.h:67]   --->   Operation 120 'getelementptr' 'LineBuffer_val_4_V_s' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 121 [2/2] (1.09ns)   --->   "%LineBuffer_val_4_V_1 = load i24* %LineBuffer_val_4_V_s, align 4" [./cnn.h:67]   --->   Operation 121 'load' 'LineBuffer_val_4_V_1' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_3 : Operation 122 [2/2] (1.99ns)   --->   "%src_0_val_V_load = load i24* %src_0_val_V_addr, align 4" [./cnn.h:70]   --->   Operation 122 'load' 'src_0_val_V_load' <Predicate = (!exitcond1)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_3 : Operation 123 [1/1] (0.00ns)   --->   "%tmp_208 = call i3 @_ssdm_op_PartSelect.i3.i5.i32.i32(i5 %j, i32 2, i32 4)" [./cnn.h:88]   --->   Operation 123 'partselect' 'tmp_208' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 124 [1/1] (0.63ns)   --->   "%icmp2 = icmp ne i3 %tmp_208, 0" [./cnn.h:88]   --->   Operation 124 'icmp' 'icmp2' <Predicate = (!exitcond1)> <Delay = 0.63> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.63> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 125 [1/1] (0.46ns)   --->   "%or_cond = and i1 %icmp, %icmp2" [./cnn.h:88]   --->   Operation 125 'and' 'or_cond' <Predicate = (!exitcond1)> <Delay = 0.46> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 126 [1/1] (0.00ns)   --->   "br i1 %or_cond, label %.preheader.preheader.0, label %._crit_edge" [./cnn.h:88]   --->   Operation 126 'br' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_3 : Operation 127 [1/1] (1.13ns)   --->   "%tmp_146 = add i5 %j, -4" [./cnn.h:95]   --->   Operation 127 'add' 'tmp_146' <Predicate = (!exitcond1 & or_cond)> <Delay = 1.13> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 4 <SV = 3> <Delay = 8.33>
+ST_4 : Operation 128 [1/1] (0.00ns)   --->   "%BlockBuffer_val_0_V_6 = load i32* %BlockBuffer_val_0_V_3"   --->   Operation 128 'load' 'BlockBuffer_val_0_V_6' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 129 [1/1] (0.00ns)   --->   "%BlockBuffer_val_0_V_7 = load i32* %BlockBuffer_val_0_V_4"   --->   Operation 129 'load' 'BlockBuffer_val_0_V_7' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 130 [1/1] (0.00ns)   --->   "%BlockBuffer_val_0_V_8 = load i32* %BlockBuffer_val_0_V_5"   --->   Operation 130 'load' 'BlockBuffer_val_0_V_8' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 131 [1/1] (0.00ns)   --->   "%BlockBuffer_val_1_V_6 = load i32* %BlockBuffer_val_1_V_3"   --->   Operation 131 'load' 'BlockBuffer_val_1_V_6' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 132 [1/1] (0.00ns)   --->   "%BlockBuffer_val_1_V_7 = load i32* %BlockBuffer_val_1_V_4"   --->   Operation 132 'load' 'BlockBuffer_val_1_V_7' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 133 [1/1] (0.00ns)   --->   "%BlockBuffer_val_1_V_8 = load i32* %BlockBuffer_val_1_V_5"   --->   Operation 133 'load' 'BlockBuffer_val_1_V_8' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 134 [1/1] (0.00ns)   --->   "%BlockBuffer_val_2_V_4 = load i32* %BlockBuffer_val_2_V_1"   --->   Operation 134 'load' 'BlockBuffer_val_2_V_4' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 135 [1/1] (0.00ns)   --->   "%BlockBuffer_val_2_V_5 = load i32* %BlockBuffer_val_2_V_2"   --->   Operation 135 'load' 'BlockBuffer_val_2_V_5' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 136 [1/1] (0.00ns)   --->   "%BlockBuffer_val_2_V_6 = load i32* %BlockBuffer_val_2_V_3"   --->   Operation 136 'load' 'BlockBuffer_val_2_V_6' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 137 [1/1] (0.00ns)   --->   "%BlockBuffer_val_3_V_4 = load i32* %BlockBuffer_val_3_V_1"   --->   Operation 137 'load' 'BlockBuffer_val_3_V_4' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 138 [1/1] (0.00ns)   --->   "%BlockBuffer_val_3_V_5 = load i32* %BlockBuffer_val_3_V_2"   --->   Operation 138 'load' 'BlockBuffer_val_3_V_5' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 139 [1/1] (0.00ns)   --->   "%BlockBuffer_val_3_V_6 = load i32* %BlockBuffer_val_3_V_3"   --->   Operation 139 'load' 'BlockBuffer_val_3_V_6' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 140 [1/1] (0.00ns)   --->   "%BlockBuffer_val_4_V_4 = load i32* %BlockBuffer_val_4_V_1"   --->   Operation 140 'load' 'BlockBuffer_val_4_V_4' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 141 [1/1] (0.00ns)   --->   "%BlockBuffer_val_4_V_5 = load i32* %BlockBuffer_val_4_V_2"   --->   Operation 141 'load' 'BlockBuffer_val_4_V_5' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 142 [1/1] (0.00ns)   --->   "%BlockBuffer_val_4_V_6 = load i32* %BlockBuffer_val_4_V_3"   --->   Operation 142 'load' 'BlockBuffer_val_4_V_6' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 143 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 28, i64 28, i64 28)"   --->   Operation 143 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 144 [1/1] (0.00ns)   --->   "br i1 %exitcond1, label %.loopexit.loopexit, label %.preheader56.preheader" [./cnn.h:60]   --->   Operation 144 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 145 [1/1] (0.00ns)   --->   "%tmp_143 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str66)" [./cnn.h:60]   --->   Operation 145 'specregionbegin' 'tmp_143' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 146 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [./cnn.h:63]   --->   Operation 146 'specpipeline' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 147 [1/2] (1.09ns)   --->   "%BlockBuffer_val_0_V_9 = load i32* %LineBuffer_val_1_V_s, align 4" [./cnn.h:67]   --->   Operation 147 'load' 'BlockBuffer_val_0_V_9' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_4 : Operation 148 [1/2] (1.09ns)   --->   "%BlockBuffer_val_1_V_9 = load i32* %LineBuffer_val_2_V_s, align 4" [./cnn.h:67]   --->   Operation 148 'load' 'BlockBuffer_val_1_V_9' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_4 : Operation 149 [1/2] (1.09ns)   --->   "%BlockBuffer_val_2_V_7 = load i32* %LineBuffer_val_3_V_s, align 4" [./cnn.h:67]   --->   Operation 149 'load' 'BlockBuffer_val_2_V_7' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_4 : Operation 150 [1/2] (1.09ns)   --->   "%LineBuffer_val_4_V_1 = load i24* %LineBuffer_val_4_V_s, align 4" [./cnn.h:67]   --->   Operation 150 'load' 'LineBuffer_val_4_V_1' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_4 : Operation 151 [1/1] (0.00ns)   --->   "%BlockBuffer_val_3_V_7 = zext i24 %LineBuffer_val_4_V_1 to i32" [./cnn.h:67]   --->   Operation 151 'zext' 'BlockBuffer_val_3_V_7' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 152 [1/2] (1.99ns)   --->   "%src_0_val_V_load = load i24* %src_0_val_V_addr, align 4" [./cnn.h:70]   --->   Operation 152 'load' 'src_0_val_V_load' <Predicate = (!exitcond1)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_4 : Operation 153 [1/1] (0.00ns)   --->   "%BlockBuffer_val_4_V_7 = zext i24 %src_0_val_V_load to i32" [./cnn.h:70]   --->   Operation 153 'zext' 'BlockBuffer_val_4_V_7' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 154 [1/1] (1.09ns)   --->   "store i32 %BlockBuffer_val_1_V_9, i32* %LineBuffer_val_1_V_s, align 4" [./cnn.h:73]   --->   Operation 154 'store' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_4 : Operation 155 [1/1] (1.09ns)   --->   "store i32 %BlockBuffer_val_2_V_7, i32* %LineBuffer_val_2_V_s, align 4" [./cnn.h:73]   --->   Operation 155 'store' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_4 : Operation 156 [1/1] (1.09ns)   --->   "store i32 %BlockBuffer_val_3_V_7, i32* %LineBuffer_val_3_V_s, align 4" [./cnn.h:73]   --->   Operation 156 'store' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_4 : Operation 157 [1/1] (1.09ns)   --->   "store i24 %src_0_val_V_load, i24* %LineBuffer_val_4_V_s, align 4" [./cnn.h:73]   --->   Operation 157 'store' <Predicate = (!exitcond1)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_4 : Operation 158 [1/1] (0.00ns)   --->   "%BlockBuffer_val_0_V_10 = load i32* %BlockBuffer_val_0_V" [./cnn.h:92]   --->   Operation 158 'load' 'BlockBuffer_val_0_V_10' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 159 [1/1] (0.00ns)   --->   "%BlockBuffer_val_1_V_10 = load i32* %BlockBuffer_val_1_V" [./cnn.h:92]   --->   Operation 159 'load' 'BlockBuffer_val_1_V_10' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 160 [1/1] (0.00ns)   --->   "%OP1_V_0_cast = sext i32 %BlockBuffer_val_0_V_10 to i48" [./cnn.h:92]   --->   Operation 160 'sext' 'OP1_V_0_cast' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 161 [1/1] (5.02ns)   --->   "%p_Val2_s = mul i48 %OP2_V_0_cast, %OP1_V_0_cast" [./cnn.h:92]   --->   Operation 161 'mul' 'p_Val2_s' <Predicate = (!exitcond1 & or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 162 [1/1] (0.00ns)   --->   "%OP1_V_0_1 = sext i32 %BlockBuffer_val_0_V_6 to i48" [./cnn.h:92]   --->   Operation 162 'sext' 'OP1_V_0_1' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 163 [1/1] (5.02ns)   --->   "%p_Val2_73_0_1 = mul i48 %OP2_V_0_1, %OP1_V_0_1" [./cnn.h:92]   --->   Operation 163 'mul' 'p_Val2_73_0_1' <Predicate = (!exitcond1 & or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 164 [1/1] (0.00ns)   --->   "%tmp_166 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_s, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 164 'partselect' 'tmp_166' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 165 [1/1] (0.00ns)   --->   "%tmp_412_0_1 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_166, i16 0)" [./cnn.h:92]   --->   Operation 165 'bitconcatenate' 'tmp_412_0_1' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 166 [1/1] (1.65ns)   --->   "%p_Val2_74_0_1 = add i48 %tmp_412_0_1, %p_Val2_73_0_1" [./cnn.h:92]   --->   Operation 166 'add' 'p_Val2_74_0_1' <Predicate = (!exitcond1 & or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 167 [1/1] (0.00ns)   --->   "%OP1_V_0_2 = sext i32 %BlockBuffer_val_0_V_7 to i48" [./cnn.h:92]   --->   Operation 167 'sext' 'OP1_V_0_2' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 168 [1/1] (5.02ns)   --->   "%p_Val2_73_0_2 = mul i48 %OP2_V_0_2, %OP1_V_0_2" [./cnn.h:92]   --->   Operation 168 'mul' 'p_Val2_73_0_2' <Predicate = (!exitcond1 & or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 169 [1/1] (0.00ns)   --->   "%tmp_167 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_0_1, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 169 'partselect' 'tmp_167' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 170 [1/1] (0.00ns)   --->   "%tmp_412_0_2 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_167, i16 0)" [./cnn.h:92]   --->   Operation 170 'bitconcatenate' 'tmp_412_0_2' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 171 [1/1] (1.65ns)   --->   "%p_Val2_74_0_2 = add i48 %tmp_412_0_2, %p_Val2_73_0_2" [./cnn.h:92]   --->   Operation 171 'add' 'p_Val2_74_0_2' <Predicate = (!exitcond1 & or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 172 [1/1] (0.00ns)   --->   "%OP1_V_0_3 = sext i32 %BlockBuffer_val_0_V_8 to i48" [./cnn.h:92]   --->   Operation 172 'sext' 'OP1_V_0_3' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 173 [1/1] (5.02ns)   --->   "%p_Val2_73_0_3 = mul i48 %OP2_V_0_3, %OP1_V_0_3" [./cnn.h:92]   --->   Operation 173 'mul' 'p_Val2_73_0_3' <Predicate = (!exitcond1 & or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 174 [1/1] (0.00ns)   --->   "%tmp_168 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_0_2, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 174 'partselect' 'tmp_168' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 175 [1/1] (0.00ns)   --->   "%OP1_V_0_4 = sext i32 %BlockBuffer_val_0_V_9 to i48" [./cnn.h:92]   --->   Operation 175 'sext' 'OP1_V_0_4' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 176 [1/1] (5.02ns)   --->   "%p_Val2_73_0_4 = mul i48 %OP2_V_0_4, %OP1_V_0_4" [./cnn.h:92]   --->   Operation 176 'mul' 'p_Val2_73_0_4' <Predicate = (!exitcond1 & or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 177 [1/1] (0.00ns)   --->   "%OP1_V_1 = sext i32 %BlockBuffer_val_1_V_10 to i48" [./cnn.h:92]   --->   Operation 177 'sext' 'OP1_V_1' <Predicate = (!exitcond1 & or_cond)> <Delay = 0.00>
+ST_4 : Operation 178 [1/1] (5.02ns)   --->   "%p_Val2_73_1 = mul i48 %OP2_V_1, %OP1_V_1" [./cnn.h:92]   --->   Operation 178 'mul' 'p_Val2_73_1' <Predicate = (!exitcond1 & or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 179 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_4_V_7, i32* %BlockBuffer_val_4_V_3" [./cnn.h:83]   --->   Operation 179 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 180 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_4_V_6, i32* %BlockBuffer_val_4_V_2" [./cnn.h:78]   --->   Operation 180 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 181 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_4_V_5, i32* %BlockBuffer_val_4_V_1" [./cnn.h:78]   --->   Operation 181 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 182 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_3_V_7, i32* %BlockBuffer_val_3_V_3" [./cnn.h:83]   --->   Operation 182 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 183 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_3_V_6, i32* %BlockBuffer_val_3_V_2" [./cnn.h:78]   --->   Operation 183 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 184 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_3_V_5, i32* %BlockBuffer_val_3_V_1" [./cnn.h:78]   --->   Operation 184 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 185 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_2_V_7, i32* %BlockBuffer_val_2_V_3" [./cnn.h:83]   --->   Operation 185 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 186 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_2_V_6, i32* %BlockBuffer_val_2_V_2" [./cnn.h:78]   --->   Operation 186 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 187 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_2_V_5, i32* %BlockBuffer_val_2_V_1" [./cnn.h:78]   --->   Operation 187 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 188 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_1_V_9, i32* %BlockBuffer_val_1_V_5" [./cnn.h:83]   --->   Operation 188 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 189 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_1_V_8, i32* %BlockBuffer_val_1_V_4" [./cnn.h:78]   --->   Operation 189 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 190 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_1_V_7, i32* %BlockBuffer_val_1_V_3" [./cnn.h:78]   --->   Operation 190 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 191 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_1_V_6, i32* %BlockBuffer_val_1_V" [./cnn.h:78]   --->   Operation 191 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 192 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_0_V_9, i32* %BlockBuffer_val_0_V_5" [./cnn.h:83]   --->   Operation 192 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 193 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_0_V_8, i32* %BlockBuffer_val_0_V_4" [./cnn.h:78]   --->   Operation 193 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 194 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_0_V_7, i32* %BlockBuffer_val_0_V_3" [./cnn.h:78]   --->   Operation 194 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_4 : Operation 195 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_0_V_6, i32* %BlockBuffer_val_0_V" [./cnn.h:78]   --->   Operation 195 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+
+State 5 <SV = 4> <Delay = 8.33>
+ST_5 : Operation 196 [1/1] (0.00ns)   --->   "%BlockBuffer_val_2_V_8 = load i32* %BlockBuffer_val_2_V" [./cnn.h:92]   --->   Operation 196 'load' 'BlockBuffer_val_2_V_8' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 197 [1/1] (0.00ns)   --->   "%tmp_412_0_3 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_168, i16 0)" [./cnn.h:92]   --->   Operation 197 'bitconcatenate' 'tmp_412_0_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 198 [1/1] (1.65ns)   --->   "%p_Val2_74_0_3 = add i48 %tmp_412_0_3, %p_Val2_73_0_3" [./cnn.h:92]   --->   Operation 198 'add' 'p_Val2_74_0_3' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 199 [1/1] (0.00ns)   --->   "%tmp_169 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_0_3, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 199 'partselect' 'tmp_169' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 200 [1/1] (0.00ns)   --->   "%tmp_412_0_4 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_169, i16 0)" [./cnn.h:92]   --->   Operation 200 'bitconcatenate' 'tmp_412_0_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 201 [1/1] (1.65ns)   --->   "%p_Val2_74_0_4 = add i48 %tmp_412_0_4, %p_Val2_73_0_4" [./cnn.h:92]   --->   Operation 201 'add' 'p_Val2_74_0_4' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 202 [1/1] (0.00ns)   --->   "%tmp_170 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_0_4, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 202 'partselect' 'tmp_170' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 203 [1/1] (0.00ns)   --->   "%tmp_412_1 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_170, i16 0)" [./cnn.h:92]   --->   Operation 203 'bitconcatenate' 'tmp_412_1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 204 [1/1] (1.65ns)   --->   "%p_Val2_74_1 = add i48 %tmp_412_1, %p_Val2_73_1" [./cnn.h:92]   --->   Operation 204 'add' 'p_Val2_74_1' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 205 [1/1] (0.00ns)   --->   "%OP1_V_1_1 = sext i32 %BlockBuffer_val_1_V_6 to i48" [./cnn.h:92]   --->   Operation 205 'sext' 'OP1_V_1_1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 206 [1/1] (5.02ns)   --->   "%p_Val2_73_1_1 = mul i48 %OP2_V_1_1, %OP1_V_1_1" [./cnn.h:92]   --->   Operation 206 'mul' 'p_Val2_73_1_1' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 207 [1/1] (0.00ns)   --->   "%tmp_171 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_1, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 207 'partselect' 'tmp_171' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 208 [1/1] (0.00ns)   --->   "%tmp_412_1_1 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_171, i16 0)" [./cnn.h:92]   --->   Operation 208 'bitconcatenate' 'tmp_412_1_1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 209 [1/1] (1.65ns)   --->   "%p_Val2_74_1_1 = add i48 %tmp_412_1_1, %p_Val2_73_1_1" [./cnn.h:92]   --->   Operation 209 'add' 'p_Val2_74_1_1' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 210 [1/1] (0.00ns)   --->   "%OP1_V_1_2 = sext i32 %BlockBuffer_val_1_V_7 to i48" [./cnn.h:92]   --->   Operation 210 'sext' 'OP1_V_1_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 211 [1/1] (5.02ns)   --->   "%p_Val2_73_1_2 = mul i48 %OP2_V_1_2, %OP1_V_1_2" [./cnn.h:92]   --->   Operation 211 'mul' 'p_Val2_73_1_2' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 212 [1/1] (0.00ns)   --->   "%tmp_172 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_1_1, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 212 'partselect' 'tmp_172' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 213 [1/1] (0.00ns)   --->   "%tmp_412_1_2 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_172, i16 0)" [./cnn.h:92]   --->   Operation 213 'bitconcatenate' 'tmp_412_1_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 214 [1/1] (1.65ns)   --->   "%p_Val2_74_1_2 = add i48 %tmp_412_1_2, %p_Val2_73_1_2" [./cnn.h:92]   --->   Operation 214 'add' 'p_Val2_74_1_2' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 215 [1/1] (0.00ns)   --->   "%OP1_V_1_3 = sext i32 %BlockBuffer_val_1_V_8 to i48" [./cnn.h:92]   --->   Operation 215 'sext' 'OP1_V_1_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 216 [1/1] (5.02ns)   --->   "%p_Val2_73_1_3 = mul i48 %OP2_V_1_3, %OP1_V_1_3" [./cnn.h:92]   --->   Operation 216 'mul' 'p_Val2_73_1_3' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 217 [1/1] (0.00ns)   --->   "%tmp_173 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_1_2, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 217 'partselect' 'tmp_173' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 218 [1/1] (0.00ns)   --->   "%OP1_V_1_4 = sext i32 %BlockBuffer_val_1_V_9 to i48" [./cnn.h:92]   --->   Operation 218 'sext' 'OP1_V_1_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 219 [1/1] (5.02ns)   --->   "%p_Val2_73_1_4 = mul i48 %OP2_V_1_4, %OP1_V_1_4" [./cnn.h:92]   --->   Operation 219 'mul' 'p_Val2_73_1_4' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 220 [1/1] (0.00ns)   --->   "%OP1_V_2 = sext i32 %BlockBuffer_val_2_V_8 to i48" [./cnn.h:92]   --->   Operation 220 'sext' 'OP1_V_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 221 [1/1] (5.02ns)   --->   "%p_Val2_73_2 = mul i48 %OP2_V_2, %OP1_V_2" [./cnn.h:92]   --->   Operation 221 'mul' 'p_Val2_73_2' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 222 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_2_V_4, i32* %BlockBuffer_val_2_V" [./cnn.h:78]   --->   Operation 222 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+
+State 6 <SV = 5> <Delay = 8.33>
+ST_6 : Operation 223 [1/1] (0.00ns)   --->   "%BlockBuffer_val_3_V_8 = load i32* %BlockBuffer_val_3_V" [./cnn.h:92]   --->   Operation 223 'load' 'BlockBuffer_val_3_V_8' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 224 [1/1] (0.00ns)   --->   "%tmp_412_1_3 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_173, i16 0)" [./cnn.h:92]   --->   Operation 224 'bitconcatenate' 'tmp_412_1_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 225 [1/1] (1.65ns)   --->   "%p_Val2_74_1_3 = add i48 %tmp_412_1_3, %p_Val2_73_1_3" [./cnn.h:92]   --->   Operation 225 'add' 'p_Val2_74_1_3' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 226 [1/1] (0.00ns)   --->   "%tmp_174 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_1_3, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 226 'partselect' 'tmp_174' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 227 [1/1] (0.00ns)   --->   "%tmp_412_1_4 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_174, i16 0)" [./cnn.h:92]   --->   Operation 227 'bitconcatenate' 'tmp_412_1_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 228 [1/1] (1.65ns)   --->   "%p_Val2_74_1_4 = add i48 %tmp_412_1_4, %p_Val2_73_1_4" [./cnn.h:92]   --->   Operation 228 'add' 'p_Val2_74_1_4' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 229 [1/1] (0.00ns)   --->   "%tmp_175 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_1_4, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 229 'partselect' 'tmp_175' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 230 [1/1] (0.00ns)   --->   "%tmp_412_2 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_175, i16 0)" [./cnn.h:92]   --->   Operation 230 'bitconcatenate' 'tmp_412_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 231 [1/1] (1.65ns)   --->   "%p_Val2_74_2 = add i48 %tmp_412_2, %p_Val2_73_2" [./cnn.h:92]   --->   Operation 231 'add' 'p_Val2_74_2' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 232 [1/1] (0.00ns)   --->   "%OP1_V_2_1 = sext i32 %BlockBuffer_val_2_V_4 to i48" [./cnn.h:92]   --->   Operation 232 'sext' 'OP1_V_2_1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 233 [1/1] (5.02ns)   --->   "%p_Val2_73_2_1 = mul i48 %OP2_V_2_1, %OP1_V_2_1" [./cnn.h:92]   --->   Operation 233 'mul' 'p_Val2_73_2_1' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 234 [1/1] (0.00ns)   --->   "%tmp_176 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_2, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 234 'partselect' 'tmp_176' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 235 [1/1] (0.00ns)   --->   "%tmp_412_2_1 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_176, i16 0)" [./cnn.h:92]   --->   Operation 235 'bitconcatenate' 'tmp_412_2_1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 236 [1/1] (1.65ns)   --->   "%p_Val2_74_2_1 = add i48 %tmp_412_2_1, %p_Val2_73_2_1" [./cnn.h:92]   --->   Operation 236 'add' 'p_Val2_74_2_1' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 237 [1/1] (0.00ns)   --->   "%OP1_V_2_2 = sext i32 %BlockBuffer_val_2_V_5 to i48" [./cnn.h:92]   --->   Operation 237 'sext' 'OP1_V_2_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 238 [1/1] (5.02ns)   --->   "%p_Val2_73_2_2 = mul i48 %OP2_V_2_2, %OP1_V_2_2" [./cnn.h:92]   --->   Operation 238 'mul' 'p_Val2_73_2_2' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 239 [1/1] (0.00ns)   --->   "%tmp_177 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_2_1, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 239 'partselect' 'tmp_177' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 240 [1/1] (0.00ns)   --->   "%tmp_412_2_2 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_177, i16 0)" [./cnn.h:92]   --->   Operation 240 'bitconcatenate' 'tmp_412_2_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 241 [1/1] (1.65ns)   --->   "%p_Val2_74_2_2 = add i48 %tmp_412_2_2, %p_Val2_73_2_2" [./cnn.h:92]   --->   Operation 241 'add' 'p_Val2_74_2_2' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 242 [1/1] (0.00ns)   --->   "%OP1_V_2_3 = sext i32 %BlockBuffer_val_2_V_6 to i48" [./cnn.h:92]   --->   Operation 242 'sext' 'OP1_V_2_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 243 [1/1] (5.02ns)   --->   "%p_Val2_73_2_3 = mul i48 %OP2_V_2_3, %OP1_V_2_3" [./cnn.h:92]   --->   Operation 243 'mul' 'p_Val2_73_2_3' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 244 [1/1] (0.00ns)   --->   "%tmp_178 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_2_2, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 244 'partselect' 'tmp_178' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 245 [1/1] (0.00ns)   --->   "%OP1_V_2_4 = sext i32 %BlockBuffer_val_2_V_7 to i48" [./cnn.h:92]   --->   Operation 245 'sext' 'OP1_V_2_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 246 [1/1] (5.02ns)   --->   "%p_Val2_73_2_4 = mul i48 %OP2_V_2_4, %OP1_V_2_4" [./cnn.h:92]   --->   Operation 246 'mul' 'p_Val2_73_2_4' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 247 [1/1] (0.00ns)   --->   "%OP1_V_3 = sext i32 %BlockBuffer_val_3_V_8 to i48" [./cnn.h:92]   --->   Operation 247 'sext' 'OP1_V_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_6 : Operation 248 [1/1] (5.02ns)   --->   "%p_Val2_73_3 = mul i48 %OP2_V_3, %OP1_V_3" [./cnn.h:92]   --->   Operation 248 'mul' 'p_Val2_73_3' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 249 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_3_V_4, i32* %BlockBuffer_val_3_V" [./cnn.h:78]   --->   Operation 249 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+
+State 7 <SV = 6> <Delay = 8.33>
+ST_7 : Operation 250 [1/1] (0.00ns)   --->   "%BlockBuffer_val_4_V_8 = load i32* %BlockBuffer_val_4_V" [./cnn.h:92]   --->   Operation 250 'load' 'BlockBuffer_val_4_V_8' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 251 [1/1] (0.00ns)   --->   "%tmp_412_2_3 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_178, i16 0)" [./cnn.h:92]   --->   Operation 251 'bitconcatenate' 'tmp_412_2_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 252 [1/1] (1.65ns)   --->   "%p_Val2_74_2_3 = add i48 %tmp_412_2_3, %p_Val2_73_2_3" [./cnn.h:92]   --->   Operation 252 'add' 'p_Val2_74_2_3' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 253 [1/1] (0.00ns)   --->   "%tmp_179 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_2_3, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 253 'partselect' 'tmp_179' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 254 [1/1] (0.00ns)   --->   "%tmp_412_2_4 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_179, i16 0)" [./cnn.h:92]   --->   Operation 254 'bitconcatenate' 'tmp_412_2_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 255 [1/1] (1.65ns)   --->   "%p_Val2_74_2_4 = add i48 %tmp_412_2_4, %p_Val2_73_2_4" [./cnn.h:92]   --->   Operation 255 'add' 'p_Val2_74_2_4' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 256 [1/1] (0.00ns)   --->   "%tmp_180 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_2_4, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 256 'partselect' 'tmp_180' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 257 [1/1] (0.00ns)   --->   "%tmp_412_3 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_180, i16 0)" [./cnn.h:92]   --->   Operation 257 'bitconcatenate' 'tmp_412_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 258 [1/1] (1.65ns)   --->   "%p_Val2_74_3 = add i48 %tmp_412_3, %p_Val2_73_3" [./cnn.h:92]   --->   Operation 258 'add' 'p_Val2_74_3' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 259 [1/1] (0.00ns)   --->   "%OP1_V_3_1 = sext i32 %BlockBuffer_val_3_V_4 to i48" [./cnn.h:92]   --->   Operation 259 'sext' 'OP1_V_3_1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 260 [1/1] (5.02ns)   --->   "%p_Val2_73_3_1 = mul i48 %OP2_V_3_1, %OP1_V_3_1" [./cnn.h:92]   --->   Operation 260 'mul' 'p_Val2_73_3_1' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 261 [1/1] (0.00ns)   --->   "%tmp_181 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_3, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 261 'partselect' 'tmp_181' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 262 [1/1] (0.00ns)   --->   "%tmp_412_3_1 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_181, i16 0)" [./cnn.h:92]   --->   Operation 262 'bitconcatenate' 'tmp_412_3_1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 263 [1/1] (1.65ns)   --->   "%p_Val2_74_3_1 = add i48 %tmp_412_3_1, %p_Val2_73_3_1" [./cnn.h:92]   --->   Operation 263 'add' 'p_Val2_74_3_1' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 264 [1/1] (0.00ns)   --->   "%OP1_V_3_2 = sext i32 %BlockBuffer_val_3_V_5 to i48" [./cnn.h:92]   --->   Operation 264 'sext' 'OP1_V_3_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 265 [1/1] (5.02ns)   --->   "%p_Val2_73_3_2 = mul i48 %OP2_V_3_2, %OP1_V_3_2" [./cnn.h:92]   --->   Operation 265 'mul' 'p_Val2_73_3_2' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 266 [1/1] (0.00ns)   --->   "%tmp_182 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_3_1, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 266 'partselect' 'tmp_182' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 267 [1/1] (0.00ns)   --->   "%tmp_412_3_2 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_182, i16 0)" [./cnn.h:92]   --->   Operation 267 'bitconcatenate' 'tmp_412_3_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 268 [1/1] (1.65ns)   --->   "%p_Val2_74_3_2 = add i48 %tmp_412_3_2, %p_Val2_73_3_2" [./cnn.h:92]   --->   Operation 268 'add' 'p_Val2_74_3_2' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 269 [1/1] (0.00ns)   --->   "%OP1_V_3_3 = sext i32 %BlockBuffer_val_3_V_6 to i48" [./cnn.h:92]   --->   Operation 269 'sext' 'OP1_V_3_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 270 [1/1] (5.02ns)   --->   "%p_Val2_73_3_3 = mul i48 %OP2_V_3_3, %OP1_V_3_3" [./cnn.h:92]   --->   Operation 270 'mul' 'p_Val2_73_3_3' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 271 [1/1] (0.00ns)   --->   "%tmp_183 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_3_2, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 271 'partselect' 'tmp_183' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 272 [1/1] (0.00ns)   --->   "%OP1_V_3_4 = zext i24 %LineBuffer_val_4_V_1 to i48" [./cnn.h:92]   --->   Operation 272 'zext' 'OP1_V_3_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 273 [1/1] (5.02ns)   --->   "%p_Val2_73_3_4 = mul i48 %OP2_V_3_4, %OP1_V_3_4" [./cnn.h:92]   --->   Operation 273 'mul' 'p_Val2_73_3_4' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 274 [1/1] (0.00ns)   --->   "%OP1_V_4 = sext i32 %BlockBuffer_val_4_V_8 to i48" [./cnn.h:92]   --->   Operation 274 'sext' 'OP1_V_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_7 : Operation 275 [1/1] (5.02ns)   --->   "%p_Val2_73_4 = mul i48 %OP2_V_4, %OP1_V_4" [./cnn.h:92]   --->   Operation 275 'mul' 'p_Val2_73_4' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 276 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str66, i32 %tmp_143)" [./cnn.h:97]   --->   Operation 276 'specregionend' 'empty' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_7 : Operation 277 [1/1] (0.00ns)   --->   "store i32 %BlockBuffer_val_4_V_4, i32* %BlockBuffer_val_4_V" [./cnn.h:78]   --->   Operation 277 'store' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_7 : Operation 278 [1/1] (0.00ns)   --->   "br label %.preheader57" [./cnn.h:60]   --->   Operation 278 'br' <Predicate = (!exitcond1)> <Delay = 0.00>
+
+State 8 <SV = 7> <Delay = 8.33>
+ST_8 : Operation 279 [1/1] (0.00ns)   --->   "%tmp_412_3_3 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_183, i16 0)" [./cnn.h:92]   --->   Operation 279 'bitconcatenate' 'tmp_412_3_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 280 [1/1] (1.65ns)   --->   "%p_Val2_74_3_3 = add i48 %tmp_412_3_3, %p_Val2_73_3_3" [./cnn.h:92]   --->   Operation 280 'add' 'p_Val2_74_3_3' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 281 [1/1] (0.00ns)   --->   "%tmp_184 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_3_3, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 281 'partselect' 'tmp_184' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 282 [1/1] (0.00ns)   --->   "%tmp_412_3_4 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_184, i16 0)" [./cnn.h:92]   --->   Operation 282 'bitconcatenate' 'tmp_412_3_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 283 [1/1] (1.65ns)   --->   "%p_Val2_74_3_4 = add i48 %tmp_412_3_4, %p_Val2_73_3_4" [./cnn.h:92]   --->   Operation 283 'add' 'p_Val2_74_3_4' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 284 [1/1] (0.00ns)   --->   "%tmp_185 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_3_4, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 284 'partselect' 'tmp_185' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 285 [1/1] (0.00ns)   --->   "%tmp_412_4 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_185, i16 0)" [./cnn.h:92]   --->   Operation 285 'bitconcatenate' 'tmp_412_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 286 [1/1] (1.65ns)   --->   "%p_Val2_74_4 = add i48 %tmp_412_4, %p_Val2_73_4" [./cnn.h:92]   --->   Operation 286 'add' 'p_Val2_74_4' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 287 [1/1] (0.00ns)   --->   "%OP1_V_4_1 = sext i32 %BlockBuffer_val_4_V_4 to i48" [./cnn.h:92]   --->   Operation 287 'sext' 'OP1_V_4_1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 288 [1/1] (5.02ns)   --->   "%p_Val2_73_4_1 = mul i48 %OP2_V_4_1, %OP1_V_4_1" [./cnn.h:92]   --->   Operation 288 'mul' 'p_Val2_73_4_1' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 289 [1/1] (0.00ns)   --->   "%tmp_186 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_4, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 289 'partselect' 'tmp_186' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 290 [1/1] (0.00ns)   --->   "%tmp_412_4_1 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_186, i16 0)" [./cnn.h:92]   --->   Operation 290 'bitconcatenate' 'tmp_412_4_1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 291 [1/1] (1.65ns)   --->   "%p_Val2_74_4_1 = add i48 %tmp_412_4_1, %p_Val2_73_4_1" [./cnn.h:92]   --->   Operation 291 'add' 'p_Val2_74_4_1' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 292 [1/1] (0.00ns)   --->   "%OP1_V_4_2 = sext i32 %BlockBuffer_val_4_V_5 to i48" [./cnn.h:92]   --->   Operation 292 'sext' 'OP1_V_4_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 293 [1/1] (5.02ns)   --->   "%p_Val2_73_4_2 = mul i48 %OP2_V_4_2, %OP1_V_4_2" [./cnn.h:92]   --->   Operation 293 'mul' 'p_Val2_73_4_2' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 294 [1/1] (0.00ns)   --->   "%tmp_187 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_4_1, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 294 'partselect' 'tmp_187' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 295 [1/1] (0.00ns)   --->   "%tmp_412_4_2 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_187, i16 0)" [./cnn.h:92]   --->   Operation 295 'bitconcatenate' 'tmp_412_4_2' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 296 [1/1] (1.65ns)   --->   "%p_Val2_74_4_2 = add i48 %tmp_412_4_2, %p_Val2_73_4_2" [./cnn.h:92]   --->   Operation 296 'add' 'p_Val2_74_4_2' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 297 [1/1] (0.00ns)   --->   "%OP1_V_4_3 = sext i32 %BlockBuffer_val_4_V_6 to i48" [./cnn.h:92]   --->   Operation 297 'sext' 'OP1_V_4_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_8 : Operation 298 [1/1] (5.02ns)   --->   "%p_Val2_73_4_3 = mul i48 %OP2_V_4_3, %OP1_V_4_3" [./cnn.h:92]   --->   Operation 298 'mul' 'p_Val2_73_4_3' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 299 [1/1] (0.00ns)   --->   "%tmp_188 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_4_2, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 299 'partselect' 'tmp_188' <Predicate = (or_cond)> <Delay = 0.00>
+
+State 9 <SV = 8> <Delay = 8.67>
+ST_9 : Operation 300 [1/1] (0.00ns)   --->   "%tmp_412_4_3 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_188, i16 0)" [./cnn.h:92]   --->   Operation 300 'bitconcatenate' 'tmp_412_4_3' <Predicate = (or_cond)> <Delay = 0.00>
+ST_9 : Operation 301 [1/1] (1.65ns)   --->   "%p_Val2_74_4_3 = add i48 %tmp_412_4_3, %p_Val2_73_4_3" [./cnn.h:92]   --->   Operation 301 'add' 'p_Val2_74_4_3' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 302 [1/1] (0.00ns)   --->   "%OP1_V_4_4 = zext i24 %src_0_val_V_load to i48" [./cnn.h:92]   --->   Operation 302 'zext' 'OP1_V_4_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_9 : Operation 303 [1/1] (5.02ns)   --->   "%p_Val2_73_4_4 = mul i48 %OP2_V_4_4, %OP1_V_4_4" [./cnn.h:92]   --->   Operation 303 'mul' 'p_Val2_73_4_4' <Predicate = (or_cond)> <Delay = 5.02> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 5.02> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 304 [1/1] (0.00ns)   --->   "%tmp_189 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_4_3, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 304 'partselect' 'tmp_189' <Predicate = (or_cond)> <Delay = 0.00>
+ST_9 : Operation 305 [1/1] (0.00ns)   --->   "%tmp_412_4_4 = call i48 @_ssdm_op_BitConcatenate.i48.i32.i16(i32 %tmp_189, i16 0)" [./cnn.h:92]   --->   Operation 305 'bitconcatenate' 'tmp_412_4_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_9 : Operation 306 [1/1] (1.65ns)   --->   "%p_Val2_74_4_4 = add i48 %tmp_412_4_4, %p_Val2_73_4_4" [./cnn.h:92]   --->   Operation 306 'add' 'p_Val2_74_4_4' <Predicate = (or_cond)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 307 [1/1] (0.00ns)   --->   "%sum_V_4_4 = call i32 @_ssdm_op_PartSelect.i32.i48.i32.i32(i48 %p_Val2_74_4_4, i32 16, i32 47)" [./cnn.h:92]   --->   Operation 307 'partselect' 'sum_V_4_4' <Predicate = (or_cond)> <Delay = 0.00>
+ST_9 : Operation 308 [1/1] (0.00ns)   --->   "%tmp_147_cast = zext i5 %tmp_146 to i11" [./cnn.h:95]   --->   Operation 308 'zext' 'tmp_147_cast' <Predicate = (or_cond)> <Delay = 0.00>
+ST_9 : Operation 309 [1/1] (1.26ns)   --->   "%tmp_190 = add i11 %tmp_164, %tmp_147_cast" [./cnn.h:95]   --->   Operation 309 'add' 'tmp_190' <Predicate = (or_cond)> <Delay = 1.26> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.26> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 310 [1/1] (0.00ns)   --->   "%tmp_206_cast = sext i11 %tmp_190 to i64" [./cnn.h:95]   --->   Operation 310 'sext' 'tmp_206_cast' <Predicate = (or_cond)> <Delay = 0.00>
+ST_9 : Operation 311 [1/1] (0.00ns)   --->   "%dst_val_V_addr = getelementptr [576 x i32]* %dst_val_V, i64 0, i64 %tmp_206_cast" [./cnn.h:95]   --->   Operation 311 'getelementptr' 'dst_val_V_addr' <Predicate = (or_cond)> <Delay = 0.00>
+ST_9 : Operation 312 [1/1] (1.99ns)   --->   "store i32 %sum_V_4_4, i32* %dst_val_V_addr, align 4" [./cnn.h:95]   --->   Operation 312 'store' <Predicate = (or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 576> <RAM>
+ST_9 : Operation 313 [1/1] (0.00ns)   --->   "br label %._crit_edge" [./cnn.h:96]   --->   Operation 313 'br' <Predicate = (or_cond)> <Delay = 0.00>
+
+State 10 <SV = 4> <Delay = 0.00>
+ST_10 : Operation 314 [1/1] (0.00ns)   --->   "br label %.loopexit"   --->   Operation 314 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 0.978ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', ./cnn.h:59) [104]  (0.978 ns)
+
+ <State 2>: 2.41ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./cnn.h:59) [104]  (0 ns)
+	'add' operation ('tmp_142', ./cnn.h:95) [118]  (1.14 ns)
+	'sub' operation ('tmp_164', ./cnn.h:95) [122]  (1.27 ns)
+
+ <State 3>: 3.27ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', ./cnn.h:60) [125]  (0 ns)
+	'add' operation ('tmp_165', ./cnn.h:70) [150]  (1.27 ns)
+	'getelementptr' operation ('src_0_val_V_addr', ./cnn.h:70) [152]  (0 ns)
+	'load' operation ('src_0_val_V_load', ./cnn.h:70) on array 'src_0_val_V' [162]  (2 ns)
+
+ <State 4>: 8.34ns
+The critical path consists of the following:
+	'load' operation ('BlockBuffer.val[0].V[1]') on local variable 'BlockBuffer.val[0].V[1]' [126]  (0 ns)
+	'mul' operation ('p_Val2_73_0_1', ./cnn.h:92) [181]  (5.02 ns)
+	'add' operation ('p_Val2_74_0_1', ./cnn.h:92) [184]  (1.66 ns)
+	'add' operation ('p_Val2_74_0_2', ./cnn.h:92) [189]  (1.66 ns)
+
+ <State 5>: 8.34ns
+The critical path consists of the following:
+	'mul' operation ('p_Val2_73_1_1', ./cnn.h:92) [206]  (5.02 ns)
+	'add' operation ('p_Val2_74_1_1', ./cnn.h:92) [209]  (1.66 ns)
+	'add' operation ('p_Val2_74_1_2', ./cnn.h:92) [214]  (1.66 ns)
+
+ <State 6>: 8.34ns
+The critical path consists of the following:
+	'mul' operation ('p_Val2_73_2_1', ./cnn.h:92) [231]  (5.02 ns)
+	'add' operation ('p_Val2_74_2_1', ./cnn.h:92) [234]  (1.66 ns)
+	'add' operation ('p_Val2_74_2_2', ./cnn.h:92) [239]  (1.66 ns)
+
+ <State 7>: 8.34ns
+The critical path consists of the following:
+	'mul' operation ('p_Val2_73_3_1', ./cnn.h:92) [256]  (5.02 ns)
+	'add' operation ('p_Val2_74_3_1', ./cnn.h:92) [259]  (1.66 ns)
+	'add' operation ('p_Val2_74_3_2', ./cnn.h:92) [264]  (1.66 ns)
+
+ <State 8>: 8.34ns
+The critical path consists of the following:
+	'mul' operation ('p_Val2_73_4_1', ./cnn.h:92) [281]  (5.02 ns)
+	'add' operation ('p_Val2_74_4_1', ./cnn.h:92) [284]  (1.66 ns)
+	'add' operation ('p_Val2_74_4_2', ./cnn.h:92) [289]  (1.66 ns)
+
+ <State 9>: 8.68ns
+The critical path consists of the following:
+	'mul' operation ('p_Val2_73_4_4', ./cnn.h:92) [296]  (5.02 ns)
+	'add' operation ('p_Val2_74_4_4', ./cnn.h:92) [299]  (1.66 ns)
+	'store' operation (./cnn.h:95) of variable 'sum_V_4_4', ./cnn.h:92 on array 'dst_val_V' [306]  (2 ns)
+
+ <State 10>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

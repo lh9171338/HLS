@@ -1,0 +1,224 @@
+
+
+================================================================
+== Vivado HLS Report for 'Integral7'
+================================================================
+* Date:           Tue Dec  4 20:20:21 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Haar
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.519|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+--------+-----+--------+---------+
+    |    Latency   |   Interval   | Pipeline|
+    | min |   max  | min |   max  |   Type  |
+    +-----+--------+-----+--------+---------+
+    |    1|  132870|    1|  132870|   none  |
+    +-----+--------+-----+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+-----+--------+----------+-----------+-----------+---------+----------+
+        |             |    Latency   | Iteration|  Initiation Interval  |   Trip  |          |
+        |  Loop Name  | min |   max  |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +-------------+-----+--------+----------+-----------+-----------+---------+----------+
+        |- Loop 1     |    0|  132869|  3 ~ 517 |          -|          -| 0 ~ 257 |    no    |
+        | + Loop 1.1  |    0|     514|         3|          1|          1| 0 ~ 513 |    yes   |
+        +-------------+-----+--------+----------+-----------+-----------+---------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      1|       -|       -|
+|Expression       |        -|      -|       0|     546|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|      -|       -|       -|
+|Memory           |        4|      -|       0|       0|
+|Multiplexer      |        -|      -|       -|     129|
+|Register         |        -|      -|     466|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |        4|      1|     466|     675|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |    ~0   |   ~0  |   ~0   |   ~0   |
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    +--------------------------+----------------------+--------------+
+    |         Instance         |        Module        |  Expression  |
+    +--------------------------+----------------------+--------------+
+    |Haar_Core_mac_mulibs_U47  |Haar_Core_mac_mulibs  | i0 * i0 + i1 |
+    +--------------------------+----------------------+--------------+
+
+    * Memory: 
+    +----------------+----------------------+---------+---+----+------+-----+------+-------------+
+    |     Memory     |        Module        | BRAM_18K| FF| LUT| Words| Bits| Banks| W*Bits*Banks|
+    +----------------+----------------------+---------+---+----+------+-----+------+-------------+
+    |sLineBuffer_U   |Integral7_sLineBug8j  |        2|  0|   0|   513|   32|     1|        16416|
+    |sqLineBuffer_U  |Integral7_sLineBug8j  |        2|  0|   0|   513|   32|     1|        16416|
+    +----------------+----------------------+---------+---+----+------+-----+------+-------------+
+    |Total           |                      |        4|  0|   0|  1026|   64|     2|        32832|
+    +----------------+----------------------+---------+---+----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-------------------------------+----------+-------+---+----+------------+------------+
+    |         Variable Name         | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-------------------------------+----------+-------+---+----+------------+------------+
+    |i_9_fu_252_p2                  |     +    |      0|  0|  38|          31|           1|
+    |j_2_fu_313_p2                  |     +    |      0|  0|  38|          31|           1|
+    |tmp1_fu_390_p2                 |     +    |      0|  0|  39|          32|          32|
+    |tmp_104_fu_237_p2              |     +    |      0|  0|  39|          32|           1|
+    |tmp_111_fu_396_p2              |     +    |      0|  0|   8|          32|          32|
+    |tmp_113_fu_451_p2              |     +    |      0|  0|   8|          32|          32|
+    |tmp_140_fu_290_p2              |     +    |      0|  0|  17|           2|          10|
+    |tmp_143_fu_334_p2              |     +    |      0|  0|   8|           2|          19|
+    |tmp_53_fu_280_p2               |     +    |      0|  0|  26|          19|          19|
+    |tmp_56_fu_375_p2               |     +    |      0|  0|  26|          19|          19|
+    |tmp_57_fu_340_p2               |     +    |      0|  0|   8|          19|          19|
+    |tmp_58_fu_360_p2               |     +    |      0|  0|  26|          19|          19|
+    |tmp_s_fu_231_p2                |     +    |      0|  0|  39|          32|           1|
+    |sLineBuffer_d1                 |     -    |      0|  0|   8|          32|          32|
+    |sqwinBuffer_1_0_fu_455_p2      |     -    |      0|  0|   8|          32|          32|
+    |ap_condition_139               |    and   |      0|  0|   2|           1|           1|
+    |ap_condition_434               |    and   |      0|  0|   2|           1|           1|
+    |tmp_105_fu_247_p2              |   icmp   |      0|  0|  18|          32|          32|
+    |tmp_106_fu_258_p2              |   icmp   |      0|  0|  18|          31|           1|
+    |tmp_107_fu_308_p2              |   icmp   |      0|  0|  18|          32|          32|
+    |tmp_108_fu_319_p2              |   icmp   |      0|  0|  18|          31|           1|
+    |or_cond_fu_325_p2              |    or    |      0|  0|   2|           1|           1|
+    |p_sqwinBuffer_0_0_1_fu_479_p3  |  select  |      0|  0|  32|           1|           1|
+    |p_sqwinBuffer_1_0_1_fu_472_p3  |  select  |      0|  0|  32|           1|           1|
+    |p_swinBuffer_0_0_1_fu_426_p3   |  select  |      0|  0|  32|           1|           1|
+    |p_swinBuffer_1_0_1_fu_419_p3   |  select  |      0|  0|  32|           1|           1|
+    |ap_enable_pp0                  |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1        |    xor   |      0|  0|   2|           2|           1|
+    +-------------------------------+----------+-------+---+----+------------+------------+
+    |Total                          |          |      0|  0| 546|         502|         345|
+    +-------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                |  27|          5|    1|          5|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter2  |   9|          2|    1|          2|
+    |i_reg_197                |   9|          2|   31|         62|
+    |j_reg_208                |   9|          2|   31|         62|
+    |sLineBuffer_address0     |  15|          3|   10|         30|
+    |sqLineBuffer_address0    |  15|          3|   10|         30|
+    |sqwinBuffer_0_0_1_fu_56  |   9|          2|   32|         64|
+    |sqwinBuffer_1_0_1_fu_60  |   9|          2|   32|         64|
+    |swinBuffer_0_0_1_fu_48   |   9|          2|   32|         64|
+    |swinBuffer_1_0_1_fu_52   |   9|          2|   32|         64|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    | 129|         27|  213|        449|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------------+----+----+-----+-----------+
+    |                   Name                  | FF | LUT| Bits| Const Bits|
+    +-----------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                |   4|   0|    4|          0|
+    |ap_enable_reg_pp0_iter0                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2                  |   1|   0|    1|          0|
+    |i_9_reg_547                              |  31|   0|   31|          0|
+    |i_reg_197                                |  31|   0|   31|          0|
+    |j_reg_208                                |  31|   0|   31|          0|
+    |or_cond_reg_585                          |   1|   0|    1|          0|
+    |or_cond_reg_585_pp0_iter1_reg            |   1|   0|    1|          0|
+    |sLineBuffer_addr_reg_599                 |  10|   0|   10|          0|
+    |sqLineBuffer_addr_reg_605                |  10|   0|   10|          0|
+    |sqLineBuffer_addr_reg_605_pp0_iter1_reg  |  10|   0|   10|          0|
+    |sqwinBuffer_0_0_1_fu_56                  |  32|   0|   32|          0|
+    |sqwinBuffer_0_0_reg_621                  |  32|   0|   32|          0|
+    |sqwinBuffer_1_0_1_fu_60                  |  32|   0|   32|          0|
+    |src_val_load_reg_611                     |   8|   0|    8|          0|
+    |swinBuffer_0_0_1_fu_48                   |  32|   0|   32|          0|
+    |swinBuffer_1_0_1_fu_52                   |  32|   0|   32|          0|
+    |swinBuffer_1_0_reg_616                   |  32|   0|   32|          0|
+    |tmp_104_reg_538                          |  32|   0|   32|          0|
+    |tmp_106_reg_552                          |   1|   0|    1|          0|
+    |tmp_108_reg_577                          |   1|   0|    1|          0|
+    |tmp_108_reg_577_pp0_iter1_reg            |   1|   0|    1|          0|
+    |tmp_53_reg_557                           |  19|   0|   19|          0|
+    |tmp_55_cast_reg_563                      |  10|   0|   19|          9|
+    |tmp_58_reg_594                           |  19|   0|   19|          0|
+    |tmp_58_reg_594_pp0_iter1_reg             |  19|   0|   19|          0|
+    |tmp_s_reg_533                            |  32|   0|   32|          0|
+    +-----------------------------------------+----+----+-----+-----------+
+    |Total                                    | 466|   0|  475|          9|
+    +-----------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------+-----+-----+------------+---------------+--------------+
+|      RTL Ports     | Dir | Bits|  Protocol  | Source Object |    C Type    |
++--------------------+-----+-----+------------+---------------+--------------+
+|ap_clk              |  in |    1| ap_ctrl_hs |   Integral7   | return value |
+|ap_rst              |  in |    1| ap_ctrl_hs |   Integral7   | return value |
+|ap_start            |  in |    1| ap_ctrl_hs |   Integral7   | return value |
+|ap_done             | out |    1| ap_ctrl_hs |   Integral7   | return value |
+|ap_idle             | out |    1| ap_ctrl_hs |   Integral7   | return value |
+|ap_ready            | out |    1| ap_ctrl_hs |   Integral7   | return value |
+|src_val_address0    | out |   17|  ap_memory |    src_val    |     array    |
+|src_val_ce0         | out |    1|  ap_memory |    src_val    |     array    |
+|src_val_q0          |  in |    8|  ap_memory |    src_val    |     array    |
+|src_rows_read       |  in |   32|   ap_none  | src_rows_read |    scalar    |
+|src_cols_read       |  in |   32|   ap_none  | src_cols_read |    scalar    |
+|swin_val_address0   | out |   18|  ap_memory |    swin_val   |     array    |
+|swin_val_ce0        | out |    1|  ap_memory |    swin_val   |     array    |
+|swin_val_we0        | out |    1|  ap_memory |    swin_val   |     array    |
+|swin_val_d0         | out |   32|  ap_memory |    swin_val   |     array    |
+|swin_val_address1   | out |   18|  ap_memory |    swin_val   |     array    |
+|swin_val_ce1        | out |    1|  ap_memory |    swin_val   |     array    |
+|swin_val_we1        | out |    1|  ap_memory |    swin_val   |     array    |
+|swin_val_d1         | out |   32|  ap_memory |    swin_val   |     array    |
+|sqwin_val_address0  | out |   18|  ap_memory |   sqwin_val   |     array    |
+|sqwin_val_ce0       | out |    1|  ap_memory |   sqwin_val   |     array    |
+|sqwin_val_we0       | out |    1|  ap_memory |   sqwin_val   |     array    |
+|sqwin_val_d0        | out |   32|  ap_memory |   sqwin_val   |     array    |
+|sqwin_val_address1  | out |   18|  ap_memory |   sqwin_val   |     array    |
+|sqwin_val_ce1       | out |    1|  ap_memory |   sqwin_val   |     array    |
+|sqwin_val_we1       | out |    1|  ap_memory |   sqwin_val   |     array    |
+|sqwin_val_d1        | out |   32|  ap_memory |   sqwin_val   |     array    |
++--------------------+-----+-----+------------+---------------+--------------+
+

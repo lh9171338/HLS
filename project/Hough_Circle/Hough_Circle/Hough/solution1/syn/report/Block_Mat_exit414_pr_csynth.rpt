@@ -1,0 +1,196 @@
+
+
+================================================================
+== Vivado HLS Report for 'Block_Mat_exit414_pr'
+================================================================
+* Date:           Tue Dec  4 09:50:21 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Hough
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  20.00|     2.260|        2.50|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    0|    0|    0|    0|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      -|       -|       -|
+|Expression       |        -|      -|       0|       2|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|      -|       -|       -|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|     153|
+|Register         |        -|      -|       3|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |        0|      0|       3|     155|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        0|      0|   ~0   |   ~0   |
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+-------+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |ap_block_state1  |    or    |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |Total            |          |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------------------+----+-----------+-----+-----------+
+    |          Name          | LUT| Input Size| Bits| Total Bits|
+    +------------------------+----+-----------+-----+-----------+
+    |acc_thresh_out_blk_n    |   9|          2|    1|          2|
+    |ap_done                 |   9|          2|    1|          2|
+    |circles_cols_out_blk_n  |   9|          2|    1|          2|
+    |circles_rows_out_blk_n  |   9|          2|    1|          2|
+    |dx_cols_V_out_blk_n     |   9|          2|    1|          2|
+    |dx_rows_V_out_blk_n     |   9|          2|    1|          2|
+    |dy_cols_V_out_blk_n     |   9|          2|    1|          2|
+    |dy_rows_V_out_blk_n     |   9|          2|    1|          2|
+    |edge_cols_V_out_blk_n   |   9|          2|    1|          2|
+    |edge_rows_V_out_blk_n   |   9|          2|    1|          2|
+    |gray_thresh_out_blk_n   |   9|          2|    1|          2|
+    |max_radius_out_blk_n    |   9|          2|    1|          2|
+    |min_dist_out_blk_n      |   9|          2|    1|          2|
+    |min_radius_out_blk_n    |   9|          2|    1|          2|
+    |real_start              |   9|          2|    1|          2|
+    |src_cols_V_out_blk_n    |   9|          2|    1|          2|
+    |src_rows_V_out_blk_n    |   9|          2|    1|          2|
+    +------------------------+----+-----------+-----+-----------+
+    |Total                   | 153|         34|   17|         34|
+    +------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------+---+----+-----+-----------+
+    |      Name      | FF| LUT| Bits| Const Bits|
+    +----------------+---+----+-----+-----------+
+    |ap_CS_fsm       |  1|   0|    1|          0|
+    |ap_done_reg     |  1|   0|    1|          0|
+    |start_once_reg  |  1|   0|    1|          0|
+    +----------------+---+----+-----+-----------+
+    |Total           |  3|   0|    3|          0|
+    +----------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------+-----+-----+------------+----------------------+--------------+
+|        RTL Ports        | Dir | Bits|  Protocol  |     Source Object    |    C Type    |
++-------------------------+-----+-----+------------+----------------------+--------------+
+|ap_clk                   |  in |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|ap_rst                   |  in |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|ap_start                 |  in |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|start_full_n             |  in |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|ap_done                  | out |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|ap_continue              |  in |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|ap_idle                  | out |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|ap_ready                 | out |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|start_out                | out |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|start_write              | out |    1| ap_ctrl_hs | Block_Mat.exit414_pr | return value |
+|rows                     |  in |   32|   ap_none  |         rows         |    scalar    |
+|cols                     |  in |   32|   ap_none  |         cols         |    scalar    |
+|gray_thresh              |  in |   32|   ap_none  |      gray_thresh     |    scalar    |
+|acc_thresh               |  in |   32|   ap_none  |      acc_thresh      |    scalar    |
+|min_dist                 |  in |   32|   ap_none  |       min_dist       |    scalar    |
+|min_radius               |  in |   32|   ap_none  |      min_radius      |    scalar    |
+|max_radius               |  in |   32|   ap_none  |      max_radius      |    scalar    |
+|src_rows_V_out_din       | out |   32|   ap_fifo  |    src_rows_V_out    |    pointer   |
+|src_rows_V_out_full_n    |  in |    1|   ap_fifo  |    src_rows_V_out    |    pointer   |
+|src_rows_V_out_write     | out |    1|   ap_fifo  |    src_rows_V_out    |    pointer   |
+|src_cols_V_out_din       | out |   32|   ap_fifo  |    src_cols_V_out    |    pointer   |
+|src_cols_V_out_full_n    |  in |    1|   ap_fifo  |    src_cols_V_out    |    pointer   |
+|src_cols_V_out_write     | out |    1|   ap_fifo  |    src_cols_V_out    |    pointer   |
+|edge_rows_V_out_din      | out |   32|   ap_fifo  |    edge_rows_V_out   |    pointer   |
+|edge_rows_V_out_full_n   |  in |    1|   ap_fifo  |    edge_rows_V_out   |    pointer   |
+|edge_rows_V_out_write    | out |    1|   ap_fifo  |    edge_rows_V_out   |    pointer   |
+|edge_cols_V_out_din      | out |   32|   ap_fifo  |    edge_cols_V_out   |    pointer   |
+|edge_cols_V_out_full_n   |  in |    1|   ap_fifo  |    edge_cols_V_out   |    pointer   |
+|edge_cols_V_out_write    | out |    1|   ap_fifo  |    edge_cols_V_out   |    pointer   |
+|dx_rows_V_out_din        | out |   32|   ap_fifo  |     dx_rows_V_out    |    pointer   |
+|dx_rows_V_out_full_n     |  in |    1|   ap_fifo  |     dx_rows_V_out    |    pointer   |
+|dx_rows_V_out_write      | out |    1|   ap_fifo  |     dx_rows_V_out    |    pointer   |
+|dx_cols_V_out_din        | out |   32|   ap_fifo  |     dx_cols_V_out    |    pointer   |
+|dx_cols_V_out_full_n     |  in |    1|   ap_fifo  |     dx_cols_V_out    |    pointer   |
+|dx_cols_V_out_write      | out |    1|   ap_fifo  |     dx_cols_V_out    |    pointer   |
+|dy_rows_V_out_din        | out |   32|   ap_fifo  |     dy_rows_V_out    |    pointer   |
+|dy_rows_V_out_full_n     |  in |    1|   ap_fifo  |     dy_rows_V_out    |    pointer   |
+|dy_rows_V_out_write      | out |    1|   ap_fifo  |     dy_rows_V_out    |    pointer   |
+|dy_cols_V_out_din        | out |   32|   ap_fifo  |     dy_cols_V_out    |    pointer   |
+|dy_cols_V_out_full_n     |  in |    1|   ap_fifo  |     dy_cols_V_out    |    pointer   |
+|dy_cols_V_out_write      | out |    1|   ap_fifo  |     dy_cols_V_out    |    pointer   |
+|circles_rows_out_din     | out |    3|   ap_fifo  |   circles_rows_out   |    pointer   |
+|circles_rows_out_full_n  |  in |    1|   ap_fifo  |   circles_rows_out   |    pointer   |
+|circles_rows_out_write   | out |    1|   ap_fifo  |   circles_rows_out   |    pointer   |
+|circles_cols_out_din     | out |    8|   ap_fifo  |   circles_cols_out   |    pointer   |
+|circles_cols_out_full_n  |  in |    1|   ap_fifo  |   circles_cols_out   |    pointer   |
+|circles_cols_out_write   | out |    1|   ap_fifo  |   circles_cols_out   |    pointer   |
+|gray_thresh_out_din      | out |   32|   ap_fifo  |    gray_thresh_out   |    pointer   |
+|gray_thresh_out_full_n   |  in |    1|   ap_fifo  |    gray_thresh_out   |    pointer   |
+|gray_thresh_out_write    | out |    1|   ap_fifo  |    gray_thresh_out   |    pointer   |
+|acc_thresh_out_din       | out |   32|   ap_fifo  |    acc_thresh_out    |    pointer   |
+|acc_thresh_out_full_n    |  in |    1|   ap_fifo  |    acc_thresh_out    |    pointer   |
+|acc_thresh_out_write     | out |    1|   ap_fifo  |    acc_thresh_out    |    pointer   |
+|min_dist_out_din         | out |   32|   ap_fifo  |     min_dist_out     |    pointer   |
+|min_dist_out_full_n      |  in |    1|   ap_fifo  |     min_dist_out     |    pointer   |
+|min_dist_out_write       | out |    1|   ap_fifo  |     min_dist_out     |    pointer   |
+|min_radius_out_din       | out |   32|   ap_fifo  |    min_radius_out    |    pointer   |
+|min_radius_out_full_n    |  in |    1|   ap_fifo  |    min_radius_out    |    pointer   |
+|min_radius_out_write     | out |    1|   ap_fifo  |    min_radius_out    |    pointer   |
+|max_radius_out_din       | out |   32|   ap_fifo  |    max_radius_out    |    pointer   |
+|max_radius_out_full_n    |  in |    1|   ap_fifo  |    max_radius_out    |    pointer   |
+|max_radius_out_write     | out |    1|   ap_fifo  |    max_radius_out    |    pointer   |
++-------------------------+-----+-----+------------+----------------------+--------------+
+

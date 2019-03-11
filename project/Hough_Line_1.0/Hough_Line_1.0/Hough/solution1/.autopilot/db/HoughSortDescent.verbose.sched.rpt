@@ -1,0 +1,260 @@
+
+
+================================================================
+== Vivado HLS Report for 'HoughSortDescent'
+================================================================
+* Date:           Tue Sep 25 14:17:51 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Hough
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     3.996|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+        |             |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1     |    ?|    ?|         ?|          -|          -|     ?|    no    |
+        | + Loop 1.1  |    ?|    ?|         3|          1|          1|     ?|    yes   |
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 3
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 10
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 3, States = { 5 6 7 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (tmp_8)
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	8  / (!tmp_2)
+	6  / (tmp_2)
+6 --> 
+	7  / true
+7 --> 
+	5  / true
+8 --> 
+	9  / (!tmp_6)
+	10  / (tmp_6)
+9 --> 
+	10  / true
+10 --> 
+	2  / true
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.57>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%num_read = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %num)"   --->   Operation 11 'read' 'num_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (1.57ns)   --->   "%tmp_s = add nsw i32 %num_read, -1" [./hough.h:23]   --->   Operation 12 'add' 'tmp_s' <Predicate = true> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 13 [1/1] (0.97ns)   --->   "br label %0" [./hough.h:23]   --->   Operation 13 'br' <Predicate = true> <Delay = 0.97>
+
+State 2 <SV = 1> <Delay = 1.99>
+ST_2 : Operation 14 [1/1] (0.00ns)   --->   "%maxindex_index_3 = phi i31 [ 0, %._crit_edge ], [ %i, %._crit_edge1 ]"   --->   Operation 14 'phi' 'maxindex_index_3' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 15 [1/1] (0.00ns)   --->   "%maxindex_index_3_cas = zext i31 %maxindex_index_3 to i32" [./hough.h:23]   --->   Operation 15 'zext' 'maxindex_index_3_cas' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 16 [1/1] (1.31ns)   --->   "%tmp_8 = icmp slt i32 %maxindex_index_3_cas, %tmp_s" [./hough.h:23]   --->   Operation 16 'icmp' 'tmp_8' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 17 [1/1] (1.55ns)   --->   "%i = add i31 %maxindex_index_3, 1" [./hough.h:23]   --->   Operation 17 'add' 'i' <Predicate = true> <Delay = 1.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 18 [1/1] (0.00ns)   --->   "br i1 %tmp_8, label %1, label %6" [./hough.h:23]   --->   Operation 18 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%tmp_9 = zext i31 %maxindex_index_3 to i64" [./hough.h:24]   --->   Operation 19 'zext' 'tmp_9' <Predicate = (tmp_8)> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (0.00ns)   --->   "%sequence_addr = getelementptr [204386 x i32]* %sequence, i64 0, i64 %tmp_9" [./hough.h:24]   --->   Operation 20 'getelementptr' 'sequence_addr' <Predicate = (tmp_8)> <Delay = 0.00>
+ST_2 : Operation 21 [2/2] (1.99ns)   --->   "%index0 = load i32* %sequence_addr, align 4" [./hough.h:24]   --->   Operation 21 'load' 'index0' <Predicate = (tmp_8)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "ret void" [./hough.h:41]   --->   Operation 22 'ret' <Predicate = (!tmp_8)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 3.99>
+ST_3 : Operation 23 [1/2] (1.99ns)   --->   "%index0 = load i32* %sequence_addr, align 4" [./hough.h:24]   --->   Operation 23 'load' 'index0' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+ST_3 : Operation 24 [1/1] (0.00ns)   --->   "%tmp_1 = sext i32 %index0 to i64" [./hough.h:25]   --->   Operation 24 'sext' 'tmp_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 25 [1/1] (0.00ns)   --->   "%data_addr = getelementptr [204386 x i32]* %data, i64 0, i64 %tmp_1" [./hough.h:25]   --->   Operation 25 'getelementptr' 'data_addr' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 26 [2/2] (1.99ns)   --->   "%maxvalue = load i32* %data_addr, align 4" [./hough.h:25]   --->   Operation 26 'load' 'maxvalue' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+
+State 4 <SV = 3> <Delay = 1.99>
+ST_4 : Operation 27 [1/2] (1.99ns)   --->   "%maxvalue = load i32* %data_addr, align 4" [./hough.h:25]   --->   Operation 27 'load' 'maxvalue' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+ST_4 : Operation 28 [1/1] (0.97ns)   --->   "br label %2" [./hough.h:27]   --->   Operation 28 'br' <Predicate = true> <Delay = 0.97>
+
+State 5 <SV = 4> <Delay = 1.99>
+ST_5 : Operation 29 [1/1] (0.00ns)   --->   "%maxvalue1 = phi i32 [ %maxvalue, %1 ], [ %value_0_maxvalue, %3 ]"   --->   Operation 29 'phi' 'maxvalue1' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 30 [1/1] (0.00ns)   --->   "%maxindex_index = phi i32 [ %maxindex_index_3_cas, %1 ], [ %j_0_maxindex_index, %3 ]" [./hough.h:23]   --->   Operation 30 'phi' 'maxindex_index' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 31 [1/1] (0.00ns)   --->   "%maxindex_index_1 = phi i32 [ %maxindex_index_3_cas, %1 ], [ %j_1, %3 ]"   --->   Operation 31 'phi' 'maxindex_index_1' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 32 [1/1] (1.31ns)   --->   "%tmp_2 = icmp slt i32 %maxindex_index_1, %num_read" [./hough.h:27]   --->   Operation 32 'icmp' 'tmp_2' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 33 [1/1] (0.00ns)   --->   "br i1 %tmp_2, label %3, label %4" [./hough.h:27]   --->   Operation 33 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 34 [1/1] (0.00ns)   --->   "%tmp_3 = sext i32 %maxindex_index_1 to i64" [./hough.h:29]   --->   Operation 34 'sext' 'tmp_3' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_5 : Operation 35 [1/1] (0.00ns)   --->   "%sequence_addr_1 = getelementptr [204386 x i32]* %sequence, i64 0, i64 %tmp_3" [./hough.h:29]   --->   Operation 35 'getelementptr' 'sequence_addr_1' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_5 : Operation 36 [2/2] (1.99ns)   --->   "%index = load i32* %sequence_addr_1, align 4" [./hough.h:29]   --->   Operation 36 'load' 'index' <Predicate = (tmp_2)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+ST_5 : Operation 37 [1/1] (1.57ns)   --->   "%j_1 = add nsw i32 %maxindex_index_1, 1" [./hough.h:27]   --->   Operation 37 'add' 'j_1' <Predicate = (tmp_2)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 6 <SV = 5> <Delay = 3.99>
+ST_6 : Operation 38 [1/2] (1.99ns)   --->   "%index = load i32* %sequence_addr_1, align 4" [./hough.h:29]   --->   Operation 38 'load' 'index' <Predicate = (tmp_2)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+ST_6 : Operation 39 [1/1] (0.00ns)   --->   "%tmp_4 = sext i32 %index to i64" [./hough.h:30]   --->   Operation 39 'sext' 'tmp_4' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_6 : Operation 40 [1/1] (0.00ns)   --->   "%data_addr_1 = getelementptr [204386 x i32]* %data, i64 0, i64 %tmp_4" [./hough.h:30]   --->   Operation 40 'getelementptr' 'data_addr_1' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_6 : Operation 41 [2/2] (1.99ns)   --->   "%maxvalue_2 = load i32* %data_addr_1, align 4" [./hough.h:30]   --->   Operation 41 'load' 'maxvalue_2' <Predicate = (tmp_2)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+
+State 7 <SV = 6> <Delay = 3.76>
+ST_7 : Operation 42 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([13 x i8]* @p_str32)" [./hough.h:27]   --->   Operation 42 'specregionbegin' 'tmp' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_7 : Operation 43 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [./hough.h:28]   --->   Operation 43 'specpipeline' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_7 : Operation 44 [1/2] (1.99ns)   --->   "%maxvalue_2 = load i32* %data_addr_1, align 4" [./hough.h:30]   --->   Operation 44 'load' 'maxvalue_2' <Predicate = (tmp_2)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+ST_7 : Operation 45 [1/1] (1.31ns)   --->   "%tmp_5 = icmp sgt i32 %maxvalue_2, %maxvalue1" [./hough.h:31]   --->   Operation 45 'icmp' 'tmp_5' <Predicate = (tmp_2)> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 46 [1/1] (0.45ns)   --->   "%value_0_maxvalue = select i1 %tmp_5, i32 %maxvalue_2, i32 %maxvalue1" [./hough.h:31]   --->   Operation 46 'select' 'value_0_maxvalue' <Predicate = (tmp_2)> <Delay = 0.45> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.45> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_7 : Operation 47 [1/1] (0.45ns)   --->   "%j_0_maxindex_index = select i1 %tmp_5, i32 %maxindex_index_1, i32 %maxindex_index" [./hough.h:31]   --->   Operation 47 'select' 'j_0_maxindex_index' <Predicate = (tmp_2)> <Delay = 0.45> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.45> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_7 : Operation 48 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([13 x i8]* @p_str32, i32 %tmp)" [./hough.h:35]   --->   Operation 48 'specregionend' 'empty' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_7 : Operation 49 [1/1] (0.00ns)   --->   "br label %2" [./hough.h:27]   --->   Operation 49 'br' <Predicate = (tmp_2)> <Delay = 0.00>
+
+State 8 <SV = 5> <Delay = 1.99>
+ST_8 : Operation 50 [1/1] (1.31ns)   --->   "%tmp_6 = icmp eq i32 %maxindex_index, %maxindex_index_3_cas" [./hough.h:36]   --->   Operation 50 'icmp' 'tmp_6' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.31> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 51 [1/1] (0.00ns)   --->   "br i1 %tmp_6, label %._crit_edge1, label %5" [./hough.h:36]   --->   Operation 51 'br' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 52 [1/1] (0.00ns)   --->   "%tmp_7 = sext i32 %maxindex_index to i64" [./hough.h:37]   --->   Operation 52 'sext' 'tmp_7' <Predicate = (!tmp_6)> <Delay = 0.00>
+ST_8 : Operation 53 [1/1] (0.00ns)   --->   "%sequence_addr_2 = getelementptr [204386 x i32]* %sequence, i64 0, i64 %tmp_7" [./hough.h:37]   --->   Operation 53 'getelementptr' 'sequence_addr_2' <Predicate = (!tmp_6)> <Delay = 0.00>
+ST_8 : Operation 54 [2/2] (1.99ns)   --->   "%sequence_load = load i32* %sequence_addr_2, align 4" [./hough.h:37]   --->   Operation 54 'load' 'sequence_load' <Predicate = (!tmp_6)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+
+State 9 <SV = 6> <Delay = 3.99>
+ST_9 : Operation 55 [1/2] (1.99ns)   --->   "%sequence_load = load i32* %sequence_addr_2, align 4" [./hough.h:37]   --->   Operation 55 'load' 'sequence_load' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+ST_9 : Operation 56 [1/1] (1.99ns)   --->   "store i32 %sequence_load, i32* %sequence_addr, align 4" [./hough.h:37]   --->   Operation 56 'store' <Predicate = true> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+
+State 10 <SV = 7> <Delay = 1.99>
+ST_10 : Operation 57 [1/1] (1.99ns)   --->   "store i32 %index0, i32* %sequence_addr_2, align 4" [./hough.h:38]   --->   Operation 57 'store' <Predicate = (!tmp_6)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 204386> <RAM>
+ST_10 : Operation 58 [1/1] (0.00ns)   --->   "br label %._crit_edge1" [./hough.h:39]   --->   Operation 58 'br' <Predicate = (!tmp_6)> <Delay = 0.00>
+ST_10 : Operation 59 [1/1] (0.00ns)   --->   "br label %0" [./hough.h:23]   --->   Operation 59 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.58ns
+The critical path consists of the following:
+	wire read on port 'num' [4]  (0 ns)
+	'add' operation ('tmp_s', ./hough.h:23) [5]  (1.58 ns)
+
+ <State 2>: 2ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./hough.h:23) [8]  (0 ns)
+	'getelementptr' operation ('sequence_addr', ./hough.h:24) [15]  (0 ns)
+	'load' operation ('index0', ./hough.h:24) on array 'sequence' [16]  (2 ns)
+
+ <State 3>: 4ns
+The critical path consists of the following:
+	'load' operation ('index0', ./hough.h:24) on array 'sequence' [16]  (2 ns)
+	'getelementptr' operation ('data_addr', ./hough.h:25) [18]  (0 ns)
+	'load' operation ('maxvalue', ./hough.h:25) on array 'data' [19]  (2 ns)
+
+ <State 4>: 2ns
+The critical path consists of the following:
+	'load' operation ('maxvalue', ./hough.h:25) on array 'data' [19]  (2 ns)
+
+ <State 5>: 2ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('maxindex_index_3_cas', ./hough.h:23) ('j', ./hough.h:27) [24]  (0 ns)
+	'getelementptr' operation ('sequence_addr_1', ./hough.h:29) [31]  (0 ns)
+	'load' operation ('index', ./hough.h:29) on array 'sequence' [32]  (2 ns)
+
+ <State 6>: 4ns
+The critical path consists of the following:
+	'load' operation ('index', ./hough.h:29) on array 'sequence' [32]  (2 ns)
+	'getelementptr' operation ('data_addr_1', ./hough.h:30) [34]  (0 ns)
+	'load' operation ('maxvalue', ./hough.h:30) on array 'data' [35]  (2 ns)
+
+ <State 7>: 3.77ns
+The critical path consists of the following:
+	'load' operation ('maxvalue', ./hough.h:30) on array 'data' [35]  (2 ns)
+	'icmp' operation ('tmp_5', ./hough.h:31) [36]  (1.31 ns)
+	'select' operation ('j_0_maxindex_index', ./hough.h:31) [38]  (0.457 ns)
+
+ <State 8>: 2ns
+The critical path consists of the following:
+	'getelementptr' operation ('sequence_addr_2', ./hough.h:37) [47]  (0 ns)
+	'load' operation ('sequence_load', ./hough.h:37) on array 'sequence' [48]  (2 ns)
+
+ <State 9>: 4ns
+The critical path consists of the following:
+	'load' operation ('sequence_load', ./hough.h:37) on array 'sequence' [48]  (2 ns)
+	'store' operation (./hough.h:37) of variable 'sequence_load', ./hough.h:37 on array 'sequence' [49]  (2 ns)
+
+ <State 10>: 2ns
+The critical path consists of the following:
+	'store' operation (./hough.h:38) of variable 'index0', ./hough.h:24 on array 'sequence' [50]  (2 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

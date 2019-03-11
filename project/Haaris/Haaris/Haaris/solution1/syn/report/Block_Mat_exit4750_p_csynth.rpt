@@ -1,0 +1,249 @@
+
+
+================================================================
+== Vivado HLS Report for 'Block_Mat_exit4750_p'
+================================================================
+* Date:           Wed Dec  5 01:56:05 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Haaris
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     4.520|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    0|    0|    0|    0|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      -|       -|       -|
+|Expression       |        -|      -|       0|       2|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|      -|       -|       -|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|     288|
+|Register         |        -|      -|       3|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |        0|      0|       3|     290|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        0|      0|   ~0   |   ~0   |
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+-------+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |ap_block_state1  |    or    |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |Total            |          |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------+----+-----------+-----+-----------+
+    |           Name           | LUT| Input Size| Bits| Total Bits|
+    +--------------------------+----+-----------+-----+-----------+
+    |ap_done                   |   9|          2|    1|          2|
+    |cols_blk_n                |   9|          2|    1|          2|
+    |grad_gy_cols_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_gy_rows_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_x1_cols_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_x1_rows_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_x2_cols_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_x2_rows_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_x3_cols_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_x3_rows_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_x_cols_V_out_blk_n   |   9|          2|    1|          2|
+    |grad_x_rows_V_out_blk_n   |   9|          2|    1|          2|
+    |grad_xx_cols_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_xx_rows_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_xy_cols_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_xy_rows_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_y1_cols_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_y1_rows_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_y3_cols_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_y3_rows_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_y_cols_V_out_blk_n   |   9|          2|    1|          2|
+    |grad_y_rows_V_out_blk_n   |   9|          2|    1|          2|
+    |grad_yy_cols_V_out_blk_n  |   9|          2|    1|          2|
+    |grad_yy_rows_V_out_blk_n  |   9|          2|    1|          2|
+    |gray1_cols_V_out_blk_n    |   9|          2|    1|          2|
+    |gray1_rows_V_out_blk_n    |   9|          2|    1|          2|
+    |gray2_cols_V_out_blk_n    |   9|          2|    1|          2|
+    |gray2_rows_V_out_blk_n    |   9|          2|    1|          2|
+    |real_start                |   9|          2|    1|          2|
+    |res_cols_V_out_blk_n      |   9|          2|    1|          2|
+    |res_rows_V_out_blk_n      |   9|          2|    1|          2|
+    |rows_blk_n                |   9|          2|    1|          2|
+    +--------------------------+----+-----------+-----+-----------+
+    |Total                     | 288|         64|   32|         64|
+    +--------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------+---+----+-----+-----------+
+    |      Name      | FF| LUT| Bits| Const Bits|
+    +----------------+---+----+-----+-----------+
+    |ap_CS_fsm       |  1|   0|    1|          0|
+    |ap_done_reg     |  1|   0|    1|          0|
+    |start_once_reg  |  1|   0|    1|          0|
+    +----------------+---+----+-----+-----------+
+    |Total           |  3|   0|    3|          0|
+    +----------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------------+-----+-----+------------+----------------------+--------------+
+|         RTL Ports         | Dir | Bits|  Protocol  |     Source Object    |    C Type    |
++---------------------------+-----+-----+------------+----------------------+--------------+
+|ap_clk                     |  in |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|ap_rst                     |  in |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|ap_start                   |  in |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|start_full_n               |  in |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|ap_done                    | out |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|ap_continue                |  in |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|ap_idle                    | out |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|ap_ready                   | out |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|start_out                  | out |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|start_write                | out |    1| ap_ctrl_hs | Block_Mat.exit4750_p | return value |
+|rows_dout                  |  in |   32|   ap_fifo  |         rows         |    pointer   |
+|rows_empty_n               |  in |    1|   ap_fifo  |         rows         |    pointer   |
+|rows_read                  | out |    1|   ap_fifo  |         rows         |    pointer   |
+|cols_dout                  |  in |   32|   ap_fifo  |         cols         |    pointer   |
+|cols_empty_n               |  in |    1|   ap_fifo  |         cols         |    pointer   |
+|cols_read                  | out |    1|   ap_fifo  |         cols         |    pointer   |
+|res_rows_V_out_din         | out |   32|   ap_fifo  |    res_rows_V_out    |    pointer   |
+|res_rows_V_out_full_n      |  in |    1|   ap_fifo  |    res_rows_V_out    |    pointer   |
+|res_rows_V_out_write       | out |    1|   ap_fifo  |    res_rows_V_out    |    pointer   |
+|res_cols_V_out_din         | out |   32|   ap_fifo  |    res_cols_V_out    |    pointer   |
+|res_cols_V_out_full_n      |  in |    1|   ap_fifo  |    res_cols_V_out    |    pointer   |
+|res_cols_V_out_write       | out |    1|   ap_fifo  |    res_cols_V_out    |    pointer   |
+|gray1_rows_V_out_din       | out |   32|   ap_fifo  |   gray1_rows_V_out   |    pointer   |
+|gray1_rows_V_out_full_n    |  in |    1|   ap_fifo  |   gray1_rows_V_out   |    pointer   |
+|gray1_rows_V_out_write     | out |    1|   ap_fifo  |   gray1_rows_V_out   |    pointer   |
+|gray1_cols_V_out_din       | out |   32|   ap_fifo  |   gray1_cols_V_out   |    pointer   |
+|gray1_cols_V_out_full_n    |  in |    1|   ap_fifo  |   gray1_cols_V_out   |    pointer   |
+|gray1_cols_V_out_write     | out |    1|   ap_fifo  |   gray1_cols_V_out   |    pointer   |
+|gray2_rows_V_out_din       | out |   32|   ap_fifo  |   gray2_rows_V_out   |    pointer   |
+|gray2_rows_V_out_full_n    |  in |    1|   ap_fifo  |   gray2_rows_V_out   |    pointer   |
+|gray2_rows_V_out_write     | out |    1|   ap_fifo  |   gray2_rows_V_out   |    pointer   |
+|gray2_cols_V_out_din       | out |   32|   ap_fifo  |   gray2_cols_V_out   |    pointer   |
+|gray2_cols_V_out_full_n    |  in |    1|   ap_fifo  |   gray2_cols_V_out   |    pointer   |
+|gray2_cols_V_out_write     | out |    1|   ap_fifo  |   gray2_cols_V_out   |    pointer   |
+|grad_x_rows_V_out_din      | out |   32|   ap_fifo  |   grad_x_rows_V_out  |    pointer   |
+|grad_x_rows_V_out_full_n   |  in |    1|   ap_fifo  |   grad_x_rows_V_out  |    pointer   |
+|grad_x_rows_V_out_write    | out |    1|   ap_fifo  |   grad_x_rows_V_out  |    pointer   |
+|grad_x_cols_V_out_din      | out |   32|   ap_fifo  |   grad_x_cols_V_out  |    pointer   |
+|grad_x_cols_V_out_full_n   |  in |    1|   ap_fifo  |   grad_x_cols_V_out  |    pointer   |
+|grad_x_cols_V_out_write    | out |    1|   ap_fifo  |   grad_x_cols_V_out  |    pointer   |
+|grad_x1_rows_V_out_din     | out |   32|   ap_fifo  |  grad_x1_rows_V_out  |    pointer   |
+|grad_x1_rows_V_out_full_n  |  in |    1|   ap_fifo  |  grad_x1_rows_V_out  |    pointer   |
+|grad_x1_rows_V_out_write   | out |    1|   ap_fifo  |  grad_x1_rows_V_out  |    pointer   |
+|grad_x1_cols_V_out_din     | out |   32|   ap_fifo  |  grad_x1_cols_V_out  |    pointer   |
+|grad_x1_cols_V_out_full_n  |  in |    1|   ap_fifo  |  grad_x1_cols_V_out  |    pointer   |
+|grad_x1_cols_V_out_write   | out |    1|   ap_fifo  |  grad_x1_cols_V_out  |    pointer   |
+|grad_x2_rows_V_out_din     | out |   32|   ap_fifo  |  grad_x2_rows_V_out  |    pointer   |
+|grad_x2_rows_V_out_full_n  |  in |    1|   ap_fifo  |  grad_x2_rows_V_out  |    pointer   |
+|grad_x2_rows_V_out_write   | out |    1|   ap_fifo  |  grad_x2_rows_V_out  |    pointer   |
+|grad_x2_cols_V_out_din     | out |   32|   ap_fifo  |  grad_x2_cols_V_out  |    pointer   |
+|grad_x2_cols_V_out_full_n  |  in |    1|   ap_fifo  |  grad_x2_cols_V_out  |    pointer   |
+|grad_x2_cols_V_out_write   | out |    1|   ap_fifo  |  grad_x2_cols_V_out  |    pointer   |
+|grad_x3_rows_V_out_din     | out |   32|   ap_fifo  |  grad_x3_rows_V_out  |    pointer   |
+|grad_x3_rows_V_out_full_n  |  in |    1|   ap_fifo  |  grad_x3_rows_V_out  |    pointer   |
+|grad_x3_rows_V_out_write   | out |    1|   ap_fifo  |  grad_x3_rows_V_out  |    pointer   |
+|grad_x3_cols_V_out_din     | out |   32|   ap_fifo  |  grad_x3_cols_V_out  |    pointer   |
+|grad_x3_cols_V_out_full_n  |  in |    1|   ap_fifo  |  grad_x3_cols_V_out  |    pointer   |
+|grad_x3_cols_V_out_write   | out |    1|   ap_fifo  |  grad_x3_cols_V_out  |    pointer   |
+|grad_y_rows_V_out_din      | out |   32|   ap_fifo  |   grad_y_rows_V_out  |    pointer   |
+|grad_y_rows_V_out_full_n   |  in |    1|   ap_fifo  |   grad_y_rows_V_out  |    pointer   |
+|grad_y_rows_V_out_write    | out |    1|   ap_fifo  |   grad_y_rows_V_out  |    pointer   |
+|grad_y_cols_V_out_din      | out |   32|   ap_fifo  |   grad_y_cols_V_out  |    pointer   |
+|grad_y_cols_V_out_full_n   |  in |    1|   ap_fifo  |   grad_y_cols_V_out  |    pointer   |
+|grad_y_cols_V_out_write    | out |    1|   ap_fifo  |   grad_y_cols_V_out  |    pointer   |
+|grad_y1_rows_V_out_din     | out |   32|   ap_fifo  |  grad_y1_rows_V_out  |    pointer   |
+|grad_y1_rows_V_out_full_n  |  in |    1|   ap_fifo  |  grad_y1_rows_V_out  |    pointer   |
+|grad_y1_rows_V_out_write   | out |    1|   ap_fifo  |  grad_y1_rows_V_out  |    pointer   |
+|grad_y1_cols_V_out_din     | out |   32|   ap_fifo  |  grad_y1_cols_V_out  |    pointer   |
+|grad_y1_cols_V_out_full_n  |  in |    1|   ap_fifo  |  grad_y1_cols_V_out  |    pointer   |
+|grad_y1_cols_V_out_write   | out |    1|   ap_fifo  |  grad_y1_cols_V_out  |    pointer   |
+|grad_y3_rows_V_out_din     | out |   32|   ap_fifo  |  grad_y3_rows_V_out  |    pointer   |
+|grad_y3_rows_V_out_full_n  |  in |    1|   ap_fifo  |  grad_y3_rows_V_out  |    pointer   |
+|grad_y3_rows_V_out_write   | out |    1|   ap_fifo  |  grad_y3_rows_V_out  |    pointer   |
+|grad_y3_cols_V_out_din     | out |   32|   ap_fifo  |  grad_y3_cols_V_out  |    pointer   |
+|grad_y3_cols_V_out_full_n  |  in |    1|   ap_fifo  |  grad_y3_cols_V_out  |    pointer   |
+|grad_y3_cols_V_out_write   | out |    1|   ap_fifo  |  grad_y3_cols_V_out  |    pointer   |
+|grad_xx_rows_V_out_din     | out |   32|   ap_fifo  |  grad_xx_rows_V_out  |    pointer   |
+|grad_xx_rows_V_out_full_n  |  in |    1|   ap_fifo  |  grad_xx_rows_V_out  |    pointer   |
+|grad_xx_rows_V_out_write   | out |    1|   ap_fifo  |  grad_xx_rows_V_out  |    pointer   |
+|grad_xx_cols_V_out_din     | out |   32|   ap_fifo  |  grad_xx_cols_V_out  |    pointer   |
+|grad_xx_cols_V_out_full_n  |  in |    1|   ap_fifo  |  grad_xx_cols_V_out  |    pointer   |
+|grad_xx_cols_V_out_write   | out |    1|   ap_fifo  |  grad_xx_cols_V_out  |    pointer   |
+|grad_yy_rows_V_out_din     | out |   32|   ap_fifo  |  grad_yy_rows_V_out  |    pointer   |
+|grad_yy_rows_V_out_full_n  |  in |    1|   ap_fifo  |  grad_yy_rows_V_out  |    pointer   |
+|grad_yy_rows_V_out_write   | out |    1|   ap_fifo  |  grad_yy_rows_V_out  |    pointer   |
+|grad_yy_cols_V_out_din     | out |   32|   ap_fifo  |  grad_yy_cols_V_out  |    pointer   |
+|grad_yy_cols_V_out_full_n  |  in |    1|   ap_fifo  |  grad_yy_cols_V_out  |    pointer   |
+|grad_yy_cols_V_out_write   | out |    1|   ap_fifo  |  grad_yy_cols_V_out  |    pointer   |
+|grad_xy_rows_V_out_din     | out |   32|   ap_fifo  |  grad_xy_rows_V_out  |    pointer   |
+|grad_xy_rows_V_out_full_n  |  in |    1|   ap_fifo  |  grad_xy_rows_V_out  |    pointer   |
+|grad_xy_rows_V_out_write   | out |    1|   ap_fifo  |  grad_xy_rows_V_out  |    pointer   |
+|grad_xy_cols_V_out_din     | out |   32|   ap_fifo  |  grad_xy_cols_V_out  |    pointer   |
+|grad_xy_cols_V_out_full_n  |  in |    1|   ap_fifo  |  grad_xy_cols_V_out  |    pointer   |
+|grad_xy_cols_V_out_write   | out |    1|   ap_fifo  |  grad_xy_cols_V_out  |    pointer   |
+|grad_gy_rows_V_out_din     | out |   32|   ap_fifo  |  grad_gy_rows_V_out  |    pointer   |
+|grad_gy_rows_V_out_full_n  |  in |    1|   ap_fifo  |  grad_gy_rows_V_out  |    pointer   |
+|grad_gy_rows_V_out_write   | out |    1|   ap_fifo  |  grad_gy_rows_V_out  |    pointer   |
+|grad_gy_cols_V_out_din     | out |   32|   ap_fifo  |  grad_gy_cols_V_out  |    pointer   |
+|grad_gy_cols_V_out_full_n  |  in |    1|   ap_fifo  |  grad_gy_cols_V_out  |    pointer   |
+|grad_gy_cols_V_out_write   | out |    1|   ap_fifo  |  grad_gy_cols_V_out  |    pointer   |
++---------------------------+-----+-----+------------+----------------------+--------------+
+

@@ -1,0 +1,284 @@
+
+
+================================================================
+== Vivado HLS Report for 'Integral7'
+================================================================
+* Date:           Tue Dec  4 20:19:56 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Haar
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.519|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+--------+-----+--------+---------+
+    |    Latency   |   Interval   | Pipeline|
+    | min |   max  | min |   max  |   Type  |
+    +-----+--------+-----+--------+---------+
+    |    1|  132870|    1|  132870|   none  |
+    +-----+--------+-----+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+-----+--------+----------+-----------+-----------+---------+----------+
+        |             |    Latency   | Iteration|  Initiation Interval  |   Trip  |          |
+        |  Loop Name  | min |   max  |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +-------------+-----+--------+----------+-----------+-----------+---------+----------+
+        |- Loop 1     |    0|  132869|  3 ~ 517 |          -|          -| 0 ~ 257 |    no    |
+        | + Loop 1.1  |    0|     514|         3|          1|          1| 0 ~ 513 |    yes   |
+        +-------------+-----+--------+----------+-----------+-----------+---------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 3
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 6
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 3, States = { 3 4 5 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (tmp_105)
+3 --> 
+	6  / (!tmp_107)
+	4  / (tmp_107)
+4 --> 
+	5  / true
+5 --> 
+	3  / true
+6 --> 
+	2  / true
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.57>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%swinBuffer_0_0_1 = alloca i32"   --->   Operation 7 'alloca' 'swinBuffer_0_0_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%swinBuffer_1_0_1 = alloca i32"   --->   Operation 8 'alloca' 'swinBuffer_1_0_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%sqwinBuffer_0_0_1 = alloca i32"   --->   Operation 9 'alloca' 'sqwinBuffer_0_0_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%sqwinBuffer_1_0_1 = alloca i32"   --->   Operation 10 'alloca' 'sqwinBuffer_1_0_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%src_cols_read52 = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %src_cols_read)"   --->   Operation 11 'read' 'src_cols_read52' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%src_rows_read51 = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %src_rows_read)"   --->   Operation 12 'read' 'src_rows_read51' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%sLineBuffer = alloca [513 x i32], align 16" [./haar.h:360]   --->   Operation 13 'alloca' 'sLineBuffer' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%sqLineBuffer = alloca [513 x i32], align 16" [./haar.h:361]   --->   Operation 14 'alloca' 'sqLineBuffer' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_1 : Operation 15 [1/1] (1.57ns)   --->   "%tmp_s = add nsw i32 %src_rows_read51, 1" [./haar.h:367]   --->   Operation 15 'add' 'tmp_s' <Predicate = true> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 16 [1/1] (1.57ns)   --->   "%tmp_104 = add nsw i32 %src_cols_read52, 1" [./haar.h:368]   --->   Operation 16 'add' 'tmp_104' <Predicate = true> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 17 [1/1] (0.97ns)   --->   "br label %.loopexit" [./haar.h:367]   --->   Operation 17 'br' <Predicate = true> <Delay = 0.97>
+
+State 2 <SV = 1> <Delay = 1.55>
+ST_2 : Operation 18 [1/1] (0.00ns)   --->   "%i = phi i31 [ 0, %._crit_edge ], [ %i_9, %.loopexit.loopexit ]"   --->   Operation 18 'phi' 'i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%i_cast = zext i31 %i to i32" [./haar.h:367]   --->   Operation 19 'zext' 'i_cast' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (1.31ns)   --->   "%tmp_105 = icmp slt i32 %i_cast, %tmp_s" [./haar.h:367]   --->   Operation 20 'icmp' 'tmp_105' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.30> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 257, i64 0)"   --->   Operation 21 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (1.55ns)   --->   "%i_9 = add i31 %i, 1" [./haar.h:367]   --->   Operation 22 'add' 'i_9' <Predicate = true> <Delay = 1.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 23 [1/1] (0.00ns)   --->   "br i1 %tmp_105, label %.preheader.preheader, label %5" [./haar.h:367]   --->   Operation 23 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 24 [1/1] (1.30ns)   --->   "%tmp_106 = icmp eq i31 %i, 0" [./haar.h:371]   --->   Operation 24 'icmp' 'tmp_106' <Predicate = (tmp_105)> <Delay = 1.30> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.30> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%tmp_137 = trunc i31 %i to i19" [./haar.h:367]   --->   Operation 25 'trunc' 'tmp_137' <Predicate = (tmp_105)> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%tmp_138 = trunc i31 %i to i10" [./haar.h:367]   --->   Operation 26 'trunc' 'tmp_138' <Predicate = (tmp_105)> <Delay = 0.00>
+ST_2 : Operation 27 [1/1] (0.00ns)   --->   "%p_shl_cast = call i19 @_ssdm_op_BitConcatenate.i19.i10.i9(i10 %tmp_138, i9 0)" [./haar.h:372]   --->   Operation 27 'bitconcatenate' 'p_shl_cast' <Predicate = (tmp_105)> <Delay = 0.00>
+ST_2 : Operation 28 [1/1] (1.30ns)   --->   "%tmp_53 = add i19 %p_shl_cast, %tmp_137" [./haar.h:372]   --->   Operation 28 'add' 'tmp_53' <Predicate = (tmp_105)> <Delay = 1.30> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 29 [1/1] (0.00ns)   --->   "%tmp_139 = trunc i31 %i to i10" [./haar.h:389]   --->   Operation 29 'trunc' 'tmp_139' <Predicate = (tmp_105)> <Delay = 0.00>
+ST_2 : Operation 30 [1/1] (1.27ns)   --->   "%tmp_140 = add i10 -1, %tmp_139" [./haar.h:389]   --->   Operation 30 'add' 'tmp_140' <Predicate = (tmp_105)> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 31 [1/1] (0.00ns)   --->   "%tmp_55_cast = call i19 @_ssdm_op_BitConcatenate.i19.i10.i9(i10 %tmp_140, i9 0)" [./haar.h:368]   --->   Operation 31 'bitconcatenate' 'tmp_55_cast' <Predicate = (tmp_105)> <Delay = 0.00>
+ST_2 : Operation 32 [1/1] (0.97ns)   --->   "br label %.preheader" [./haar.h:368]   --->   Operation 32 'br' <Predicate = (tmp_105)> <Delay = 0.97>
+ST_2 : Operation 33 [1/1] (0.00ns)   --->   "ret void" [./haar.h:406]   --->   Operation 33 'ret' <Predicate = (!tmp_105)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 3.94>
+ST_3 : Operation 34 [1/1] (0.00ns)   --->   "%j = phi i31 [ 0, %.preheader.preheader ], [ %j_2, %4 ]"   --->   Operation 34 'phi' 'j' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 35 [1/1] (0.00ns)   --->   "%j_cast = zext i31 %j to i32" [./haar.h:368]   --->   Operation 35 'zext' 'j_cast' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 36 [1/1] (1.31ns)   --->   "%tmp_107 = icmp slt i32 %j_cast, %tmp_104" [./haar.h:368]   --->   Operation 36 'icmp' 'tmp_107' <Predicate = true> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.30> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 37 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 0, i64 513, i64 0)"   --->   Operation 37 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 38 [1/1] (1.55ns)   --->   "%j_2 = add i31 %j, 1" [./haar.h:368]   --->   Operation 38 'add' 'j_2' <Predicate = true> <Delay = 1.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 39 [1/1] (0.00ns)   --->   "br i1 %tmp_107, label %0, label %.loopexit.loopexit" [./haar.h:368]   --->   Operation 39 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 40 [1/1] (1.30ns)   --->   "%tmp_108 = icmp eq i31 %j, 0" [./haar.h:371]   --->   Operation 40 'icmp' 'tmp_108' <Predicate = (tmp_107)> <Delay = 1.30> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.30> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 41 [1/1] (0.46ns)   --->   "%or_cond = or i1 %tmp_106, %tmp_108" [./haar.h:371]   --->   Operation 41 'or' 'or_cond' <Predicate = (tmp_107)> <Delay = 0.46> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 42 [1/1] (0.00ns)   --->   "br i1 %or_cond, label %1, label %3" [./haar.h:371]   --->   Operation 42 'br' <Predicate = (tmp_107)> <Delay = 0.00>
+ST_3 : Operation 43 [1/1] (0.00ns)   --->   "%tmp_142 = trunc i31 %j to i19" [./haar.h:389]   --->   Operation 43 'trunc' 'tmp_142' <Predicate = (tmp_107 & !or_cond)> <Delay = 0.00>
+ST_3 : Operation 44 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp_143 = add i19 -1, %tmp_142" [./haar.h:389]   --->   Operation 44 'add' 'tmp_143' <Predicate = (tmp_107 & !or_cond)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.05> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_3 : Operation 45 [1/1] (1.95ns) (root node of TernaryAdder)   --->   "%tmp_57 = add i19 %tmp_55_cast, %tmp_143" [./haar.h:389]   --->   Operation 45 'add' 'tmp_57' <Predicate = (tmp_107 & !or_cond)> <Delay = 1.95> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.05> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_3 : Operation 46 [1/1] (0.00ns)   --->   "%tmp_57_cast = sext i19 %tmp_57 to i64" [./haar.h:389]   --->   Operation 46 'sext' 'tmp_57_cast' <Predicate = (tmp_107 & !or_cond)> <Delay = 0.00>
+ST_3 : Operation 47 [1/1] (0.00ns)   --->   "%src_val_addr = getelementptr [131072 x i8]* %src_val, i64 0, i64 %tmp_57_cast" [./haar.h:389]   --->   Operation 47 'getelementptr' 'src_val_addr' <Predicate = (tmp_107 & !or_cond)> <Delay = 0.00>
+ST_3 : Operation 48 [2/2] (1.99ns)   --->   "%src_val_load = load i8* %src_val_addr, align 1" [./haar.h:389]   --->   Operation 48 'load' 'src_val_load' <Predicate = (tmp_107 & !or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_3 : Operation 49 [1/1] (0.00ns)   --->   "%tmp_110 = zext i31 %j to i64" [./haar.h:390]   --->   Operation 49 'zext' 'tmp_110' <Predicate = (tmp_107 & !or_cond)> <Delay = 0.00>
+ST_3 : Operation 50 [1/1] (0.00ns)   --->   "%tmp_144 = trunc i31 %j to i19" [./haar.h:392]   --->   Operation 50 'trunc' 'tmp_144' <Predicate = (tmp_107 & !or_cond)> <Delay = 0.00>
+ST_3 : Operation 51 [1/1] (1.30ns)   --->   "%tmp_58 = add i19 %tmp_53, %tmp_144" [./haar.h:392]   --->   Operation 51 'add' 'tmp_58' <Predicate = (tmp_107 & !or_cond)> <Delay = 1.30> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 52 [1/1] (0.00ns)   --->   "%sLineBuffer_addr = getelementptr inbounds [513 x i32]* %sLineBuffer, i64 0, i64 %tmp_110" [./haar.h:390]   --->   Operation 52 'getelementptr' 'sLineBuffer_addr' <Predicate = (tmp_107 & !or_cond)> <Delay = 0.00>
+ST_3 : Operation 53 [2/2] (1.99ns)   --->   "%swinBuffer_0_0 = load i32* %sLineBuffer_addr, align 4" [./haar.h:390]   --->   Operation 53 'load' 'swinBuffer_0_0' <Predicate = (tmp_107 & !or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_3 : Operation 54 [1/1] (0.00ns)   --->   "%sqLineBuffer_addr = getelementptr inbounds [513 x i32]* %sqLineBuffer, i64 0, i64 %tmp_110" [./haar.h:393]   --->   Operation 54 'getelementptr' 'sqLineBuffer_addr' <Predicate = (tmp_107 & !or_cond)> <Delay = 0.00>
+ST_3 : Operation 55 [2/2] (1.99ns)   --->   "%sqwinBuffer_0_0 = load i32* %sqLineBuffer_addr, align 4" [./haar.h:393]   --->   Operation 55 'load' 'sqwinBuffer_0_0' <Predicate = (tmp_107 & !or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_3 : Operation 56 [1/1] (0.00ns)   --->   "%tmp_109 = zext i31 %j to i64" [./haar.h:372]   --->   Operation 56 'zext' 'tmp_109' <Predicate = (tmp_107 & or_cond)> <Delay = 0.00>
+ST_3 : Operation 57 [1/1] (0.00ns)   --->   "%tmp_141 = trunc i31 %j to i19" [./haar.h:372]   --->   Operation 57 'trunc' 'tmp_141' <Predicate = (tmp_107 & or_cond)> <Delay = 0.00>
+ST_3 : Operation 58 [1/1] (1.30ns)   --->   "%tmp_56 = add i19 %tmp_53, %tmp_141" [./haar.h:372]   --->   Operation 58 'add' 'tmp_56' <Predicate = (tmp_107 & or_cond)> <Delay = 1.30> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 59 [1/1] (0.00ns)   --->   "%tmp_56_cast = zext i19 %tmp_56 to i64" [./haar.h:372]   --->   Operation 59 'zext' 'tmp_56_cast' <Predicate = (tmp_107 & or_cond)> <Delay = 0.00>
+ST_3 : Operation 60 [1/1] (0.00ns)   --->   "%swin_val_addr = getelementptr [131841 x i32]* %swin_val, i64 0, i64 %tmp_56_cast" [./haar.h:372]   --->   Operation 60 'getelementptr' 'swin_val_addr' <Predicate = (tmp_107 & or_cond)> <Delay = 0.00>
+ST_3 : Operation 61 [1/1] (0.00ns)   --->   "%sqwin_val_addr = getelementptr [131841 x i32]* %sqwin_val, i64 0, i64 %tmp_56_cast" [./haar.h:373]   --->   Operation 61 'getelementptr' 'sqwin_val_addr' <Predicate = (tmp_107 & or_cond)> <Delay = 0.00>
+ST_3 : Operation 62 [1/1] (1.99ns)   --->   "store i32 0, i32* %swin_val_addr, align 4" [./haar.h:372]   --->   Operation 62 'store' <Predicate = (tmp_107 & or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_3 : Operation 63 [1/1] (1.99ns)   --->   "store i32 0, i32* %sqwin_val_addr, align 4" [./haar.h:373]   --->   Operation 63 'store' <Predicate = (tmp_107 & or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_3 : Operation 64 [1/1] (0.00ns)   --->   "br i1 %tmp_106, label %2, label %._crit_edge3" [./haar.h:375]   --->   Operation 64 'br' <Predicate = (tmp_107 & or_cond)> <Delay = 0.00>
+ST_3 : Operation 65 [1/1] (0.00ns)   --->   "%sLineBuffer_addr_1 = getelementptr inbounds [513 x i32]* %sLineBuffer, i64 0, i64 %tmp_109" [./haar.h:376]   --->   Operation 65 'getelementptr' 'sLineBuffer_addr_1' <Predicate = (tmp_107 & or_cond & tmp_106)> <Delay = 0.00>
+ST_3 : Operation 66 [1/1] (1.99ns)   --->   "store i32 0, i32* %sLineBuffer_addr_1, align 4" [./haar.h:376]   --->   Operation 66 'store' <Predicate = (tmp_107 & or_cond & tmp_106)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_3 : Operation 67 [1/1] (0.00ns)   --->   "%sqLineBuffer_addr_1 = getelementptr inbounds [513 x i32]* %sqLineBuffer, i64 0, i64 %tmp_109" [./haar.h:377]   --->   Operation 67 'getelementptr' 'sqLineBuffer_addr_1' <Predicate = (tmp_107 & or_cond & tmp_106)> <Delay = 0.00>
+ST_3 : Operation 68 [1/1] (1.99ns)   --->   "store i32 0, i32* %sqLineBuffer_addr_1, align 4" [./haar.h:377]   --->   Operation 68 'store' <Predicate = (tmp_107 & or_cond & tmp_106)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_3 : Operation 69 [1/1] (0.00ns)   --->   "br label %._crit_edge3" [./haar.h:378]   --->   Operation 69 'br' <Predicate = (tmp_107 & or_cond & tmp_106)> <Delay = 0.00>
+
+State 4 <SV = 3> <Delay = 7.68>
+ST_4 : Operation 70 [1/1] (0.00ns)   --->   "%swinBuffer_0_0_1_l_1 = load i32* %swinBuffer_0_0_1" [./haar.h:391]   --->   Operation 70 'load' 'swinBuffer_0_0_1_l_1' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_4 : Operation 71 [1/1] (0.00ns)   --->   "%swinBuffer_1_0_1_l_1 = load i32* %swinBuffer_1_0_1" [./haar.h:391]   --->   Operation 71 'load' 'swinBuffer_1_0_1_l_1' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_4 : Operation 72 [1/2] (1.99ns)   --->   "%src_val_load = load i8* %src_val_addr, align 1" [./haar.h:389]   --->   Operation 72 'load' 'src_val_load' <Predicate = (!or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_4 : Operation 73 [1/1] (0.00ns)   --->   "%value = zext i8 %src_val_load to i32" [./haar.h:389]   --->   Operation 73 'zext' 'value' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_4 : Operation 74 [1/2] (1.99ns)   --->   "%swinBuffer_0_0 = load i32* %sLineBuffer_addr, align 4" [./haar.h:390]   --->   Operation 74 'load' 'swinBuffer_0_0' <Predicate = (!or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_4 : Operation 75 [1/1] (1.57ns)   --->   "%tmp1 = add i32 %value, %swinBuffer_1_0_1_l_1" [./haar.h:391]   --->   Operation 75 'add' 'tmp1' <Predicate = (!or_cond)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.27> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 76 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp_111 = add i32 %swinBuffer_0_0, %tmp1" [./haar.h:391]   --->   Operation 76 'add' 'tmp_111' <Predicate = (!or_cond)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.05> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_4 : Operation 77 [1/1] (2.11ns) (root node of TernaryAdder)   --->   "%swinBuffer_1_0 = sub i32 %tmp_111, %swinBuffer_0_0_1_l_1" [./haar.h:391]   --->   Operation 77 'sub' 'swinBuffer_1_0' <Predicate = (!or_cond)> <Delay = 2.11> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.05> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_4 : Operation 78 [1/2] (1.99ns)   --->   "%sqwinBuffer_0_0 = load i32* %sqLineBuffer_addr, align 4" [./haar.h:393]   --->   Operation 78 'load' 'sqwinBuffer_0_0' <Predicate = (!or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_4 : Operation 79 [1/1] (1.99ns)   --->   "store i32 %swinBuffer_1_0, i32* %sLineBuffer_addr, align 4" [./haar.h:401]   --->   Operation 79 'store' <Predicate = (!or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_4 : Operation 80 [1/1] (0.97ns)   --->   "store i32 %swinBuffer_1_0, i32* %swinBuffer_1_0_1" [./haar.h:398]   --->   Operation 80 'store' <Predicate = (!or_cond)> <Delay = 0.97>
+ST_4 : Operation 81 [1/1] (0.97ns)   --->   "store i32 %swinBuffer_0_0, i32* %swinBuffer_0_0_1" [./haar.h:397]   --->   Operation 81 'store' <Predicate = (!or_cond)> <Delay = 0.97>
+ST_4 : Operation 82 [1/1] (0.00ns)   --->   "%swinBuffer_0_0_1_l = load i32* %swinBuffer_0_0_1" [./haar.h:379]   --->   Operation 82 'load' 'swinBuffer_0_0_1_l' <Predicate = (or_cond & !tmp_108)> <Delay = 0.00>
+ST_4 : Operation 83 [1/1] (0.00ns)   --->   "%swinBuffer_1_0_1_l = load i32* %swinBuffer_1_0_1" [./haar.h:379]   --->   Operation 83 'load' 'swinBuffer_1_0_1_l' <Predicate = (or_cond & !tmp_108)> <Delay = 0.00>
+ST_4 : Operation 84 [1/1] (0.45ns)   --->   "%p_swinBuffer_1_0_1 = select i1 %tmp_108, i32 0, i32 %swinBuffer_1_0_1_l" [./haar.h:379]   --->   Operation 84 'select' 'p_swinBuffer_1_0_1' <Predicate = (or_cond)> <Delay = 0.45> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.45> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 85 [1/1] (0.45ns)   --->   "%p_swinBuffer_0_0_1 = select i1 %tmp_108, i32 0, i32 %swinBuffer_0_0_1_l" [./haar.h:379]   --->   Operation 85 'select' 'p_swinBuffer_0_0_1' <Predicate = (or_cond)> <Delay = 0.45> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.45> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 86 [1/1] (0.97ns)   --->   "store i32 %p_swinBuffer_1_0_1, i32* %swinBuffer_1_0_1" [./haar.h:379]   --->   Operation 86 'store' <Predicate = (or_cond)> <Delay = 0.97>
+ST_4 : Operation 87 [1/1] (0.97ns)   --->   "store i32 %p_swinBuffer_0_0_1, i32* %swinBuffer_0_0_1" [./haar.h:379]   --->   Operation 87 'store' <Predicate = (or_cond)> <Delay = 0.97>
+
+State 5 <SV = 4> <Delay = 8.51>
+ST_5 : Operation 88 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([13 x i8]* @p_str39)" [./haar.h:368]   --->   Operation 88 'specregionbegin' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 89 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str4) nounwind" [./haar.h:370]   --->   Operation 89 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 90 [1/1] (0.00ns)   --->   "%sqwinBuffer_0_0_1_1 = load i32* %sqwinBuffer_0_0_1" [./haar.h:394]   --->   Operation 90 'load' 'sqwinBuffer_0_0_1_1' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_5 : Operation 91 [1/1] (0.00ns)   --->   "%sqwinBuffer_1_0_1_1 = load i32* %sqwinBuffer_1_0_1" [./haar.h:394]   --->   Operation 91 'load' 'sqwinBuffer_1_0_1_1' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_5 : Operation 92 [1/1] (0.00ns)   --->   "%value_cast = zext i8 %src_val_load to i16" [./haar.h:389]   --->   Operation 92 'zext' 'value_cast' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_5 : Operation 93 [1/1] (0.00ns)   --->   "%tmp_58_cast = zext i19 %tmp_58 to i64" [./haar.h:392]   --->   Operation 93 'zext' 'tmp_58_cast' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_5 : Operation 94 [1/1] (0.00ns)   --->   "%swin_val_addr_1 = getelementptr [131841 x i32]* %swin_val, i64 0, i64 %tmp_58_cast" [./haar.h:392]   --->   Operation 94 'getelementptr' 'swin_val_addr_1' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_5 : Operation 95 [1/1] (0.00ns)   --->   "%sqwin_val_addr_1 = getelementptr [131841 x i32]* %sqwin_val, i64 0, i64 %tmp_58_cast" [./haar.h:395]   --->   Operation 95 'getelementptr' 'sqwin_val_addr_1' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_5 : Operation 96 [1/1] (1.99ns)   --->   "store i32 %swinBuffer_1_0, i32* %swin_val_addr_1, align 4" [./haar.h:392]   --->   Operation 96 'store' <Predicate = (!or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_5 : Operation 97 [1/1] (2.08ns)   --->   "%tmp_112 = mul i16 %value_cast, %value_cast" [./haar.h:394]   --->   Operation 97 'mul' 'tmp_112' <Predicate = (!or_cond)> <Delay = 2.08> <Core = "DSP48">   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 4.41> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_5 : Operation 98 [1/1] (0.00ns)   --->   "%tmp_217_cast = zext i16 %tmp_112 to i32" [./haar.h:394]   --->   Operation 98 'zext' 'tmp_217_cast' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_5 : Operation 99 [1/1] (2.33ns)   --->   "%tmp2 = add i32 %tmp_217_cast, %sqwinBuffer_1_0_1_1" [./haar.h:394]   --->   Operation 99 'add' 'tmp2' <Predicate = (!or_cond)> <Delay = 2.33> <Core = "DSP48">   --->   Core 61 'DSP48' <Latency = 0> <II = 1> <Delay = 4.41> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_5 : Operation 100 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%tmp_113 = add i32 %sqwinBuffer_0_0, %tmp2" [./haar.h:394]   --->   Operation 100 'add' 'tmp_113' <Predicate = (!or_cond)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.05> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_5 : Operation 101 [1/1] (2.11ns) (root node of TernaryAdder)   --->   "%sqwinBuffer_1_0 = sub i32 %tmp_113, %sqwinBuffer_0_0_1_1" [./haar.h:394]   --->   Operation 101 'sub' 'sqwinBuffer_1_0' <Predicate = (!or_cond)> <Delay = 2.11> <Core = "TAddSub">   --->   Core 80 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.05> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_5 : Operation 102 [1/1] (1.99ns)   --->   "store i32 %sqwinBuffer_1_0, i32* %sqwin_val_addr_1, align 4" [./haar.h:395]   --->   Operation 102 'store' <Predicate = (!or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_5 : Operation 103 [1/1] (1.99ns)   --->   "store i32 %sqwinBuffer_1_0, i32* %sqLineBuffer_addr, align 4" [./haar.h:402]   --->   Operation 103 'store' <Predicate = (!or_cond)> <Delay = 1.99> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.99> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 513> <RAM>
+ST_5 : Operation 104 [1/1] (0.97ns)   --->   "store i32 %sqwinBuffer_1_0, i32* %sqwinBuffer_1_0_1" [./haar.h:400]   --->   Operation 104 'store' <Predicate = (!or_cond)> <Delay = 0.97>
+ST_5 : Operation 105 [1/1] (0.97ns)   --->   "store i32 %sqwinBuffer_0_0, i32* %sqwinBuffer_0_0_1" [./haar.h:399]   --->   Operation 105 'store' <Predicate = (!or_cond)> <Delay = 0.97>
+ST_5 : Operation 106 [1/1] (0.00ns)   --->   "br label %4"   --->   Operation 106 'br' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_5 : Operation 107 [1/1] (0.00ns)   --->   "%sqwinBuffer_0_0_1_s = load i32* %sqwinBuffer_0_0_1" [./haar.h:379]   --->   Operation 107 'load' 'sqwinBuffer_0_0_1_s' <Predicate = (or_cond & !tmp_108)> <Delay = 0.00>
+ST_5 : Operation 108 [1/1] (0.00ns)   --->   "%sqwinBuffer_1_0_1_s = load i32* %sqwinBuffer_1_0_1" [./haar.h:379]   --->   Operation 108 'load' 'sqwinBuffer_1_0_1_s' <Predicate = (or_cond & !tmp_108)> <Delay = 0.00>
+ST_5 : Operation 109 [1/1] (0.45ns)   --->   "%p_sqwinBuffer_1_0_1 = select i1 %tmp_108, i32 0, i32 %sqwinBuffer_1_0_1_s" [./haar.h:379]   --->   Operation 109 'select' 'p_sqwinBuffer_1_0_1' <Predicate = (or_cond)> <Delay = 0.45> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.45> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 110 [1/1] (0.45ns)   --->   "%p_sqwinBuffer_0_0_1 = select i1 %tmp_108, i32 0, i32 %sqwinBuffer_0_0_1_s" [./haar.h:379]   --->   Operation 110 'select' 'p_sqwinBuffer_0_0_1' <Predicate = (or_cond)> <Delay = 0.45> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.45> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 111 [1/1] (0.97ns)   --->   "store i32 %p_sqwinBuffer_1_0_1, i32* %sqwinBuffer_1_0_1" [./haar.h:379]   --->   Operation 111 'store' <Predicate = (or_cond)> <Delay = 0.97>
+ST_5 : Operation 112 [1/1] (0.97ns)   --->   "store i32 %p_sqwinBuffer_0_0_1, i32* %sqwinBuffer_0_0_1" [./haar.h:379]   --->   Operation 112 'store' <Predicate = (or_cond)> <Delay = 0.97>
+ST_5 : Operation 113 [1/1] (0.00ns)   --->   "br label %4" [./haar.h:386]   --->   Operation 113 'br' <Predicate = (or_cond)> <Delay = 0.00>
+ST_5 : Operation 114 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([13 x i8]* @p_str39, i32 %tmp)" [./haar.h:404]   --->   Operation 114 'specregionend' 'empty' <Predicate = (tmp_107)> <Delay = 0.00>
+ST_5 : Operation 115 [1/1] (0.00ns)   --->   "br label %.preheader" [./haar.h:368]   --->   Operation 115 'br' <Predicate = (tmp_107)> <Delay = 0.00>
+
+State 6 <SV = 3> <Delay = 0.00>
+ST_6 : Operation 116 [1/1] (0.00ns)   --->   "br label %.loopexit"   --->   Operation 116 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.58ns
+The critical path consists of the following:
+	wire read on port 'src_cols_read' [10]  (0 ns)
+	'add' operation ('tmp_104', ./haar.h:368) [15]  (1.58 ns)
+
+ <State 2>: 1.56ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ./haar.h:367) [18]  (0 ns)
+	'add' operation ('i', ./haar.h:367) [22]  (1.56 ns)
+
+ <State 3>: 3.95ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', ./haar.h:368) [35]  (0 ns)
+	'add' operation ('tmp_143', ./haar.h:389) [53]  (0 ns)
+	'add' operation ('tmp_57', ./haar.h:389) [54]  (1.95 ns)
+	'getelementptr' operation ('src_val_addr', ./haar.h:389) [56]  (0 ns)
+	'load' operation ('src_val_load', ./haar.h:389) on array 'src_val' [57]  (2 ns)
+
+ <State 4>: 7.69ns
+The critical path consists of the following:
+	'load' operation ('src_val_load', ./haar.h:389) on array 'src_val' [57]  (2 ns)
+	'add' operation ('tmp1', ./haar.h:391) [68]  (1.58 ns)
+	'add' operation ('tmp_111', ./haar.h:391) [69]  (0 ns)
+	'sub' operation ('swinBuffer[1][0]', ./haar.h:391) [70]  (2.11 ns)
+	'store' operation (./haar.h:401) of variable 'swinBuffer[1][0]', ./haar.h:391 on array 'sLineBuffer', ./haar.h:360 [80]  (2 ns)
+
+ <State 5>: 8.52ns
+The critical path consists of the following:
+	'mul' operation ('tmp_112', ./haar.h:394) [74]  (2.08 ns)
+	'add' operation ('tmp2', ./haar.h:394) [76]  (2.33 ns)
+	'add' operation ('tmp_113', ./haar.h:394) [77]  (0 ns)
+	'sub' operation ('sqwinBuffer[1][0]', ./haar.h:394) [78]  (2.11 ns)
+	'store' operation (./haar.h:395) of variable 'sqwinBuffer[1][0]', ./haar.h:394 on array 'sqwin_val' [79]  (2 ns)
+
+ <State 6>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

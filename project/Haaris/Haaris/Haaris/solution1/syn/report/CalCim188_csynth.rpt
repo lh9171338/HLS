@@ -1,0 +1,233 @@
+
+
+================================================================
+== Vivado HLS Report for 'CalCim188'
+================================================================
+* Date:           Wed Dec  5 01:56:14 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Haaris
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.287|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-------+-----+-------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    | min |  max  | min |  max  |   Type  |
+    +-----+-------+-----+-------+---------+
+    |    1|  70401|    1|  70401|   none  |
+    +-----+-------+-----+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+-----+-------+----------+-----------+-----------+---------+----------+
+        |             |   Latency   | Iteration|  Initiation Interval  |   Trip  |          |
+        |  Loop Name  | min |  max  |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +-------------+-----+-------+----------+-----------+-----------+---------+----------+
+        |- Loop 1     |    0|  70400|  3 ~ 275 |          -|          -| 0 ~ 256 |    no    |
+        | + Loop 1.1  |    0|    272|        18|          1|          1| 0 ~ 256 |    yes   |
+        +-------------+-----+-------+----------+-----------+-----------+---------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      -|       -|       -|
+|Expression       |        -|      -|       0|     126|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|     27|    1961|    2624|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|     135|
+|Register         |        0|      -|     897|      96|
++-----------------+---------+-------+--------+--------+
+|Total            |        0|     27|    2858|    2981|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        0|   ~0  |   ~0   |   ~0   |
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    +---------------------------+----------------------+---------+-------+-----+-----+
+    |          Instance         |        Module        | BRAM_18K| DSP48E|  FF | LUT |
+    +---------------------------+----------------------+---------+-------+-----+-----+
+    |Haaris_Core_fadd_Lf8_U251  |Haaris_Core_fadd_Lf8  |        0|      2|  227|  218|
+    |Haaris_Core_fmul_Ngs_U254  |Haaris_Core_fmul_Ngs  |        0|      3|  128|  137|
+    |Haaris_Core_fmul_Ngs_U255  |Haaris_Core_fmul_Ngs  |        0|      3|  128|  137|
+    |Haaris_Core_fmul_Ngs_U256  |Haaris_Core_fmul_Ngs  |        0|      3|  128|  137|
+    |Haaris_Core_fmul_Ngs_U257  |Haaris_Core_fmul_Ngs  |        0|      3|  128|  137|
+    |Haaris_Core_fmul_Ngs_U258  |Haaris_Core_fmul_Ngs  |        0|      3|  128|  137|
+    |Haaris_Core_fmul_Ngs_U259  |Haaris_Core_fmul_Ngs  |        0|      3|  128|  137|
+    |Haaris_Core_fmul_Ngs_U260  |Haaris_Core_fmul_Ngs  |        0|      3|  128|  137|
+    |Haaris_Core_fsub_Mgi_U252  |Haaris_Core_fsub_Mgi  |        0|      2|  227|  218|
+    |Haaris_Core_fsub_Mgi_U253  |Haaris_Core_fsub_Mgi  |        0|      2|  227|  218|
+    |Haaris_Core_sitofOgC_U261  |Haaris_Core_sitofOgC  |        0|      0|  128|  337|
+    |Haaris_Core_sitofOgC_U262  |Haaris_Core_sitofOgC  |        0|      0|  128|  337|
+    |Haaris_Core_sitofOgC_U263  |Haaris_Core_sitofOgC  |        0|      0|  128|  337|
+    +---------------------------+----------------------+---------+-------+-----+-----+
+    |Total                      |                      |        0|     27| 1961| 2624|
+    +---------------------------+----------------------+---------+-------+-----+-----+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +------------------------------------+----------+-------+---+----+------------+------------+
+    |            Variable Name           | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------------------------+----------+-------+---+----+------------+------------+
+    |i_V_fu_181_p2                       |     +    |      0|  0|  39|          32|           1|
+    |j_V_fu_192_p2                       |     +    |      0|  0|  39|          32|           1|
+    |ap_block_state20_pp0_stage0_iter17  |    and   |      0|  0|   2|           1|           1|
+    |exitcond8_i_fu_176_p2               |   icmp   |      0|  0|  18|          32|          32|
+    |exitcond_i_fu_187_p2                |   icmp   |      0|  0|  18|          32|          32|
+    |ap_block_pp0_stage0_01001           |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state1                     |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state4_pp0_stage0_iter1    |    or    |      0|  0|   2|           1|           1|
+    |ap_enable_pp0                       |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1             |    xor   |      0|  0|   2|           2|           1|
+    +------------------------------------+----------+-------+---+----+------------+------------+
+    |Total                               |          |      0|  0| 126|         135|          73|
+    +------------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------------+----+-----------+-----+-----------+
+    |              Name              | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                       |  27|          5|    1|          5|
+    |ap_done                         |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1         |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter17        |   9|          2|    1|          2|
+    |k_blk_n                         |   9|          2|    1|          2|
+    |p_dst_data_stream_V_blk_n       |   9|          2|    1|          2|
+    |p_gradx_data_stream_V_V_blk_n   |   9|          2|    1|          2|
+    |p_gradxy_data_stream_V_V_blk_n  |   9|          2|    1|          2|
+    |p_grady_cols_V_blk_n            |   9|          2|    1|          2|
+    |p_grady_data_stream_V_V_blk_n   |   9|          2|    1|          2|
+    |p_grady_rows_V_blk_n            |   9|          2|    1|          2|
+    |t_V_17_reg_112                  |   9|          2|   32|         64|
+    |t_V_reg_101                     |   9|          2|   32|         64|
+    +--------------------------------+----+-----------+-----+-----------+
+    |Total                           | 135|         29|   75|        153|
+    +--------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------+----+----+-----+-----------+
+    |           Name           | FF | LUT| Bits| Const Bits|
+    +--------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                 |   4|   0|    4|          0|
+    |ap_done_reg               |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0   |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1   |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter10  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter11  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter12  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter13  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter14  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter15  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter16  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter17  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2   |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3   |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter4   |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter5   |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter6   |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter7   |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter8   |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter9   |   1|   0|    1|          0|
+    |cols_reg_220              |  32|   0|   32|          0|
+    |det_reg_322               |  32|   0|   32|          0|
+    |exitcond_i_reg_234        |   1|   0|    1|          0|
+    |i_V_reg_229               |  32|   0|   32|          0|
+    |k_read_reg_210            |  32|   0|   32|          0|
+    |lgx_reg_288               |  32|   0|   32|          0|
+    |lgxy_reg_300              |  32|   0|   32|          0|
+    |lgy_reg_294               |  32|   0|   32|          0|
+    |rows_reg_215              |  32|   0|   32|          0|
+    |t_V_17_reg_112            |  32|   0|   32|          0|
+    |t_V_reg_101               |  32|   0|   32|          0|
+    |tmp_60_i_reg_306          |  32|   0|   32|          0|
+    |tmp_61_i_reg_311          |  32|   0|   32|          0|
+    |tmp_62_i_reg_327          |  32|   0|   32|          0|
+    |tmp_63_i_reg_332          |  32|   0|   32|          0|
+    |tmp_V_10_reg_248          |  35|   0|   35|          0|
+    |tmp_V_11_reg_253          |  35|   0|   35|          0|
+    |tmp_V_reg_243             |  35|   0|   35|          0|
+    |tmp_i_i22_i_reg_278       |  32|   0|   32|          0|
+    |tmp_i_i23_i_reg_283       |  32|   0|   32|          0|
+    |tmp_i_i_i_reg_273         |  32|   0|   32|          0|
+    |trac_reg_316              |  32|   0|   32|          0|
+    |det_reg_322               |  64|  32|   32|          0|
+    |exitcond_i_reg_234        |  64|  32|    1|          0|
+    |trac_reg_316              |  64|  32|   32|          0|
+    +--------------------------+----+----+-----+-----------+
+    |Total                     | 897|  96|  770|          0|
+    +--------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------------------+-----+-----+------------+--------------------------+--------------+
+|             RTL Ports            | Dir | Bits|  Protocol  |       Source Object      |    C Type    |
++----------------------------------+-----+-----+------------+--------------------------+--------------+
+|ap_clk                            |  in |    1| ap_ctrl_hs |         CalCim188        | return value |
+|ap_rst                            |  in |    1| ap_ctrl_hs |         CalCim188        | return value |
+|ap_start                          |  in |    1| ap_ctrl_hs |         CalCim188        | return value |
+|ap_done                           | out |    1| ap_ctrl_hs |         CalCim188        | return value |
+|ap_continue                       |  in |    1| ap_ctrl_hs |         CalCim188        | return value |
+|ap_idle                           | out |    1| ap_ctrl_hs |         CalCim188        | return value |
+|ap_ready                          | out |    1| ap_ctrl_hs |         CalCim188        | return value |
+|p_gradx_data_stream_V_V_dout      |  in |   35|   ap_fifo  |  p_gradx_data_stream_V_V |    pointer   |
+|p_gradx_data_stream_V_V_empty_n   |  in |    1|   ap_fifo  |  p_gradx_data_stream_V_V |    pointer   |
+|p_gradx_data_stream_V_V_read      | out |    1|   ap_fifo  |  p_gradx_data_stream_V_V |    pointer   |
+|p_grady_rows_V_dout               |  in |   32|   ap_fifo  |      p_grady_rows_V      |    pointer   |
+|p_grady_rows_V_empty_n            |  in |    1|   ap_fifo  |      p_grady_rows_V      |    pointer   |
+|p_grady_rows_V_read               | out |    1|   ap_fifo  |      p_grady_rows_V      |    pointer   |
+|p_grady_cols_V_dout               |  in |   32|   ap_fifo  |      p_grady_cols_V      |    pointer   |
+|p_grady_cols_V_empty_n            |  in |    1|   ap_fifo  |      p_grady_cols_V      |    pointer   |
+|p_grady_cols_V_read               | out |    1|   ap_fifo  |      p_grady_cols_V      |    pointer   |
+|p_grady_data_stream_V_V_dout      |  in |   35|   ap_fifo  |  p_grady_data_stream_V_V |    pointer   |
+|p_grady_data_stream_V_V_empty_n   |  in |    1|   ap_fifo  |  p_grady_data_stream_V_V |    pointer   |
+|p_grady_data_stream_V_V_read      | out |    1|   ap_fifo  |  p_grady_data_stream_V_V |    pointer   |
+|p_gradxy_data_stream_V_V_dout     |  in |   35|   ap_fifo  | p_gradxy_data_stream_V_V |    pointer   |
+|p_gradxy_data_stream_V_V_empty_n  |  in |    1|   ap_fifo  | p_gradxy_data_stream_V_V |    pointer   |
+|p_gradxy_data_stream_V_V_read     | out |    1|   ap_fifo  | p_gradxy_data_stream_V_V |    pointer   |
+|p_dst_data_stream_V_din           | out |   32|   ap_fifo  |    p_dst_data_stream_V   |    pointer   |
+|p_dst_data_stream_V_full_n        |  in |    1|   ap_fifo  |    p_dst_data_stream_V   |    pointer   |
+|p_dst_data_stream_V_write         | out |    1|   ap_fifo  |    p_dst_data_stream_V   |    pointer   |
+|k_dout                            |  in |   32|   ap_fifo  |             k            |    pointer   |
+|k_empty_n                         |  in |    1|   ap_fifo  |             k            |    pointer   |
+|k_read                            | out |    1|   ap_fifo  |             k            |    pointer   |
++----------------------------------+-----+-----+------------+--------------------------+--------------+
+

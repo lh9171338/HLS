@@ -1,0 +1,298 @@
+
+
+================================================================
+== Vivado HLS Report for 'Haaris_Core'
+================================================================
+* Date:           Wed Dec  5 01:56:18 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Haaris
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.750|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-------+-----+-------+----------+
+    |   Latency   |   Interval  | Pipeline |
+    | min |  max  | min |  max  |   Type   |
+    +-----+-------+-----+-------+----------+
+    |  197|  70425|  182|  70402| dataflow |
+    +-----+-------+-----+-------+----------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------+----------------------+-----+-------+-----+-------+---------+
+        |                         |                      |   Latency   |   Interval  | Pipeline|
+        |         Instance        |        Module        | min |  max  | min |  max  |   Type  |
+        +-------------------------+----------------------+-----+-------+-----+-------+---------+
+        |BoxFilter_U0             |BoxFilter             |  181|  69125|  181|  69125|   none  |
+        |BoxFilter186_U0          |BoxFilter186          |  181|  69125|  181|  69125|   none  |
+        |BoxFilter187_U0          |BoxFilter187          |  181|  69125|  181|  69125|   none  |
+        |CalCim188_U0             |CalCim188             |    1|  70401|    1|  70401|   none  |
+        |Sobel_U0                 |Sobel                 |  164|  69428|  164|  69428|   none  |
+        |Sobel_1_U0               |Sobel_1               |  164|  69428|  164|  69428|   none  |
+        |FindMax_U0               |FindMax               |    4|  66564|    4|  66564|   none  |
+        |Dilate_U0                |Dilate                |  141|  67597|  141|  67597|   none  |
+        |AXIvideo2Mat_U0          |AXIvideo2Mat          |    3|  67331|    3|  67331|   none  |
+        |Mat2AXIvideo_U0          |Mat2AXIvideo          |    1|  66561|    1|  66561|   none  |
+        |CvtColor_U0              |CvtColor              |    1|  66817|    1|  66817|   none  |
+        |Mul_U0                   |Mul                   |    1|  66561|    1|  66561|   none  |
+        |Mul184_U0                |Mul184                |    1|  66561|    1|  66561|   none  |
+        |Mul185_U0                |Mul185                |    1|  66561|    1|  66561|   none  |
+        |Duplicate_1_U0           |Duplicate_1           |    1|  66305|    1|  66305|   none  |
+        |Duplicate181_U0          |Duplicate181          |    1|  66305|    1|  66305|   none  |
+        |Duplicate183_U0          |Duplicate183          |    1|  66305|    1|  66305|   none  |
+        |Duplicate182_U0          |Duplicate182          |    1|  66305|    1|  66305|   none  |
+        |Duplicate_U0             |Duplicate             |    1|  66305|    1|  66305|   none  |
+        |Block_Mat_exit4750_p_U0  |Block_Mat_exit4750_p  |    0|      0|    0|      0|   none  |
+        |Block_Mat_exit47_pro_U0  |Block_Mat_exit47_pro  |    0|      0|    0|      0|   none  |
+        |Haaris_Core_entry242_U0  |Haaris_Core_entry242  |    0|      0|    0|      0|   none  |
+        +-------------------------+----------------------+-----+-------+-----+-------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      -|       -|       -|
+|Expression       |        -|      -|       0|      38|
+|FIFO             |        0|      -|     373|    2741|
+|Instance         |       36|     61|   17957|   29819|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|      36|
+|Register         |        -|      -|       6|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |       36|     61|   18336|   32634|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        1|      1|       2|       7|
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    +--------------------------+------------------------+---------+-------+------+------+
+    |         Instance         |         Module         | BRAM_18K| DSP48E|  FF  |  LUT |
+    +--------------------------+------------------------+---------+-------+------+------+
+    |AXIvideo2Mat_U0           |AXIvideo2Mat            |        0|      0|   393|   547|
+    |Block_Mat_exit4750_p_U0   |Block_Mat_exit4750_p    |        0|      0|     3|   290|
+    |Block_Mat_exit47_pro_U0   |Block_Mat_exit47_pro    |        0|      0|     3|   110|
+    |BoxFilter_U0              |BoxFilter               |        7|      0|  2550|  4715|
+    |BoxFilter186_U0           |BoxFilter186            |        7|      0|  2550|  4715|
+    |BoxFilter187_U0           |BoxFilter187            |        7|      0|  2550|  4715|
+    |CalCim188_U0              |CalCim188               |        0|     27|  2858|  2981|
+    |CvtColor_U0               |CvtColor                |        0|      3|   284|   309|
+    |Dilate_U0                 |Dilate                  |        3|      0|   670|  1488|
+    |Duplicate_U0              |Duplicate               |        0|      0|   168|   238|
+    |Duplicate181_U0           |Duplicate181            |        0|      0|   168|   238|
+    |Duplicate182_U0           |Duplicate182            |        0|      0|   168|   238|
+    |Duplicate183_U0           |Duplicate183            |        0|      0|   168|   238|
+    |Duplicate_1_U0            |Duplicate_1             |        0|      0|   168|   238|
+    |FindMax_U0                |FindMax                 |        2|      0|  1314|  1885|
+    |Haaris_Core_ctrl_s_axi_U  |Haaris_Core_ctrl_s_axi  |        0|      0|   188|   296|
+    |Haaris_Core_entry242_U0   |Haaris_Core_entry242    |        0|      0|     3|    74|
+    |Mat2AXIvideo_U0           |Mat2AXIvideo            |        0|      0|   249|   469|
+    |Mul_U0                    |Mul                     |        0|      1|   200|   243|
+    |Mul184_U0                 |Mul184                  |        0|      1|   200|   243|
+    |Mul185_U0                 |Mul185                  |        0|      1|   200|   243|
+    |Sobel_U0                  |Sobel                   |        5|     14|  1451|  2653|
+    |Sobel_1_U0                |Sobel_1                 |        5|     14|  1451|  2653|
+    +--------------------------+------------------------+---------+-------+------+------+
+    |Total                     |                        |       36|     61| 17957| 29819|
+    +--------------------------+------------------------+---------+-------+------+------+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +-------------------------+---------+---+----+------+-----+---------+
+    |           Name          | BRAM_18K| FF| LUT| Depth| Bits| Size:D*B|
+    +-------------------------+---------+---+----+------+-----+---------+
+    |cols_c91_U               |        0|  5|  44|     2|   32|       64|
+    |cols_c_U                 |        0|  5|  44|     2|   32|       64|
+    |dst0_cols_V_c_U          |        0|  6|  47|    12|   32|      384|
+    |dst0_data_stream_0_s_U   |        0|  5|  20|     2|    8|       16|
+    |dst0_rows_V_c_U          |        0|  6|  47|    12|   32|      384|
+    |dst1_cols_V_c_U          |        0|  7|  47|    13|   32|      416|
+    |dst1_data_stream_0_s_U   |        0|  5|  20|     2|    8|       16|
+    |dst1_rows_V_c_U          |        0|  7|  47|    13|   32|      416|
+    |grad_gx_data_stream_s_U  |        0|  5|  47|     2|   35|       70|
+    |grad_gxy_data_stream_U   |        0|  5|  47|     2|   35|       70|
+    |grad_gy_cols_V_c_U       |        0|  6|  46|    10|   32|      320|
+    |grad_gy_data_stream_s_U  |        0|  5|  47|     2|   35|       70|
+    |grad_gy_rows_V_c_U       |        0|  6|  46|    10|   32|      320|
+    |grad_x1_cols_V_c_U       |        0|  6|  45|     7|   32|      224|
+    |grad_x1_data_stream_s_U  |        0|  5|  27|     2|   15|       30|
+    |grad_x1_rows_V_c_U       |        0|  6|  45|     7|   32|      224|
+    |grad_x2_cols_V_c_U       |        0|  6|  45|     7|   32|      224|
+    |grad_x2_data_stream_s_U  |        0|  5|  27|     2|   15|       30|
+    |grad_x2_rows_V_c_U       |        0|  6|  45|     7|   32|      224|
+    |grad_x3_cols_V_c_U       |        0|  6|  45|     8|   32|      256|
+    |grad_x3_data_stream_s_U  |        0|  5|  27|     2|   15|       30|
+    |grad_x3_rows_V_c_U       |        0|  6|  45|     8|   32|      256|
+    |grad_x4_data_stream_s_U  |        0|  5|  27|     2|   15|       30|
+    |grad_x_cols_V_c_U        |        0|  5|  45|     6|   32|      192|
+    |grad_x_data_stream_0_U   |        0|  5|  27|     2|   15|       30|
+    |grad_x_rows_V_c_U        |        0|  5|  45|     6|   32|      192|
+    |grad_xx_cols_V_c_U       |        0|  6|  46|     9|   32|      288|
+    |grad_xx_data_stream_s_U  |        0|  5|  47|     2|   35|       70|
+    |grad_xx_rows_V_c_U       |        0|  6|  46|     9|   32|      288|
+    |grad_xy_cols_V_c_U       |        0|  6|  45|     8|   32|      256|
+    |grad_xy_data_stream_s_U  |        0|  5|  47|     2|   35|       70|
+    |grad_xy_rows_V_c_U       |        0|  6|  45|     8|   32|      256|
+    |grad_y1_cols_V_c_U       |        0|  6|  45|     7|   32|      224|
+    |grad_y1_data_stream_s_U  |        0|  5|  27|     2|   15|       30|
+    |grad_y1_rows_V_c_U       |        0|  6|  45|     7|   32|      224|
+    |grad_y2_data_stream_s_U  |        0|  5|  27|     2|   15|       30|
+    |grad_y3_cols_V_c_U       |        0|  6|  45|     8|   32|      256|
+    |grad_y3_data_stream_s_U  |        0|  5|  27|     2|   15|       30|
+    |grad_y3_rows_V_c_U       |        0|  6|  45|     8|   32|      256|
+    |grad_y4_data_stream_s_U  |        0|  5|  27|     2|   15|       30|
+    |grad_y_cols_V_c_U        |        0|  5|  45|     6|   32|      192|
+    |grad_y_data_stream_0_U   |        0|  5|  27|     2|   15|       30|
+    |grad_y_rows_V_c_U        |        0|  5|  45|     6|   32|      192|
+    |grad_yy_cols_V_c_U       |        0|  6|  46|     9|   32|      288|
+    |grad_yy_data_stream_s_U  |        0|  5|  47|     2|   35|       70|
+    |grad_yy_rows_V_c_U       |        0|  6|  46|     9|   32|      288|
+    |gray1_cols_V_c_U         |        0|  5|  44|     5|   32|      160|
+    |gray1_data_stream_0_U    |        0|  5|  20|     2|    8|       16|
+    |gray1_rows_V_c_U         |        0|  5|  44|     5|   32|      160|
+    |gray2_cols_V_c_U         |        0|  5|  44|     5|   32|      160|
+    |gray2_data_stream_0_U    |        0|  5|  20|     2|    8|       16|
+    |gray2_rows_V_c_U         |        0|  5|  44|     5|   32|      160|
+    |gray_cols_V_c_U          |        0|  5|  44|     4|   32|      128|
+    |gray_data_stream_0_s_U   |        0|  5|  20|     2|    8|       16|
+    |gray_rows_V_c_U          |        0|  5|  44|     4|   32|      128|
+    |k_c_U                    |        0|  6|  46|    11|   32|      352|
+    |res_cols_V_c_U           |        0|  6|  46|    11|   32|      352|
+    |res_data_stream_0_V_U    |        0|  5|  44|     2|   32|       64|
+    |res_rows_V_c_U           |        0|  6|  46|    11|   32|      352|
+    |rows_c90_U               |        0|  5|  44|     2|   32|       64|
+    |rows_c_U                 |        0|  5|  44|     2|   32|       64|
+    |src_cols_V_c93_U         |        0|  5|  44|     2|   32|       64|
+    |src_cols_V_c_U           |        0|  5|  44|     2|   32|       64|
+    |src_data_stream_0_V_U    |        0|  5|  20|     2|    8|       16|
+    |src_data_stream_1_V_U    |        0|  5|  20|     2|    8|       16|
+    |src_data_stream_2_V_U    |        0|  5|  20|     2|    8|       16|
+    |src_rows_V_c92_U         |        0|  5|  44|     2|   32|       64|
+    |src_rows_V_c_U           |        0|  5|  44|     2|   32|       64|
+    |threshold_c_U            |        0|  6|  47|    12|   32|      384|
+    +-------------------------+---------+---+----+------+-----+---------+
+    |Total                    |        0|373|2741|   359| 1864|    10800|
+    +-------------------------+---------+---+----+------+-----+---------+
+
+    * Expression: 
+    +------------------------------------------+----------+-------+---+----+------------+------------+
+    |               Variable Name              | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------------------------------+----------+-------+---+----+------------+------------+
+    |AXIvideo2Mat_U0_ap_ready_count            |     +    |      0|  0|  10|           2|           1|
+    |Haaris_Core_entry242_U0_ap_ready_count    |     +    |      0|  0|  10|           2|           1|
+    |AXIvideo2Mat_U0_ap_start                  |    and   |      0|  0|   2|           1|           1|
+    |Block_Mat_exit4750_p_U0_start_full_n      |    and   |      0|  0|   2|           1|           1|
+    |Block_Mat_exit47_pro_U0_start_full_n      |    and   |      0|  0|   2|           1|           1|
+    |Haaris_Core_entry242_U0_ap_start          |    and   |      0|  0|   2|           1|           1|
+    |Haaris_Core_entry242_U0_start_full_n      |    and   |      0|  0|   2|           1|           1|
+    |ap_idle                                   |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_ready                             |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_AXIvideo2Mat_U0_ap_ready          |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_Haaris_Core_entry242_U0_ap_ready  |    or    |      0|  0|   2|           1|           1|
+    +------------------------------------------+----------+-------+---+----+------------+------------+
+    |Total                                     |          |      0|  0|  38|          13|          11|
+    +------------------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------------------+----+-----------+-----+-----------+
+    |                     Name                     | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------------------+----+-----------+-----+-----------+
+    |AXIvideo2Mat_U0_ap_ready_count                |   9|          2|    2|          4|
+    |Haaris_Core_entry242_U0_ap_ready_count        |   9|          2|    2|          4|
+    |ap_sync_reg_AXIvideo2Mat_U0_ap_ready          |   9|          2|    1|          2|
+    |ap_sync_reg_Haaris_Core_entry242_U0_ap_ready  |   9|          2|    1|          2|
+    +----------------------------------------------+----+-----------+-----+-----------+
+    |Total                                         |  36|          8|    6|         12|
+    +----------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------------------+---+----+-----+-----------+
+    |                     Name                     | FF| LUT| Bits| Const Bits|
+    +----------------------------------------------+---+----+-----+-----------+
+    |AXIvideo2Mat_U0_ap_ready_count                |  2|   0|    2|          0|
+    |Haaris_Core_entry242_U0_ap_ready_count        |  2|   0|    2|          0|
+    |ap_sync_reg_AXIvideo2Mat_U0_ap_ready          |  1|   0|    1|          0|
+    |ap_sync_reg_Haaris_Core_entry242_U0_ap_ready  |  1|   0|    1|          0|
+    +----------------------------------------------+---+----+-----+-----------+
+    |Total                                         |  6|   0|    6|          0|
+    +----------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------+-----+-----+------------+-------------------+--------------+
+|      RTL Ports     | Dir | Bits|  Protocol  |   Source Object   |    C Type    |
++--------------------+-----+-----+------------+-------------------+--------------+
+|s_axi_ctrl_AWVALID  |  in |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_AWREADY  | out |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_AWADDR   |  in |    6|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_WVALID   |  in |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_WREADY   | out |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_WDATA    |  in |   32|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_WSTRB    |  in |    4|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_ARVALID  |  in |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_ARREADY  | out |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_ARADDR   |  in |    6|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_RVALID   | out |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_RREADY   |  in |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_RDATA    | out |   32|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_RRESP    | out |    2|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_BVALID   | out |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_BREADY   |  in |    1|    s_axi   |        ctrl       |    scalar    |
+|s_axi_ctrl_BRESP    | out |    2|    s_axi   |        ctrl       |    scalar    |
+|ap_clk              |  in |    1| ap_ctrl_hs |    Haaris_Core    | return value |
+|ap_rst_n            |  in |    1| ap_ctrl_hs |    Haaris_Core    | return value |
+|interrupt           | out |    1| ap_ctrl_hs |    Haaris_Core    | return value |
+|src_axis_TDATA      |  in |   32|    axis    | src_axis_V_data_V |    pointer   |
+|src_axis_TKEEP      |  in |    4|    axis    | src_axis_V_keep_V |    pointer   |
+|src_axis_TSTRB      |  in |    4|    axis    | src_axis_V_strb_V |    pointer   |
+|src_axis_TUSER      |  in |    1|    axis    | src_axis_V_user_V |    pointer   |
+|src_axis_TLAST      |  in |    1|    axis    | src_axis_V_last_V |    pointer   |
+|src_axis_TID        |  in |    1|    axis    |  src_axis_V_id_V  |    pointer   |
+|src_axis_TDEST      |  in |    1|    axis    | src_axis_V_dest_V |    pointer   |
+|src_axis_TVALID     |  in |    1|    axis    | src_axis_V_dest_V |    pointer   |
+|src_axis_TREADY     | out |    1|    axis    | src_axis_V_dest_V |    pointer   |
+|dst_axis_TDATA      | out |    8|    axis    | dst_axis_V_data_V |    pointer   |
+|dst_axis_TKEEP      | out |    1|    axis    | dst_axis_V_keep_V |    pointer   |
+|dst_axis_TSTRB      | out |    1|    axis    | dst_axis_V_strb_V |    pointer   |
+|dst_axis_TUSER      | out |    1|    axis    | dst_axis_V_user_V |    pointer   |
+|dst_axis_TLAST      | out |    1|    axis    | dst_axis_V_last_V |    pointer   |
+|dst_axis_TID        | out |    1|    axis    |  dst_axis_V_id_V  |    pointer   |
+|dst_axis_TDEST      | out |    1|    axis    | dst_axis_V_dest_V |    pointer   |
+|dst_axis_TVALID     | out |    1|    axis    | dst_axis_V_dest_V |    pointer   |
+|dst_axis_TREADY     |  in |    1|    axis    | dst_axis_V_dest_V |    pointer   |
++--------------------+-----+-----+------------+-------------------+--------------+
+

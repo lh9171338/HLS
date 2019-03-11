@@ -1,0 +1,169 @@
+
+
+================================================================
+== Vivado HLS Report for 'Block_Mat_exit412_pr'
+================================================================
+* Date:           Wed Dec  5 18:32:34 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        SIFT
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     2.260|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    0|    0|    0|    0|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      -|       -|       -|
+|Expression       |        -|      -|       0|       2|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|      -|       -|       -|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|      99|
+|Register         |        -|      -|       2|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |        0|      0|       2|     101|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        0|      0|   ~0   |   ~0   |
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+-------+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |ap_block_state1  |    or    |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |Total            |          |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------------+----+-----------+-----+-----------+
+    |              Name             | LUT| Input Size| Bits| Total Bits|
+    +-------------------------------+----+-----------+-----+-----------+
+    |ap_done                        |   9|          2|    1|          2|
+    |descriptors0_length_out_blk_n  |   9|          2|    1|          2|
+    |descriptors1_length_out_blk_n  |   9|          2|    1|          2|
+    |matches_length_out_blk_n       |   9|          2|    1|          2|
+    |p_src0_cols_V_out_blk_n        |   9|          2|    1|          2|
+    |p_src0_rows_V_out_blk_n        |   9|          2|    1|          2|
+    |p_src1_cols_V_out_blk_n        |   9|          2|    1|          2|
+    |p_src1_rows_V_out_blk_n        |   9|          2|    1|          2|
+    |src1_cols_out_blk_n            |   9|          2|    1|          2|
+    |src1_rows_out_blk_n            |   9|          2|    1|          2|
+    |thresh_out_blk_n               |   9|          2|    1|          2|
+    +-------------------------------+----+-----------+-----+-----------+
+    |Total                          |  99|         22|   11|         22|
+    +-------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------+---+----+-----+-----------+
+    |     Name    | FF| LUT| Bits| Const Bits|
+    +-------------+---+----+-----+-----------+
+    |ap_CS_fsm    |  1|   0|    1|          0|
+    |ap_done_reg  |  1|   0|    1|          0|
+    +-------------+---+----+-----+-----------+
+    |Total        |  2|   0|    2|          0|
+    +-------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------------+-----+-----+------------+-------------------------+--------------+
+|            RTL Ports           | Dir | Bits|  Protocol  |      Source Object      |    C Type    |
++--------------------------------+-----+-----+------------+-------------------------+--------------+
+|ap_clk                          |  in |    1| ap_ctrl_hs |   Block_Mat.exit412_pr  | return value |
+|ap_rst                          |  in |    1| ap_ctrl_hs |   Block_Mat.exit412_pr  | return value |
+|ap_start                        |  in |    1| ap_ctrl_hs |   Block_Mat.exit412_pr  | return value |
+|ap_done                         | out |    1| ap_ctrl_hs |   Block_Mat.exit412_pr  | return value |
+|ap_continue                     |  in |    1| ap_ctrl_hs |   Block_Mat.exit412_pr  | return value |
+|ap_idle                         | out |    1| ap_ctrl_hs |   Block_Mat.exit412_pr  | return value |
+|ap_ready                        | out |    1| ap_ctrl_hs |   Block_Mat.exit412_pr  | return value |
+|rows0                           |  in |   32|   ap_none  |          rows0          |    scalar    |
+|cols0                           |  in |   32|   ap_none  |          cols0          |    scalar    |
+|rows1                           |  in |   32|   ap_none  |          rows1          |    scalar    |
+|cols1                           |  in |   32|   ap_none  |          cols1          |    scalar    |
+|thresh                          |  in |   32|   ap_none  |          thresh         |    scalar    |
+|p_src0_rows_V_out_din           | out |   32|   ap_fifo  |    p_src0_rows_V_out    |    pointer   |
+|p_src0_rows_V_out_full_n        |  in |    1|   ap_fifo  |    p_src0_rows_V_out    |    pointer   |
+|p_src0_rows_V_out_write         | out |    1|   ap_fifo  |    p_src0_rows_V_out    |    pointer   |
+|p_src0_cols_V_out_din           | out |   32|   ap_fifo  |    p_src0_cols_V_out    |    pointer   |
+|p_src0_cols_V_out_full_n        |  in |    1|   ap_fifo  |    p_src0_cols_V_out    |    pointer   |
+|p_src0_cols_V_out_write         | out |    1|   ap_fifo  |    p_src0_cols_V_out    |    pointer   |
+|p_src1_rows_V_out_din           | out |   32|   ap_fifo  |    p_src1_rows_V_out    |    pointer   |
+|p_src1_rows_V_out_full_n        |  in |    1|   ap_fifo  |    p_src1_rows_V_out    |    pointer   |
+|p_src1_rows_V_out_write         | out |    1|   ap_fifo  |    p_src1_rows_V_out    |    pointer   |
+|p_src1_cols_V_out_din           | out |   32|   ap_fifo  |    p_src1_cols_V_out    |    pointer   |
+|p_src1_cols_V_out_full_n        |  in |    1|   ap_fifo  |    p_src1_cols_V_out    |    pointer   |
+|p_src1_cols_V_out_write         | out |    1|   ap_fifo  |    p_src1_cols_V_out    |    pointer   |
+|src1_rows_out_din               | out |   32|   ap_fifo  |      src1_rows_out      |    pointer   |
+|src1_rows_out_full_n            |  in |    1|   ap_fifo  |      src1_rows_out      |    pointer   |
+|src1_rows_out_write             | out |    1|   ap_fifo  |      src1_rows_out      |    pointer   |
+|src1_cols_out_din               | out |   32|   ap_fifo  |      src1_cols_out      |    pointer   |
+|src1_cols_out_full_n            |  in |    1|   ap_fifo  |      src1_cols_out      |    pointer   |
+|src1_cols_out_write             | out |    1|   ap_fifo  |      src1_cols_out      |    pointer   |
+|descriptors0_length_out_din     | out |    1|   ap_fifo  | descriptors0_length_out |    pointer   |
+|descriptors0_length_out_full_n  |  in |    1|   ap_fifo  | descriptors0_length_out |    pointer   |
+|descriptors0_length_out_write   | out |    1|   ap_fifo  | descriptors0_length_out |    pointer   |
+|descriptors1_length_out_din     | out |    1|   ap_fifo  | descriptors1_length_out |    pointer   |
+|descriptors1_length_out_full_n  |  in |    1|   ap_fifo  | descriptors1_length_out |    pointer   |
+|descriptors1_length_out_write   | out |    1|   ap_fifo  | descriptors1_length_out |    pointer   |
+|matches_length_out_din          | out |    1|   ap_fifo  |    matches_length_out   |    pointer   |
+|matches_length_out_full_n       |  in |    1|   ap_fifo  |    matches_length_out   |    pointer   |
+|matches_length_out_write        | out |    1|   ap_fifo  |    matches_length_out   |    pointer   |
+|thresh_out_din                  | out |   32|   ap_fifo  |        thresh_out       |    pointer   |
+|thresh_out_full_n               |  in |    1|   ap_fifo  |        thresh_out       |    pointer   |
+|thresh_out_write                | out |    1|   ap_fifo  |        thresh_out       |    pointer   |
++--------------------------------+-----+-----+------------+-------------------------+--------------+
+

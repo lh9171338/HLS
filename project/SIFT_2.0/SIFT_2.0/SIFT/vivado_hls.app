@@ -1,0 +1,24 @@
+<project xmlns="com.autoesl.autopilot.project" name="SIFT" top="SIFT2_Core">
+    <includePaths/>
+    <libraryPaths/>
+    <Simulation>
+        <SimFlow name="csim" csimMode="0" lastCsimMode="0"/>
+    </Simulation>
+    <files xmlns="">
+        <file name="../../image1.png" sc="0" tb="1" cflags=" -Wno-unknown-pragmas -Wno-unknown-pragmas"/>
+        <file name="../../image2.png" sc="0" tb="1" cflags=" -Wno-unknown-pragmas -Wno-unknown-pragmas"/>
+        <file name="../../lena1.jpg" sc="0" tb="1" cflags=" -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas"/>
+        <file name="../../lena2.jpg" sc="0" tb="1" cflags=" -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas"/>
+        <file name="../../lena3.jpg" sc="0" tb="1" cflags=" -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas"/>
+        <file name="../../test.cpp" sc="0" tb="1" cflags=" -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas"/>
+        <file name="image_core.cpp" sc="0" tb="false" cflags=""/>
+        <file name="image_core.h" sc="0" tb="false" cflags=""/>
+        <file name="imgproc.h" sc="0" tb="false" cflags=""/>
+        <file name="sift.h" sc="0" tb="false" cflags=""/>
+        <file name="type.h" sc="0" tb="false" cflags=""/>
+    </files>
+    <solutions xmlns="">
+        <solution name="solution1" status="active"/>
+    </solutions>
+</project>
+

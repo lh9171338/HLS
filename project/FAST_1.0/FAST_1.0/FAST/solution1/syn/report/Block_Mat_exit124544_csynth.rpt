@@ -1,0 +1,147 @@
+
+
+================================================================
+== Vivado HLS Report for 'Block_Mat_exit124544'
+================================================================
+* Date:           Tue Dec  4 10:48:16 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        FAST
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  20.00|     6.098|        2.50|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    0|    0|    0|    0|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      -|       -|       -|
+|Expression       |        -|      -|       0|     119|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|      -|       -|       -|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|      54|
+|Register         |        -|      -|       2|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |        0|      0|       2|     173|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        0|      0|   ~0   |   ~0   |
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------------------+----------+-------+---+----+------------+------------+
+    |       Variable Name      | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------------+----------+-------+---+----+------------+------------+
+    |p_neg393_i_i_out_out_din  |     +    |      0|  0|  39|          32|           2|
+    |tmp_27_out_out_din        |     +    |      0|  0|  39|          32|           2|
+    |tmp_out_out_din           |     +    |      0|  0|  39|          32|           2|
+    |ap_block_state1           |    or    |      0|  0|   2|           1|           1|
+    +--------------------------+----------+-------+---+----+------------+------------+
+    |Total                     |          |      0|  0| 119|          97|           7|
+    +--------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------+----+-----------+-----+-----------+
+    |            Name            | LUT| Input Size| Bits| Total Bits|
+    +----------------------------+----+-----------+-----+-----------+
+    |ap_done                     |   9|          2|    1|          2|
+    |cols_blk_n                  |   9|          2|    1|          2|
+    |p_neg393_i_i_out_out_blk_n  |   9|          2|    1|          2|
+    |rows_blk_n                  |   9|          2|    1|          2|
+    |tmp_27_out_out_blk_n        |   9|          2|    1|          2|
+    |tmp_out_out_blk_n           |   9|          2|    1|          2|
+    +----------------------------+----+-----------+-----+-----------+
+    |Total                       |  54|         12|    6|         12|
+    +----------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------+---+----+-----+-----------+
+    |     Name    | FF| LUT| Bits| Const Bits|
+    +-------------+---+----+-----+-----------+
+    |ap_CS_fsm    |  1|   0|    1|          0|
+    |ap_done_reg  |  1|   0|    1|          0|
+    +-------------+---+----+-----+-----------+
+    |Total        |  2|   0|    2|          0|
+    +-------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------------+-----+-----+------------+----------------------+--------------+
+|          RTL Ports          | Dir | Bits|  Protocol  |     Source Object    |    C Type    |
++-----------------------------+-----+-----+------------+----------------------+--------------+
+|ap_clk                       |  in |    1| ap_ctrl_hs | Block_Mat.exit124544 | return value |
+|ap_rst                       |  in |    1| ap_ctrl_hs | Block_Mat.exit124544 | return value |
+|ap_start                     |  in |    1| ap_ctrl_hs | Block_Mat.exit124544 | return value |
+|ap_done                      | out |    1| ap_ctrl_hs | Block_Mat.exit124544 | return value |
+|ap_continue                  |  in |    1| ap_ctrl_hs | Block_Mat.exit124544 | return value |
+|ap_idle                      | out |    1| ap_ctrl_hs | Block_Mat.exit124544 | return value |
+|ap_ready                     | out |    1| ap_ctrl_hs | Block_Mat.exit124544 | return value |
+|cols_dout                    |  in |   32|   ap_fifo  |         cols         |    pointer   |
+|cols_empty_n                 |  in |    1|   ap_fifo  |         cols         |    pointer   |
+|cols_read                    | out |    1|   ap_fifo  |         cols         |    pointer   |
+|rows_dout                    |  in |   32|   ap_fifo  |         rows         |    pointer   |
+|rows_empty_n                 |  in |    1|   ap_fifo  |         rows         |    pointer   |
+|rows_read                    | out |    1|   ap_fifo  |         rows         |    pointer   |
+|tmp_out_out_din              | out |   32|   ap_fifo  |      tmp_out_out     |    pointer   |
+|tmp_out_out_full_n           |  in |    1|   ap_fifo  |      tmp_out_out     |    pointer   |
+|tmp_out_out_write            | out |    1|   ap_fifo  |      tmp_out_out     |    pointer   |
+|tmp_27_out_out_din           | out |   32|   ap_fifo  |    tmp_27_out_out    |    pointer   |
+|tmp_27_out_out_full_n        |  in |    1|   ap_fifo  |    tmp_27_out_out    |    pointer   |
+|tmp_27_out_out_write         | out |    1|   ap_fifo  |    tmp_27_out_out    |    pointer   |
+|p_neg393_i_i_out_out_din     | out |   32|   ap_fifo  | p_neg393_i_i_out_out |    pointer   |
+|p_neg393_i_i_out_out_full_n  |  in |    1|   ap_fifo  | p_neg393_i_i_out_out |    pointer   |
+|p_neg393_i_i_out_out_write   | out |    1|   ap_fifo  | p_neg393_i_i_out_out |    pointer   |
++-----------------------------+-----+-----+------------+----------------------+--------------+
+

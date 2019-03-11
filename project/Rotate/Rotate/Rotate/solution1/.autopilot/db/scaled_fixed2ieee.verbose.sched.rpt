@@ -1,0 +1,232 @@
+
+
+================================================================
+== Vivado HLS Report for 'scaled_fixed2ieee'
+================================================================
+* Date:           Wed Dec  5 15:35:16 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Rotate
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.394|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    8|   12|    8|   12|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-----+-----+----------+-----------+-----------+-------+----------+
+        |          |  Latency  | Iteration|  Initiation Interval  |  Trip |          |
+        | Loop Name| min | max |  Latency |  achieved |   target  | Count | Pipelined|
+        +----------+-----+-----+----------+-----------+-----------+-------+----------+
+        |- Loop 1  |    4|    4|         2|          -|          -|      2|    no    |
+        |- Loop 2  |    2|    5|         2|          -|          -| 1 ~ 2 |    no    |
+        +----------+-----+-----+----------+-----------+-----------+-------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 5
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (!exitcond)
+	4  / (exitcond)
+3 --> 
+	2  / true
+4 --> 
+	5  / true
+5 --> 
+	4  / (!tmp_21 & tmp_s)
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.09>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%prescale_read = call i9 @_ssdm_op_Read.ap_auto.i9(i9 %prescale)"   --->   Operation 6 'read' 'prescale_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%in_V_read = call i29 @_ssdm_op_Read.ap_auto.i29(i29 %in_V)"   --->   Operation 7 'read' 'in_V_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%out_bits_V = alloca [2 x i32], align 4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:293]   --->   Operation 8 'alloca' 'out_bits_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.09> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%c = alloca [2 x i32], align 4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:304]   --->   Operation 9 'alloca' 'c' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.09> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%p_Result_1 = call i16 @_ssdm_op_PartSelect.i16.i29.i32.i32(i29 %in_V_read, i32 13, i32 28)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:296]   --->   Operation 10 'partselect' 'p_Result_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%out_bits_V_addr_1 = getelementptr [2 x i32]* %out_bits_V, i64 0, i64 0" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:296]   --->   Operation 11 'getelementptr' 'out_bits_V_addr_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%tmp = call i17 @_ssdm_op_BitConcatenate.i17.i16.i1(i16 %p_Result_1, i1 true)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:297]   --->   Operation 12 'bitconcatenate' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%p_Result_7 = call i32 @_ssdm_op_PartSet.i32.i32.i17.i32.i32(i32 undef, i17 %tmp, i32 15, i32 31)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:297]   --->   Operation 13 'partset' 'p_Result_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (1.09ns)   --->   "store i32 %p_Result_7, i32* %out_bits_V_addr_1, align 4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:297]   --->   Operation 14 'store' <Predicate = true> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.09> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%tmp_20 = trunc i29 %in_V_read to i13" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:300]   --->   Operation 15 'trunc' 'tmp_20' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%out_bits_V_addr = getelementptr [2 x i32]* %out_bits_V, i64 0, i64 1" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:300]   --->   Operation 16 'getelementptr' 'out_bits_V_addr' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%tmp_8 = call i14 @_ssdm_op_BitConcatenate.i14.i13.i1(i13 %tmp_20, i1 true)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:301]   --->   Operation 17 'bitconcatenate' 'tmp_8' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%p_Result_s = call i32 @_ssdm_op_PartSet.i32.i32.i14.i32.i32(i32 undef, i14 %tmp_8, i32 18, i32 31)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:301]   --->   Operation 18 'partset' 'p_Result_s' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (1.09ns)   --->   "store i32 %p_Result_s, i32* %out_bits_V_addr, align 4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:301]   --->   Operation 19 'store' <Predicate = true> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.09> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_1 : Operation 20 [1/1] (0.97ns)   --->   "br label %0" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:305]   --->   Operation 20 'br' <Predicate = true> <Delay = 0.97>
+
+State 2 <SV = 1> <Delay = 1.09>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%i1 = phi i2 [ 0, %.preheader.preheader ], [ %i, %1 ]"   --->   Operation 21 'phi' 'i1' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.45ns)   --->   "%exitcond = icmp eq i2 %i1, -2" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:305]   --->   Operation 22 'icmp' 'exitcond' <Predicate = true> <Delay = 0.45> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.29> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 23 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 2, i64 2, i64 2)"   --->   Operation 23 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 24 [1/1] (0.80ns)   --->   "%i = add i2 %i1, 1" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:305]   --->   Operation 24 'add' 'i' <Predicate = true> <Delay = 0.80> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.57> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %.preheader3.preheader, label %1" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:305]   --->   Operation 25 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%tmp_1 = zext i2 %i1 to i64" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306]   --->   Operation 26 'zext' 'tmp_1' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 27 [1/1] (0.00ns)   --->   "%out_bits_V_addr_2 = getelementptr [2 x i32]* %out_bits_V, i64 0, i64 %tmp_1" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306]   --->   Operation 27 'getelementptr' 'out_bits_V_addr_2' <Predicate = (!exitcond)> <Delay = 0.00>
+ST_2 : Operation 28 [2/2] (1.09ns)   --->   "%p_Val2_s = load i32* %out_bits_V_addr_2, align 4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306]   --->   Operation 28 'load' 'p_Val2_s' <Predicate = (!exitcond)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.09> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_2 : Operation 29 [1/1] (0.97ns)   --->   "br label %.preheader3" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:312]   --->   Operation 29 'br' <Predicate = (exitcond)> <Delay = 0.97>
+
+State 3 <SV = 2> <Delay = 3.81>
+ST_3 : Operation 30 [1/2] (1.09ns)   --->   "%p_Val2_s = load i32* %out_bits_V_addr_2, align 4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306]   --->   Operation 30 'load' 'p_Val2_s' <Predicate = true> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.09> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "%p_Result_34 = call i32 @_ssdm_op_PartSelect.i32.i32.i32.i32(i32 %p_Val2_s, i32 31, i32 0) nounwind" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_normalize.h:109->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306]   --->   Operation 31 'partselect' 'p_Result_34' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 32 [1/1] (1.62ns)   --->   "%tmp_i = call i32 @llvm.cttz.i32(i32 %p_Result_34, i1 true) nounwind" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_normalize.h:109->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306]   --->   Operation 32 'cttz' 'tmp_i' <Predicate = true> <Delay = 1.62> <Core = "CTTZ">   --->   Core 60 'CTTZ' <Latency = 0> <II = 1> <Delay = 1.62> <FuncUnit> <Opcode : 'cttz'> <InPorts = 1> <OutPorts = 1>
+ST_3 : Operation 33 [1/1] (0.00ns)   --->   "%c_addr = getelementptr inbounds [2 x i32]* %c, i64 0, i64 %tmp_1" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306]   --->   Operation 33 'getelementptr' 'c_addr' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 34 [1/1] (1.09ns)   --->   "store i32 %tmp_i, i32* %c_addr, align 4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306]   --->   Operation 34 'store' <Predicate = true> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.09> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_3 : Operation 35 [1/1] (0.00ns)   --->   "br label %0" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:305]   --->   Operation 35 'br' <Predicate = true> <Delay = 0.00>
+
+State 4 <SV = 2> <Delay = 1.09>
+ST_4 : Operation 36 [1/1] (0.00ns)   --->   "%in_shift = phi i29 [ %in_shift_V, %"operator<<.exit" ], [ %in_V_read, %.preheader3.preheader ]"   --->   Operation 36 'phi' 'in_shift' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 37 [1/1] (0.00ns)   --->   "%shift = phi i32 [ %shift_2, %"operator<<.exit" ], [ 0, %.preheader3.preheader ]"   --->   Operation 37 'phi' 'shift' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 38 [1/1] (0.00ns)   --->   "%i2 = phi i2 [ %i_1, %"operator<<.exit" ], [ 0, %.preheader3.preheader ]"   --->   Operation 38 'phi' 'i2' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 39 [1/1] (0.00ns)   --->   "%tmp_21 = call i1 @_ssdm_op_BitSelect.i1.i2.i32(i2 %i2, i32 1)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:312]   --->   Operation 39 'bitselect' 'tmp_21' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 40 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 1, i64 2, i64 1)"   --->   Operation 40 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 41 [1/1] (0.80ns)   --->   "%i_1 = add i2 %i2, 1" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:312]   --->   Operation 41 'add' 'i_1' <Predicate = true> <Delay = 0.80> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.57> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 42 [1/1] (0.97ns)   --->   "br i1 %tmp_21, label %.loopexit_ifconv, label %"operator<<.exit"" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:312]   --->   Operation 42 'br' <Predicate = true> <Delay = 0.97>
+ST_4 : Operation 43 [1/1] (0.00ns)   --->   "%tmp_4 = zext i2 %i2 to i64" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313]   --->   Operation 43 'zext' 'tmp_4' <Predicate = (!tmp_21)> <Delay = 0.00>
+ST_4 : Operation 44 [1/1] (0.00ns)   --->   "%c_addr_1 = getelementptr inbounds [2 x i32]* %c, i64 0, i64 %tmp_4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313]   --->   Operation 44 'getelementptr' 'c_addr_1' <Predicate = (!tmp_21)> <Delay = 0.00>
+ST_4 : Operation 45 [2/2] (1.09ns)   --->   "%c_load = load i32* %c_addr_1, align 4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313]   --->   Operation 45 'load' 'c_load' <Predicate = (!tmp_21)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.09> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+
+State 5 <SV = 3> <Delay = 8.39>
+ST_5 : Operation 46 [1/2] (1.09ns)   --->   "%c_load = load i32* %c_addr_1, align 4" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313]   --->   Operation 46 'load' 'c_load' <Predicate = (!tmp_21)> <Delay = 1.09> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.09> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 2> <RAM>
+ST_5 : Operation 47 [1/1] (1.57ns)   --->   "%shift_2 = add nsw i32 %shift, %c_load" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313]   --->   Operation 47 'add' 'shift_2' <Predicate = (!tmp_21)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.57> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 48 [1/1] (0.00ns)   --->   "%isNeg = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %c_load, i32 31)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 48 'bitselect' 'isNeg' <Predicate = (!tmp_21)> <Delay = 0.00>
+ST_5 : Operation 49 [1/1] (1.57ns)   --->   "%tmp_5 = sub nsw i32 0, %c_load" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 49 'sub' 'tmp_5' <Predicate = (!tmp_21)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.57> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 50 [1/1] (0.45ns)   --->   "%sh_assign_1 = select i1 %isNeg, i32 %tmp_5, i32 %c_load" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 50 'select' 'sh_assign_1' <Predicate = (!tmp_21)> <Delay = 0.45> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.35> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 51 [1/1] (0.00ns)   --->   "%tmp_6 = zext i29 %in_shift to i32" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 51 'zext' 'tmp_6' <Predicate = (!tmp_21)> <Delay = 0.00>
+ST_5 : Operation 52 [1/1] (0.00ns) (grouped into LUT with out node in_shift_V)   --->   "%tmp_9 = shl i32 %tmp_6, %sh_assign_1" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 52 'shl' 'tmp_9' <Predicate = (!tmp_21)> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 1.79> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 53 [1/1] (0.00ns) (grouped into LUT with out node in_shift_V)   --->   "%tmp_7 = lshr i32 %tmp_6, %sh_assign_1" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 53 'lshr' 'tmp_7' <Predicate = (!tmp_21)> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 1.79> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 54 [1/1] (0.00ns) (grouped into LUT with out node in_shift_V)   --->   "%tmp_23 = trunc i32 %tmp_7 to i29" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 54 'trunc' 'tmp_23' <Predicate = (!tmp_21)> <Delay = 0.00>
+ST_5 : Operation 55 [1/1] (0.00ns) (grouped into LUT with out node in_shift_V)   --->   "%tmp_24 = trunc i32 %tmp_9 to i29" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 55 'trunc' 'tmp_24' <Predicate = (!tmp_21)> <Delay = 0.00>
+ST_5 : Operation 56 [1/1] (1.79ns) (out node of the LUT)   --->   "%in_shift_V = select i1 %isNeg, i29 %tmp_23, i29 %tmp_24" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 56 'select' 'in_shift_V' <Predicate = (!tmp_21)> <Delay = 1.79> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.35> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 57 [1/1] (1.31ns)   --->   "%tmp_s = icmp eq i32 %c_load, 16" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:315]   --->   Operation 57 'icmp' 'tmp_s' <Predicate = (!tmp_21)> <Delay = 1.31> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.29> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 58 [1/1] (0.97ns)   --->   "br i1 %tmp_s, label %.preheader3, label %.loopexit_ifconv" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:315]   --->   Operation 58 'br' <Predicate = (!tmp_21)> <Delay = 0.97>
+ST_5 : Operation 59 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_25)   --->   "%p_Val2_in = phi i29 [ %in_shift, %.preheader3 ], [ %in_shift_V, %"operator<<.exit" ]"   --->   Operation 59 'phi' 'p_Val2_in' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 60 [1/1] (0.00ns) (grouped into LUT with out node newexp)   --->   "%shift_1 = phi i32 [ %shift, %.preheader3 ], [ %shift_2, %"operator<<.exit" ]"   --->   Operation 60 'phi' 'shift_1' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 61 [1/1] (1.27ns)   --->   "%tmp_2 = sub i9 127, %prescale_read" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:323]   --->   Operation 61 'sub' 'tmp_2' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 1.27> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.57> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 62 [1/1] (0.00ns) (grouped into LUT with out node newexp)   --->   "%tmp_10_cast = sext i9 %tmp_2 to i32" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:323]   --->   Operation 62 'sext' 'tmp_10_cast' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 63 [1/1] (1.57ns) (out node of the LUT)   --->   "%newexp = sub i32 %tmp_10_cast, %shift_1" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:323]   --->   Operation 63 'sub' 'newexp' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 1.57> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.57> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 64 [1/1] (0.00ns)   --->   "%tmp_26 = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %newexp, i32 31)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:329]   --->   Operation 64 'bitselect' 'tmp_26' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 65 [1/1] (1.29ns)   --->   "%tmp_11 = icmp eq i29 %in_V_read, 0" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:329]   --->   Operation 65 'icmp' 'tmp_11' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 1.29> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.29> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 66 [1/1] (0.46ns)   --->   "%or_cond = or i1 %tmp_26, %tmp_11" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:329]   --->   Operation 66 'or' 'or_cond' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.46> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.46> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 67 [1/1] (0.00ns)   --->   "%tmp_27 = trunc i32 %newexp to i8" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:323]   --->   Operation 67 'trunc' 'tmp_27' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 68 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_25)   --->   "%phitmp7 = call i23 @_ssdm_op_PartSelect.i23.i29.i32.i32(i29 %p_Val2_in, i32 5, i32 27)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314]   --->   Operation 68 'partselect' 'phitmp7' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 69 [1/1] (0.45ns) (out node of the LUT)   --->   "%p_Val2_25 = select i1 %or_cond, i23 0, i23 %phitmp7" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_utils.h:322->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:339]   --->   Operation 69 'select' 'p_Val2_25' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.45> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.35> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 70 [1/1] (0.35ns)   --->   "%out_exp_V = select i1 %or_cond, i8 0, i8 %tmp_27" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:340]   --->   Operation 70 'select' 'out_exp_V' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.35> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.35> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 71 [1/1] (0.00ns)   --->   "%p_Result_35 = call i32 @_ssdm_op_BitConcatenate.i32.i1.i8.i23(i1 false, i8 %out_exp_V, i23 %p_Val2_25)" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_utils.h:298->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_utils.h:311->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_utils.h:332->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:341]   --->   Operation 71 'bitconcatenate' 'p_Result_35' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 72 [1/1] (0.00ns)   --->   "%result_write_assign = bitcast i32 %p_Result_35 to float" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_utils.h:311->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_utils.h:332->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:341]   --->   Operation 72 'bitcast' 'result_write_assign' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 73 [1/1] (0.00ns)   --->   "ret float %result_write_assign" [r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:342]   --->   Operation 73 'ret' <Predicate = (tmp_21) | (!tmp_s)> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.09ns
+The critical path consists of the following:
+	wire read on port 'in_V' [4]  (0 ns)
+	'store' operation (r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:297) of variable 'p_Result_7', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:297 on array 'out_bits.V', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:293 [11]  (1.09 ns)
+
+ <State 2>: 1.09ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:305) [19]  (0 ns)
+	'getelementptr' operation ('out_bits_V_addr_2', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306) [26]  (0 ns)
+	'load' operation ('value', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306) on array 'out_bits.V', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:293 [27]  (1.09 ns)
+
+ <State 3>: 3.81ns
+The critical path consists of the following:
+	'load' operation ('value', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306) on array 'out_bits.V', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:293 [27]  (1.09 ns)
+	'cttz' operation ('tmp_i', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_normalize.h:109->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306) [29]  (1.63 ns)
+	'store' operation (r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306) of variable 'tmp_i', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_normalize.h:109->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:306 on array 'c', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:304 [31]  (1.09 ns)
+
+ <State 4>: 1.09ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:312) [38]  (0 ns)
+	'getelementptr' operation ('c_addr_1', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313) [45]  (0 ns)
+	'load' operation ('sh', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313) on array 'c', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:304 [46]  (1.09 ns)
+
+ <State 5>: 8.39ns
+The critical path consists of the following:
+	'load' operation ('sh', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313) on array 'c', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:304 [46]  (1.09 ns)
+	'sub' operation ('tmp_5', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314) [49]  (1.58 ns)
+	'select' operation ('sh', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314) [50]  (0.457 ns)
+	'shl' operation ('tmp_9', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314) [52]  (0 ns)
+	'select' operation ('in_shift.V', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:314) [56]  (1.79 ns)
+	multiplexor before 'phi' operation ('shift') with incoming values : ('shift', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313) [61]  (0.978 ns)
+	'phi' operation ('shift') with incoming values : ('shift', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:313) [61]  (0 ns)
+	'sub' operation ('newexp', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:323) [64]  (1.58 ns)
+	'or' operation ('or_cond', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:329) [67]  (0.464 ns)
+	'select' operation ('__Val2__', r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_utils.h:322->r:/builds/2018.2/continuous/2018_06_14_2258646/src/products/hls/src/technology/autopilot/header_files\utils/x_hls_float_utils.h:339) [70]  (0.453 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

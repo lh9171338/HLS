@@ -1,0 +1,194 @@
+
+
+================================================================
+== Vivado HLS Report for 'Gradient_Add'
+================================================================
+* Date:           Tue Dec  4 09:50:24 2018
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        Hough
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1761-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  20.00|    15.954|        2.50|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-------+-----+-------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    | min |  max  | min |  max  |   Type  |
+    +-----+-------+-----+-------+---------+
+    |    1|  78241|    1|  78241|   none  |
+    +-----+-------+-----+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------------+--------------------+-----+-----+-----+-----+----------+
+        |                               |                    |  Latency  |  Interval | Pipeline |
+        |            Instance           |       Module       | min | max | min | max |   Type   |
+        +-------------------------------+--------------------+-----+-----+-----+-----+----------+
+        |grp_sqrt_fixed_32_32_s_fu_111  |sqrt_fixed_32_32_s  |    1|    1|    1|    1| function |
+        +-------------------------------+--------------------+-----+-----+-----+-----+----------+
+
+        * Loop: 
+        +-------------+-----+-------+----------+-----------+-----------+---------+----------+
+        |             |   Latency   | Iteration|  Initiation Interval  |   Trip  |          |
+        |  Loop Name  | min |  max  |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +-------------+-----+-------+----------+-----------+-----------+---------+----------+
+        |- Loop 1     |    0|  78240|  3 ~ 326 |          -|          -| 0 ~ 240 |    no    |
+        | + Loop 1.1  |    0|    323|         5|          1|          1| 0 ~ 320 |    yes   |
+        +-------------+-----+-------+----------+-----------+-----------+---------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      2|       -|       -|
+|Expression       |        -|      -|       0|     124|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|      -|      94|    1384|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|     117|
+|Register         |        0|      -|     280|      32|
++-----------------+---------+-------+--------+--------+
+|Total            |        0|      2|     374|    1657|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        0|   ~0  |   ~0   |   ~0   |
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    +-------------------------------+--------------------+---------+-------+----+------+
+    |            Instance           |       Module       | BRAM_18K| DSP48E| FF |  LUT |
+    +-------------------------------+--------------------+---------+-------+----+------+
+    |grp_sqrt_fixed_32_32_s_fu_111  |sqrt_fixed_32_32_s  |        0|      0|  94|  1384|
+    +-------------------------------+--------------------+---------+-------+----+------+
+    |Total                          |                    |        0|      0|  94|  1384|
+    +-------------------------------+--------------------+---------+-------+----+------+
+
+    * DSP48: 
+    +---------------------------+----------------------+--------------+
+    |          Instance         |        Module        |  Expression  |
+    +---------------------------+----------------------+--------------+
+    |HoughCircles_CorelbW_U105  |HoughCircles_CorelbW  |    i0 * i0   |
+    |HoughCircles_Coremb6_U106  |HoughCircles_Coremb6  | i0 + i1 * i1 |
+    +---------------------------+----------------------+--------------+
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |i_fu_125_p2                       |     +    |      0|  0|  38|          31|           1|
+    |j_fu_140_p2                       |     +    |      0|  0|  38|          31|           1|
+    |ap_block_state7_pp0_stage0_iter4  |    and   |      0|  0|   2|           1|           1|
+    |tmp_148_i_fu_135_p2               |   icmp   |      0|  0|  18|          32|          32|
+    |tmp_i_fu_120_p2                   |   icmp   |      0|  0|  18|          32|          32|
+    |ap_block_pp0_stage0_01001         |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state1                   |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state4_pp0_stage0_iter1  |    or    |      0|  0|   2|           1|           1|
+    |ap_enable_pp0                     |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1           |    xor   |      0|  0|   2|           2|           1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |Total                             |          |      0|  0| 124|         133|          73|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                |  27|          5|    1|          5|
+    |ap_done                  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter4  |   9|          2|    1|          2|
+    |dst_data_stream_V_blk_n  |   9|          2|    1|          2|
+    |dx_cols_V_blk_n          |   9|          2|    1|          2|
+    |dx_data_stream_V_blk_n   |   9|          2|    1|          2|
+    |dx_rows_V_blk_n          |   9|          2|    1|          2|
+    |dy_data_stream_V_blk_n   |   9|          2|    1|          2|
+    |i_i_reg_89               |   9|          2|   31|         62|
+    |j_i_reg_100              |   9|          2|   31|         62|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    | 117|         25|   71|        145|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+----+----+-----+-----------+
+    |           Name          | FF | LUT| Bits| Const Bits|
+    +-------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                |   4|   0|    4|          0|
+    |ap_done_reg              |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter4  |   1|   0|    1|          0|
+    |cols_reg_173             |  32|   0|   32|          0|
+    |i_i_reg_89               |  31|   0|   31|          0|
+    |i_reg_182                |  31|   0|   31|          0|
+    |j_i_reg_100              |  31|   0|   31|          0|
+    |rows_reg_168             |  32|   0|   32|          0|
+    |tmp_148_i_reg_187        |   1|   0|    1|          0|
+    |vmag_reg_201             |  16|   0|   16|          0|
+    |xf_V_reg_196             |  32|   0|   32|          0|
+    |tmp_148_i_reg_187        |  64|  32|    1|          0|
+    +-------------------------+----+----+-----+-----------+
+    |Total                    | 280|  32|  217|          0|
+    +-------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------+-----+-----+------------+-------------------+--------------+
+|         RTL Ports        | Dir | Bits|  Protocol  |   Source Object   |    C Type    |
++--------------------------+-----+-----+------------+-------------------+--------------+
+|ap_clk                    |  in |    1| ap_ctrl_hs |    Gradient_Add   | return value |
+|ap_rst                    |  in |    1| ap_ctrl_hs |    Gradient_Add   | return value |
+|ap_start                  |  in |    1| ap_ctrl_hs |    Gradient_Add   | return value |
+|ap_done                   | out |    1| ap_ctrl_hs |    Gradient_Add   | return value |
+|ap_continue               |  in |    1| ap_ctrl_hs |    Gradient_Add   | return value |
+|ap_idle                   | out |    1| ap_ctrl_hs |    Gradient_Add   | return value |
+|ap_ready                  | out |    1| ap_ctrl_hs |    Gradient_Add   | return value |
+|dx_rows_V_dout            |  in |   32|   ap_fifo  |     dx_rows_V     |    pointer   |
+|dx_rows_V_empty_n         |  in |    1|   ap_fifo  |     dx_rows_V     |    pointer   |
+|dx_rows_V_read            | out |    1|   ap_fifo  |     dx_rows_V     |    pointer   |
+|dx_cols_V_dout            |  in |   32|   ap_fifo  |     dx_cols_V     |    pointer   |
+|dx_cols_V_empty_n         |  in |    1|   ap_fifo  |     dx_cols_V     |    pointer   |
+|dx_cols_V_read            | out |    1|   ap_fifo  |     dx_cols_V     |    pointer   |
+|dx_data_stream_V_dout     |  in |   16|   ap_fifo  |  dx_data_stream_V |    pointer   |
+|dx_data_stream_V_empty_n  |  in |    1|   ap_fifo  |  dx_data_stream_V |    pointer   |
+|dx_data_stream_V_read     | out |    1|   ap_fifo  |  dx_data_stream_V |    pointer   |
+|dy_data_stream_V_dout     |  in |   16|   ap_fifo  |  dy_data_stream_V |    pointer   |
+|dy_data_stream_V_empty_n  |  in |    1|   ap_fifo  |  dy_data_stream_V |    pointer   |
+|dy_data_stream_V_read     | out |    1|   ap_fifo  |  dy_data_stream_V |    pointer   |
+|dst_data_stream_V_din     | out |   16|   ap_fifo  | dst_data_stream_V |    pointer   |
+|dst_data_stream_V_full_n  |  in |    1|   ap_fifo  | dst_data_stream_V |    pointer   |
+|dst_data_stream_V_write   | out |    1|   ap_fifo  | dst_data_stream_V |    pointer   |
++--------------------------+-----+-----+------------+-------------------+--------------+
+

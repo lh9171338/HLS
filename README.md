@@ -4,3 +4,6 @@
 # 2. Environment
 >>OS: Windows 10  
 >>IDE: HLS 2018.2
+
+# 3. More Resources
+- [Github Link](https://github.com/lh9171338/Outline)
